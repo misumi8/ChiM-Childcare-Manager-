@@ -1,1 +1,3 @@
-"# ChiM (Childcare-Manager)" 
+# ChiM (Childcare-Manager)
+# Andrei Chiriac
+# Razvan Georgescu 

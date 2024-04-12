@@ -3,33 +3,29 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/login.css">
     <!-- aici adaugam toate css-urile-->
     <title>Childcare Manager</title>
-    <style>
-  header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  }
-  nav a img {
-    width: 50px; /* Example size */
-    height: auto;
-  }
-</style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="../public/profile.php">Profile</a>
-            <a href="../public/feed.php">Feed</a>
-        </nav>
-    </header>
+    <div class="header">
+        <p id="header-text">CHiM<br/>Childcare Manager</p>
+        <div class="line"></div>
+        <div class="item-list">
+            <div class="menu-item">
+                <img src="..\includes\header-images\home_icon.png" alt="Home Page" /><a href="#">Home</a>
+            </div>
+            <div class="menu-item">
+                <img src="..\includes\header-images\personal_page_icon.png" alt="Personal Page" /><a href="#">Your page</a>
+            </div>
+            <div class="menu-item">
+                <img src="..\includes\header-images\web_icon.png" /><a href="#">Feed</a>
+            </div>
+        </div>
+        <!-- <div class="line"></div> -->
+    </div>
+</body>
+
+</html>

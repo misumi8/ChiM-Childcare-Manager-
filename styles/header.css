@@ -1,0 +1,108 @@
+body{
+    background-color: #e3c9ee;
+}
+
+#header-text{
+    width: auto;
+    min-width: 10rem;
+    height: 10%;
+}
+
+.item-list{
+    margin-top: 2vh;
+    display: grid;
+    justify-content: space-around;
+    grid-template-rows: 10% 10% 10%;
+    width: 100%;
+    height: 100%;
+}
+
+.header:hover .item-list{
+    margin-top: 2vh;
+    display: grid;
+    justify-content: space-around;
+    grid-template-rows: 10% 10% 10%;
+    width: 100%;
+    height: 100%;
+}
+
+.menu-item {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    white-space: nowrap; 
+}
+
+.menu-item a{
+    padding-left: 1rem;
+}
+
+.menu-item img{
+    padding-top: 0.3rem;
+    padding-left: 0.4rem;
+}
+
+.header:not(hover){
+    overflow: hidden; 
+    position: fixed;
+    height: 100%;
+    transition-duration: 0.3s;
+    width: 3.3rem;
+    box-shadow: 8px 0px 50px 0px rgba(68, 12, 92, 0.26);
+    top: 0%;
+    left: 0%;
+    background-color: #B35BD9;
+}
+
+.header:not(hover) a, .header:not(hover) #header-text {
+    text-align: center;
+    text-decoration: none;
+    color: transparent;
+    font-family: Oswald;
+    font-size: 1.3rem;
+    transition-duration: 0.1s;
+    margin: 0.4em; /* top right bottom left */
+    text-overflow: clip; 
+}
+
+.header:hover {
+    width: 14rem;
+    transition-duration: 0.3s;
+    box-shadow: 8px 0px 20px 2px rgba(68, 12, 92, 0.26);
+}
+
+.header:hover a, .header:hover #header-text{
+    color: white;
+    transition-duration: 0.3s;
+    white-space: nowrap; 
+}
+
+.header:hover #header-text{
+    text-shadow: 2px 2px 2px #5C0873;
+}
+
+.header a:hover, .header img:hover{
+    transition-duration: 0.3s;
+    color: #E3C9EE;
+    text-shadow: 4px 3px 0px #440C5C;
+}
+
+.header:not(hover) .line {
+    content: '';
+    position: fixed;
+    top: 10.8%;
+    width: 3.3rem;
+    height: 0.1rem;
+    background-color: #e3c9ee;
+    box-shadow: 0em 0em 1em rgba(0, 0, 0, 0.2);
+    transition-duration: 0.3s;
+}
+
+.header:hover .line{
+    content: '';
+    position: fixed;
+    top: 10.8%;
+    width: 14rem;
+    transition-duration: 0.3s;
+    height: 0.1rem;
+    background-color: #e3c9ee;
+}

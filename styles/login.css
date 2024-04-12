@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 body {
     margin: 0;
     padding: 0;
@@ -7,15 +9,16 @@ body {
 }
 
 #welcome-text {
-    position: absolute;
+    /* position: absolute; */
     color: #801faa;
-    margin-top: -76%;
+    margin-top: -145vh;
     font-size: 8rem;
     letter-spacing: -0.3rem;
     transform: scale(1, 1);
     font-family: Lato;
     font-style: oblique;
     text-shadow: 0.3rem 0.4rem 0.3vh #440c5c; 
+    z-index: 1; /*index of importance */
 }
 
 #background-animation {
@@ -41,7 +44,7 @@ body {
         background: linear-gradient(to right, #b35bd9 20%, #a635d6 40%, #a635d6 60%, #b35bd9 20%);
         margin-left: 105vw;
     }
-  }
+}
 
 .grid {
     position: relative;
@@ -51,15 +54,9 @@ body {
     /*height: 97vh; /* equivalent to 97% of the height */
 }
 
-/*#login-family {
-    position: relative;
-    margin-top: -4.5rem;
-    align-items: center;
-    text-align: center;
-}*/
-
 #loginbox {
-    margin-top: -45%;
+    z-index: 2; /*index of importance */
+    margin-top: -90vh;
     box-shadow: 0vh 0vh 0.4vh black; /* right left spread*/
     border: 0.5rem solid #c674e9;
     border-radius: 3rem;
@@ -81,7 +78,7 @@ body {
     grid-template: 5rem 5rem 5rem 1fr / 1fr; /* rows / columns */ 
 }
 
-.user-name-input, .user-password-input, .user-name-input:not(focus), .user-password-input:not(focus) {
+.user-name-input:not(focus), .user-password-input:not(focus) {
     text-indent: 0.7rem; /* space before input*/ 
     background-color: #f6f6f6;
     margin-top: 0.5rem;
@@ -106,7 +103,7 @@ body {
     box-shadow: 0rem 0rem 0.15rem rgb(177, 177, 177);
 }
   
-#login-button, #login-button:not(hover) {
+#login-button:not(hover) {
     outline: none;
     border: 0.01rem solid rgb(203, 203, 203);
     box-shadow: 0rem 0rem 0.15rem rgb(177, 177, 177);
@@ -138,22 +135,3 @@ body {
     font-size: 0.85rem;
 }
 
-#user-name {
-
-}
-
-#login {
-    margin-top: 10vh;
-    margin-left: 5vw;
-    width: 10vw;
-    height: 10vw;
-}
-
-#name {
-    border: 0.5rem solid #c8c8c8;
-    background-color: rgb(197, 197, 197);
-}
-
-#login-button {
-    
-}

@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/login.css">
     <!-- aici adaugam toate css-urile-->
+
+    <!-- Fonts: -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <title>Childcare Manager</title>
 </head>
 

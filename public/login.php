@@ -30,7 +30,7 @@
                     <button type="#" id="login-button" onclick="return false;">Log in</button>
                     <div id="register">
                         Not registered yet?
-                        <a href="#">Register</a>
+                        <a href="register.php">Register</a>
                     </div>
                 </ul>
             </form>

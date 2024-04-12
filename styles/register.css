@@ -135,8 +135,9 @@ body {
     box-shadow: 0rem 0rem 0.15rem rgb(177, 177, 177);
 }
 
-.reg-password-repeat-input:not(focus){
+.reg-password-repeat-input:not(focus) {
     margin-top: 1rem;
+    margin-left: 1.7rem;
 }
 
 #reg-register-button:not(hover) {

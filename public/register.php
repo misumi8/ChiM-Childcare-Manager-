@@ -40,7 +40,7 @@
                         <label for="name">Password:</label><br />
                         <input type="text" class="reg-user-password-input" name="user_password" placeholder="Password" />
                     </li>
-                    <li class="reg-user-input password-repeat-input">
+                    <li class="reg-password-repeat-input">
                         <label for="name">Repeat your password:</label><br />
                         <input type="text" class="reg-user-password-repeat" name="user_password_repeat" placeholder="Repeat password" />
                     </li>

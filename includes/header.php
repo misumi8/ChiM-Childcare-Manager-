@@ -23,7 +23,7 @@
                 <img src="..\includes\header-images\home_icon.png" alt="Home Page" /><a href="#">Home</a>
             </div>
             <div class="menu-item">
-                <img src="..\includes\header-images\personal_page_icon.png" alt="Personal Page" /><a href="#">My page</a>
+                <img src="..\includes\header-images\personal_page_icon.png" alt="Personal Page" /><a href="#" id="head-my-page">My page</a>
             </div>
             <div class="menu-item">
                 <img src="..\includes\header-images\web_icon.png" /><a href="#">Feed</a>

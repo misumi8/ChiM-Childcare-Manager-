@@ -10,6 +10,10 @@ body{
     height: 10%;
 }
 
+#head-my-page{
+    margin-left: 0.5rem;
+}
+
 .item-list{
     margin-top: 2vh;
     display: grid;

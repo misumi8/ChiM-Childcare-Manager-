@@ -9,7 +9,7 @@ body {
 }
 
 #welcome-text {
-    /* position: absolute; */
+    position: absolute;
     color: #801faa;
     margin-top: -145vh;
     font-size: 8rem;
@@ -55,6 +55,7 @@ body {
 }
 
 #loginbox {
+    position: absolute;
     z-index: 2; /*index of importance */
     margin-top: -90vh;
     box-shadow: 0vh 0vh 0.4vh black; /* right left spread*/

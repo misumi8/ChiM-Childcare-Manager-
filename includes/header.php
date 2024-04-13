@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/profile.css">
+    <link rel="stylesheet" href="../styles/feed.css">
     <!-- aici adaugam toate css-urile-->
 
     <!-- Fonts: -->
@@ -20,13 +22,13 @@
         <div class="line"></div>
         <div class="item-list">
             <div class="menu-item">
-                <img src="..\includes\header-images\home_icon.png" alt="Home Page" /><a href="#">Home</a>
+            <img src="..\includes\header-images\home_icon.png" alt="Home Page" /><a href="../public/register.php">Home</a>
             </div>
             <div class="menu-item">
-                <img src="..\includes\header-images\personal_page_icon.png" alt="Personal Page" /><a href="#" id="head-my-page">My page</a>
+                <img src="..\includes\header-images\personal_page_icon.png" alt="Personal Page" /><a href="../public/profile.php" id="head-my-page">My page</a>
             </div>
             <div class="menu-item">
-                <img src="..\includes\header-images\web_icon.png" /><a href="#">Feed</a>
+                <img src="..\includes\header-images\web_icon.png" /><a href="../public/feed.php">Feed</a>
             </div>
         </div>
         <!-- <div class="line"></div> -->

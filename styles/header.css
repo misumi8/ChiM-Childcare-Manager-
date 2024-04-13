@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
-body{
-    background-color: #e3c9ee;
-}
-
 #header-text{
     width: auto;
     min-width: 10rem;

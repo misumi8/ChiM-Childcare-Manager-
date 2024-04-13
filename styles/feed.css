@@ -1,0 +1,55 @@
+.feed-content-container {
+    background-color: #eaeaea;
+    width: 35rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    margin: 10px auto;
+    padding-bottom: 10px;
+    border: 0.15rem solid #C2E0F9;
+    box-shadow: 2px 2px 2px 2px rgba(68, 12, 92, 0.26);
+    border-radius: 0.5rem;
+}
+
+.feed-account-name {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    height: 3.2rem;
+    margin-left: -20rem;
+    margin-bottom: 0.2rem;
+    
+}
+
+.feed-account-name img{
+    width: 49px; /* Set the width */
+    height: 49px; /* Set the height */
+    border-radius: 50%; /* Optional: make the image circular */
+    margin-right: 8px; /* Optional: add some spacing between image and text */
+}
+
+.feed-content-media {
+    width: 33rem;
+    padding-top: 0.7rem;
+}
+
+.feed-content-media img{
+    width: 100%;
+
+}
+
+.feed-background {
+    background-image:url(../=.png);
+    background-repeat: repeat;
+    background-size: contain;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.feed-content-container hr{
+    border: 0.09rem solid #C2E0F9;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}

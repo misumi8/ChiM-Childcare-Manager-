@@ -1,5 +1,5 @@
 .feed-content-container {
-    background-color: #eaeaea;
+    background-color: #fefefe;
     width: 35rem;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
     align-items: center;
     margin: 10px auto;
     padding-bottom: 10px;
-    border: 0.15rem solid #C2E0F9;
+    border: 0.2rem solid black; /* #C2E0F9 */
     box-shadow: 2px 2px 2px 2px rgba(68, 12, 92, 0.26);
     border-radius: 0.5rem;
 }
@@ -17,16 +17,17 @@
     flex-direction: row;
     align-items:center;
     height: 3.2rem;
-    margin-left: -20rem;
-    margin-bottom: 0.2rem;
-    
+    margin-bottom: 0.15rem;
+    margin-top: 0.2rem;
 }
 
-.feed-account-name img{
+.feed-content-auth {
     width: 49px; /* Set the width */
     height: 49px; /* Set the height */
     border-radius: 50%; /* Optional: make the image circular */
-    margin-right: 8px; /* Optional: add some spacing between image and text */
+    margin-right: 30rem;
+    margin-top: 0.28rem;
+    position: absolute;
 }
 
 .feed-content-media {
@@ -36,7 +37,7 @@
 
 .feed-content-media img{
     width: 100%;
-
+    border-radius: 0.6%;
 }
 
 .feed-background {
@@ -48,7 +49,7 @@
 }
 
 .feed-content-container hr{
-    border: 0.09rem solid #C2E0F9;
+    border: 0.097rem solid black; 
     width: 100%;
     padding: 0;
     margin: 0;

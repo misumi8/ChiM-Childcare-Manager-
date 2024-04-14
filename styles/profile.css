@@ -4,5 +4,25 @@
     right: 0;
     bottom: 0;
     width: 14rem;
-    background-color: yellow;
+    background-color: #B35BD9;
+    color: white;
   }
+
+.profile-child-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 0.15rem solid black;
+    border-top: 0;
+}
+
+.profile-child-container img {
+    width: 49px; 
+    height: 49px; 
+    border-radius: 50%; 
+    margin: 0.28rem;
+}
+
+#profile-plus {
+    border-radius: 0%; 
+}

@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Lexend+Deca:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Lexend+Deca:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #E3C9EE;
+    font-family: 'Poppins', sans-serif;
+}
+
+#hp-img-container {
+    background-color: #E3C9EE;
+    height: 70%;
+    width: 100%;
+}
+
+#hp-img-container img{
+    height: auto;
+    width: 100%;
+}
+
+#hp-img-container #hp-img-text{
+    position: absolute;
+    top: 2rem;
+    left: 9rem;
+    font-size: 13rem;
+    color: #C674E9;
+    font-family: 'Lexend Deca';
+    text-shadow: 4px 3px 0px #440C5C;
+}
+
+#hp-img-container #hp-join-button:not(hover){
+    text-decoration: none;
+    align-content: center;
+    position: absolute;
+    font-family: sans-serif;
+    color: white;
+    font-weight: bold;
+    background-color: #C674E9;
+    top: 70%;
+    left: 39%;
+    font-size: 4rem;
+    height: 6.5rem;
+    width: 20.5rem;
+    transition-duration: 0.4s;
+    border-radius: 5rem;
+    outline: none;
+    /* text-shadow: -4px 7px 3px #801FAA; */
+    border: 0.08rem solid #440C5C;
+    text-align: center;
+}
+
+#hp-img-container #hp-join-button:hover{
+    text-shadow: 1px -1px 0 #801FAA, -1px 2px 1px #801FAA, -2px 4px 1px #801FAA, -3px 6px 1px #801FAA, -4px 8px 1px #801FAA, -5px 10px 1px #801FAA, -6px 12px 1px #801FAA, 2px 2px 2px rgba(206,89,55,0);    text-align: center;
+    transition-duration: 0.5s;
+}
+
+#hp-img-container #hp-join-button:active{
+    box-shadow: 7px 3px 57px -30px rgba(0,0,0,0.75);
+    transition-duration: 0.1s;
+}
+
+#hp-text {
+    text-shadow: 0px 1px 1px black;
+    margin-left: 15%;
+    max-width: 70%;
+    margin-top: 10rem;
+    text-align: center;
+}
+
+.free-space {
+    height: 10rem;
+    width: auto;
+}
+
+.free-space p{
+    font-size: 1.3rem;
+    text-align: center;
+    font-family: Courgette;
+}
+
+.free-space h2{
+    font-size: 1.4rem;
+    text-align: center;
+    font-family: Courgette;
+}
+
+#hp-text h1 {
+    text-shadow: 1px 1px 1px black;
+}
+
+#hp-cr {
+    margin-left: 28.94%;
+    display: grid;
+    grid-template-columns: 30% 30%;
+    grid-template-rows: 20% 20%;
+    height: 22rem;
+    text-decoration: underline;
+}
+
+#hp-cr img{
+    margin-left: 3.9rem;
+    box-shadow: 0px 0px 3px black;
+}
+
+#hp-delim {
+    height: 70%;
+    width: 100%;
+}
+
+#hp-delim img{
+    height: auto;
+    width: 100%;
+}

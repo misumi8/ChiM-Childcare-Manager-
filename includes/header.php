@@ -22,7 +22,7 @@
         <div class="line"></div>
         <div class="item-list">
             <div class="menu-item">
-            <img src="..\includes\header-images\home_icon.png" alt="Home Page" /><a href="../public/register.php">Home</a>
+            <img src="..\includes\header-images\home_icon.png" alt="Home Page" /><a href="../public/home-page.php">Home</a>
             </div>
             <div class="menu-item">
                 <img src="..\includes\header-images\personal_page_icon.png" alt="Personal Page" /><a href="../public/profile.php" id="head-my-page">My page</a>

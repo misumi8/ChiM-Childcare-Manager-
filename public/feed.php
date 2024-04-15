@@ -21,7 +21,7 @@ require_once '../includes/header.php';
 <img class="feed-content-auth" src="../users/user1/user1_profile.jpg" alt="Profile picture">
 <div class="feed-account-name">Jhon Doe</div>
 <hr>
-<div class="feed-content-media"><img src="../stock2.jpg" alt="Content"></div>
+<div class="feed-content-media"><img src="../page-images/stock2.jpg" alt="Content"></div>
 </div>
 
 <div class="feed-content-container">

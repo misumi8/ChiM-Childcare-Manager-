@@ -41,7 +41,7 @@
 }
 
 .feed-background {
-    background-image:url(../=.png);
+    background-image:url(../page-images/=.png);
     background-repeat: repeat;
     background-size: contain;
     margin-top: -10px;

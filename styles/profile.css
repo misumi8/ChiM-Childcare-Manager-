@@ -9,6 +9,11 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+#pr-frame{
+    height: 100vh;
+    overflow: scroll;
+}
+
 ::-webkit-scrollbar {
     display: none; /* РHide scrollbar */
 }
@@ -81,7 +86,6 @@ body {
     transition-duration: 0.2s;
 }
 
-
 #pr-first-row {
     margin-left: 12rem;
     margin-top: 5rem;
@@ -127,7 +131,7 @@ body {
     height: 2rem;
     width: 10rem;
     transition-duration: 0.3s;
-    background-color: #F6F6F6;
+    background-color: #dfbced;
     border: none;
     margin-left: 32%;
     margin-right: auto;
@@ -144,7 +148,7 @@ body {
 }
 
 #pr-add-more-info-button:hover, #pr-add-memory-button:hover, #pr-see-calendar:hover{
-    background-color: #eaeaea;
+    background-color: #deadf1;
     transition-duration: 0.3s;
 }
 

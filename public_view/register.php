@@ -20,29 +20,29 @@
                 <ul>
                     <div id="reg-full-name">
                         <li id="reg-real-name">
-                            <label for="name">First name:</label><br />
-                            <input type="text" class="reg-user-name-input" name="user_fname" placeholder="First name" />
+                            <label for="register_user_fname">First name:</label><br />
+                            <input type="text" class="reg-user-name-input" name="register_user_fname" placeholder="First name" />
                         </li>
                         <li id="reg-real-surname">
-                            <label for="name">Last name:</label><br />
-                            <input type="text" class="reg-user-name-input" name="user_lname" placeholder="Last name" />
+                            <label for="register_user_lname">Last name:</label><br />
+                            <input type="text" class="reg-user-name-input" name="register_user_lname" placeholder="Last name" />
                         </li>
                     </div>
                     <li class="reg-user-input">
-                        <label for="name">Email adress:</label><br />
-                        <input type="text" class="reg-user-name-input" name="user_name" placeholder="Email address" />
+                        <label for="register_user_email">Email adress:</label><br />
+                        <input type="text" class="reg-user-name-input" name="register_user_email" placeholder="Email address" />
                     </li>
                     <li class="reg-user-input">
-                        <label for="name">Date of birth:</label><br />
-                        <input type="date" class="reg-user-name-dob-input" name="user_dob" placeholder="Date of birth" />
+                        <label for="register_user_dob">Date of birth:</label><br />
+                        <input type="date" class="reg-user-name-dob-input" name="register_user_dob" placeholder="Date of birth" />
                     </li>
                     <li class="reg-user-input">
-                        <label for="name">Password:</label><br />
-                        <input type="text" class="reg-user-password-input" name="user_password" placeholder="Password" />
+                        <label for="register_user_password">Password:</label><br />
+                        <input type="text" class="reg-user-password-input" name="register_user_password" placeholder="Password" />
                     </li>
                     <li class="reg-password-repeat-input">
-                        <label for="name">Repeat your password:</label><br />
-                        <input type="text" class="reg-user-password-repeat" name="user_password_repeat" placeholder="Repeat password" />
+                        <label for="register_user_password_repeat">Repeat your password:</label><br />
+                        <input type="text" class="reg-user-password-repeat" name="register_user_password_repeat" placeholder="Repeat password" />
                     </li>
                     <!-- TEMP: onclick="return false;" -->
                     <button type="#" id="reg-register-button" onclick="return false;">Sign up</button>

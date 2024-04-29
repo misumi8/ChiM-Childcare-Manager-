@@ -24,7 +24,7 @@
         <div id="hp-img-container">
             <img src="../page-images/hp-header.png" alt="Home Page Header"/>
             <div id="hp-img-text">CHiM</div>
-            <a href="../public/login.php" id="hp-join-button">Join Us!</a>
+            <a href="../public_view/login.php" id="hp-join-button">Join Us!</a>
         </div>
         <div id="hp-text">
             <h1>Childcare Manager</h1>

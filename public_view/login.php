@@ -16,18 +16,18 @@
     <div class="grid">
         <p id="welcome-text">Welcome!</p>
         <div id="loginbox">
-            <form action="/test-action" method="post" id="login-form">
+            <form action="./loginhandler.php" method="post" id="login-form">
                 <ul>
                     <li id="user-name">
-                        <label for="name">Email adress:</label><br />
-                        <input type="text" class="user-name-input" name="user_name" placeholder="Email address" />
+                        <label for="email">Email adress:</label><br />
+                        <input requred type="text" pattern="^[a-z0-9A-Z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" class="user-name-input" name="email" placeholder="Email address" />
                     </li>
                     <li id="user-password">
-                        <label for="name">Password:</label><br />
-                        <input type="text" class="user-password-input" name="user_password" placeholder="Password" />
+                        <label for="password">Password:</label><br />
+                        <input requred type="text" pattern="^[a-zA-Z0-9!@#$%^&*()\-_=+|{}[\]:;'<>,.?/~]{8,50}$" class="user-password-input" name="user_password" placeholder="Password" />
                     </li>
                     <!-- TEMP: onclick="return false;" -->
-                    <button type="#" id="login-button" onclick="return false;">Log in</button>
+                    <button type="submit" id="login-button" >Log in</button>
                     <div id="register">
                         Not registered yet?
                         <a href="register.php">Register</a>

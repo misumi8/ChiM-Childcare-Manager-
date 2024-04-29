@@ -7,6 +7,11 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+#login-frame{
+    height: 100vh;
+    overflow: hidden;
+}
+
 #welcome-text {
     position: absolute;
     color: #801faa;
@@ -22,6 +27,7 @@ body {
 
 #background-animation {
     position: relative;
+    overflow: hidden;
     transform: rotate(6deg);
     width: 14rem;
     height: 120vh;
@@ -46,7 +52,7 @@ body {
 }
 
 .grid {
-    position: relative;
+    overflow: hidden;
     display: grid;
     place-items:center;
     grid-template: 35% 75% / 100%;

@@ -29,10 +29,3 @@ require_once "../includes/database.php";
         </div>
         <!-- <div class="line"></div> -->
     </div>
-</body>
-
-</html>
-
-<?php
-require_once '../includes/footer.php';
-?>

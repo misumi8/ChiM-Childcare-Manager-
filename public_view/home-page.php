@@ -1,28 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Childcare Manager</title>
-    <link rel="stylesheet" href="../styles/home-page.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Lexend+Deca:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Lexend+Deca:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-</head>
-
 <body>
     <div class="hp-background">
         <div id="hp-img-container">
-            <img src="../page-images/hp-header.png" alt="Home Page Header"/>
+            <img src="../public_view/page-images/hp-header.png" alt="Home Page Header"/>
             <div id="hp-img-text">CHiM</div>
             <a href="../public_view/login.php" id="hp-join-button">Join Us!</a>
         </div>
@@ -48,21 +27,20 @@
         </div>
         <div class="free-space"></div>
         <div id="hp-delim">
-            <img src="../page-images/hp-header-delim.png" alt="hp-delim"/>
+            <img src="../public_view/page-images/hp-header-delim.png" alt="hp-delim"/>
         </div>
         <div class="free-space">
             <h2>Created by:</h2>
             <div id="hp-cr">
                 <p>Chiriac Andrei</p>
                 <p>Georgescu Răzvan</p>
-                <img src="../page-images/andrei.jpg"/>
-                <img src="../page-images/razvan-new.jpg"/>
+                <img src="../public_view/page-images/andrei.jpg"/>
+                <img src="../public_view/page-images/razvan-new.jpg"/>
             </div>
         </div>
-
     </div>
 </body>
-</html>
+
 
 <?php
 require_once '../includes/header.php';

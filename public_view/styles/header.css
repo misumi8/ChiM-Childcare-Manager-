@@ -11,6 +11,7 @@
 }
 
 .item-list{
+    min-height: 425px;
     margin-top: 2vh;
     display: grid;
     justify-content: space-around;

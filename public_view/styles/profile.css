@@ -36,7 +36,7 @@ body {
     text-shadow: 0px 0px 15px rgba(0,0,0,0.6);
 }
 
-.pr-child-container:not(hover) {
+.pr-child-container {
     font-family: Lato;
     display: flex;
     flex-direction: row;
@@ -64,7 +64,7 @@ body {
     text-shadow: 0px 0px 9px rgba(0,0,0,0.6);
 }
 
-#pr-p-container:not(hover), #pr-text-container:not(hover){
+#pr-p-container, #pr-text-container{
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
@@ -121,12 +121,105 @@ body {
     color: black;
 }
 
+#pr-2col-table .pr-child-info-input{
+    border-radius: 0.3rem;    
+    text-shadow: 0px 0px 1px #440C5C;
+}
+
 #pr-2col-table {
+    min-height: 250px;
+    min-width: 630px;
+    justify-items: center;
+    margin-top: 13%;
+    margin-left: 15%;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 35% 35%;
+    grid-template-rows: 15% 15% 15%;
+    flex: 1;
+}
+
+#pr-close-2col-form {
+    display: none;
+    left: 81.6%;
+    top: 3%;
+    position: absolute;
+}
+
+#pr-close-2col-form img:not(:hover){
+    transition-duration: 0.2s;
+}
+
+#pr-close-2col-form img:hover {
+    border-radius: 100%;
+    background-color: #d18eeb;
+    transition-duration: 0.2s;
+}
+
+#pr-close-2col-form img:active {
+    border-radius: 100%;
+    background-color: #b256d6;
+}
+
+/* #pr-2col-table label{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}*/
+
+#pr-2col-table li label{
+    margin-right: 0.5rem;
+} 
+
+#pr-2col-table li:not(:nth-child(3)) input{
+    height: 2rem;
+    width: 12rem;
+}
+
+#pr-2col-table input{
+    text-indent: 0.3rem; 
+    font-size: 1.1rem;
+}
+
+#pr-2col-table #pr-medical-history-button{
+    border-radius: 0.6rem;
+    height: 3.5rem;
+    width: 12rem;
+    font-size: 1.3rem;
+    text-shadow: 0px 0px 1px black;
+    transition-duration: 0.3s;
+    background-color: #E3C9EE;
+    border: none;
+    box-shadow: 0px 0px 2px black;
+    margin-left: 100%;
+    margin-top: 1rem;
+    font-family: Lato;
+}
+
+#pr-2col-table #pr-medical-history-button:hover {
+    background-color: #dfbced;
+    transition-duration: 0.3s;
+}
+
+#pr-2col-table #pr-medical-history-button:active {
+    border: 0.01rem solid #440C5C;
+}
+
+#pr-2col-table-info {
     display: grid;
     grid-template-columns: 50% 50%;
 }
 
-#pr-add-more-info-button:not(hover), #pr-add-memory-button:not(hover), #pr-see-calendar:not(hover){
+#pr-child-data-form {
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    background-color: #deadf1;
+}
+
+#pr-add-more-info-button, #pr-add-memory-button, #pr-see-calendar{
     border-radius: 0.6rem;
     height: 2rem;
     width: 10rem;
@@ -139,7 +232,7 @@ body {
     margin-top: -4.68rem;
 }
 
-#pr-add-memory-button:not(hover), #pr-see-calendar:not(hover){
+#pr-add-memory-button, #pr-see-calendar{
     margin-left: 0%;
 }
 

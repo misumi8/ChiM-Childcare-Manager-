@@ -24,12 +24,21 @@ function getUserInfo($email, $user_password)
     $stmt->execute([$hashed_pass, $email]);
     $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if(!empty($userInfo)){
-    $userChildrenInfo = getUserChildrenInfo($userInfo['id']);
-    $userInfo = array_merge($userInfo, $userChildrenInfo);
+    if (!empty($userInfo)) {
+        $userChildrenInfo = getUserChildrenInfo($userInfo['id']);
+        $userInfo = array_merge($userInfo, $userChildrenInfo);
     }
 
     return $userInfo;
+}
+
+function doesEmailExist($email)
+{
+    $stmt = $GLOBALS['pdo']->prepare("SELECT count(*) FROM users WHERE email = ?");
+    $stmt->execute([$email]);
+    $count = $stmt->fetch(PDO::FETCH_COLUMN);
+
+    return $count > 0;
 }
 
 function getUserInfoPost($userId)
@@ -41,7 +50,8 @@ function getUserInfoPost($userId)
     return $userInfo;
 }
 
-function getUserChildrenInfo($userId){
+function getUserChildrenInfo($userId)
+{
     $stmt = $GLOBALS['pdo']->prepare("SELECT * FROM children WHERE user_id = ? ");
     $stmt->execute([$userId]);
     $userChildrenInfo = $stmt->fetchALL(PDO::FETCH_ASSOC);
@@ -49,7 +59,8 @@ function getUserChildrenInfo($userId){
     return $userChildrenInfo;
 }
 
-function getFeedMedia(){
+function getFeedMedia()
+{
     return $GLOBALS['pdo']->query("SELECT * FROM media WHERE shared = true")->fetchALL(PDO::FETCH_ASSOC);
 }
 

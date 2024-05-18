@@ -2,13 +2,13 @@
 <html lang="en">
 
 <?php
-//require_once "../includes/database.php";
+require_once "../includes/database.php";
 ?>
 
 <head>
     <meta charset="UTF-8">
     <title>Childcare Manager</title>
-    <!-- aici adaugam toate css-urile-->
+    <!-- CSS -->
     <link rel="stylesheet" href="../public_view/styles/header.css">
     <link rel="stylesheet" href="../public_view/styles/login.css">
     <link rel="stylesheet" href="../public_view/styles/home-page.css">
@@ -16,25 +16,11 @@
     <link rel="stylesheet" href="../public_view/styles/profile.css">
     <link rel="stylesheet" href="../public_view/styles/register.css">
 
-    <!-- FONTS: -->
-    <!-- register -->
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-
-    <!-- profile -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Lexend+Deca:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Lexend+Deca:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-
-    <!-- login -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-
-    <!-- home-page -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Lexend+Deca:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Lexend+Deca:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
@@ -53,8 +39,4 @@
                 <img src="../includes/header-images/web_icon.png" /><a href="../public_view/feed.php">Feed</a>
             </div>
         </div>
-        <!-- <div class="line"></div> -->
     </div>
-</body>
-
-</html>

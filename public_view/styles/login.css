@@ -140,3 +140,7 @@ body {
     margin-right: 17.8%;
     font-size: 0.85rem;
 }
+
+#login-email-error, #login-password-error, #login-fname-error, #login-lname-error, #login-password-repeat-error, #login-dob-error {
+    color: rgb(184, 5, 5);
+}

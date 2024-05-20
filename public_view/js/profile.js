@@ -1,11 +1,3 @@
-// window.addEventListener('load', function () {
-//     if(medicalHistory.style.display != "none") {
-//         tableCells.forEach(function(tableCell) {
-//             tableCell.style.height = tableCell.scrollHeight + "px";
-//         });
-//     }
-// });
-
 document.addEventListener("DOMContentLoaded", function() {
     const addMoreInfo = document.getElementById("pr-add-more-info-button");
     const childDataForm = document.getElementById("pr-child-data-form");
@@ -26,13 +18,65 @@ document.addEventListener("DOMContentLoaded", function() {
     const timeline = document.getElementById("pr-timeline");
     const line = document.getElementById("pr-line");
     const addNewChild = document.getElementById("pr-p-container");
-
+    const memoryList = document.querySelectorAll('.pr-memory');
     // addNewChild.addEventListener("click", function () {
     //     alert("Button Pressed");
     //     var xhr = new XMLHttpRequest();
     //     xhr.open('GET', '../public_view/php-scripts/addNewChild.php', true);
     //     xhr.send();    
     // }); 
+
+
+
+    memoryList.forEach(memory => {
+        memory.style.width = "21rem";
+        memory.style.display = "auto";
+        let oddClick = true;
+        memory.addEventListener('mouseover', () => {
+            if (memory.previousElementSibling) {
+                let prevMemory = memory.previousElementSibling;
+                while(prevMemory){
+                    prevMemory.style.transform = "translateX(-1rem)";
+                    prevMemory = prevMemory.previousElementSibling;
+
+                }
+                console.log("in");
+            }
+        })
+        memory.addEventListener('mouseout', () => {
+            if (memory.previousElementSibling) {
+                let prevMemory = memory.previousElementSibling;
+                while(prevMemory){
+                    prevMemory.style.transform = "translateX(0rem)";
+                    prevMemory = prevMemory.previousElementSibling;
+
+                }
+                console.log("out");
+            }
+        })
+
+        memory.addEventListener('click', () => {
+            let memoryDescription = memory.querySelectorAll('span');
+            if(oddClick){
+                oddClick = false;
+                console.log("odd click");
+                memory.style.width = "42rem";
+                memory.style.display = "absolute";
+                memoryDescription.forEach(memoryDescription => {
+                    memoryDescription.style.opacity = "1";
+                })
+            }
+            else {
+                oddClick = true;
+                console.log("even click");
+                memory.style.width = "21rem";
+                memory.style.display = "auto";
+                memoryDescription.forEach(memoryDescription => {
+                    memoryDescription.style.opacity = "0";
+                })
+            }
+        })
+    })
 
     let totalScrollMemories = 0;
     memories.addEventListener('wheel', function(event) {

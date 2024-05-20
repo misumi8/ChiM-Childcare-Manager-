@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-require_once "../includes/database.php";
+//require_once "../includes/database.php";
 ?>
 
 <head>

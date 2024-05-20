@@ -195,7 +195,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
+                        <div class="pr-memory-content">
+                            <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -203,7 +206,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
+                        <div class="pr-memory-content">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -211,7 +217,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://welldoing.org/storage/app/uploads/public/589/369/f0b/589369f0b5b61839200792.jpg"/>
+                        <div class="pr-memory-content">
+                            <img src="https://welldoing.org/storage/app/uploads/public/589/369/f0b/589369f0b5b61839200792.jpg"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -219,7 +228,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://media.npr.org/assets/img/2014/05/22/rebeccawoolf_custom-c4cccfacd8d93166f0b5050a6f42821401944d0a.jpg"/>
+                        <div class="pr-memory-content">
+                            <img src="https://media.npr.org/assets/img/2014/05/22/rebeccawoolf_custom-c4cccfacd8d93166f0b5050a6f42821401944d0a.jpg"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -227,7 +239,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
+                        <div class="pr-memory-content">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -235,7 +250,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://welldoing.org/storage/app/uploads/public/589/369/f0b/589369f0b5b61839200792.jpg"/>
+                        <div class="pr-memory-content">
+                            <img src="https://welldoing.org/storage/app/uploads/public/589/369/f0b/589369f0b5b61839200792.jpg"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -243,7 +261,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
+                        <div class="pr-memory-content">
+                            <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -251,7 +272,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
+                        <div class="pr-memory-content">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -259,7 +283,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://media.npr.org/assets/img/2014/05/22/rebeccawoolf_custom-c4cccfacd8d93166f0b5050a6f42821401944d0a.jpg"/>
+                        <div class="pr-memory-content">
+                            <img src="https://media.npr.org/assets/img/2014/05/22/rebeccawoolf_custom-c4cccfacd8d93166f0b5050a6f42821401944d0a.jpg"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -267,7 +294,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
+                        <div class="pr-memory-content">
+                            <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -275,7 +305,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
+                        <div class="pr-memory-content">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -283,7 +316,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
+                        <div class="pr-memory-content">
+                            <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -291,7 +327,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://welldoing.org/storage/app/uploads/public/589/369/f0b/589369f0b5b61839200792.jpg"/>
+                        <div class="pr-memory-content">
+                            <img src="https://welldoing.org/storage/app/uploads/public/589/369/f0b/589369f0b5b61839200792.jpg"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -299,7 +338,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
+                        <div class="pr-memory-content">
+                            <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -307,7 +349,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
+                        <div class="pr-memory-content">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -315,7 +360,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
+                        <div class="pr-memory-content">
+                            <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                     <div class="pr-memory">
                         <div id="pr-old-style">
@@ -323,7 +371,10 @@
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="https://welldoing.org/storage/app/uploads/public/589/369/f0b/589369f0b5b61839200792.jpg"/>
+                        <div class="pr-memory-content">
+                            <img src="https://welldoing.org/storage/app/uploads/public/589/369/f0b/589369f0b5b61839200792.jpg"/>
+                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
+                        </div>
                     </div>
                 </div>
                 <!-- <div id="pr-arrow"></div> -->

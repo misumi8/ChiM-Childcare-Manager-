@@ -19,6 +19,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const line = document.getElementById("pr-line");
     const addNewChild = document.getElementById("pr-p-container");
     const memoryList = document.querySelectorAll('.pr-memory');
+    const saveButtonExtension = document.getElementById("pr-save-button-extension");
+    const firstRow = document.getElementById("pr-first-row");
+    const calendar = document.getElementById("pr-calendar");
+    const addChild = document.getElementById("pr-p-container");
     // addNewChild.addEventListener("click", function () {
     //     alert("Button Pressed");
     //     var xhr = new XMLHttpRequest();
@@ -26,7 +30,29 @@ document.addEventListener("DOMContentLoaded", function() {
     //     xhr.send();    
     // }); 
 
+    let important = false;
+    saveButtonExtension.addEventListener("click", function(){
+        if(!important){
+            saveButtonExtension.style.color = "#751d9b";
+            important = true;
+        }
+        else {
+            saveButtonExtension.style.color = "white";
+            important = false;
+        }
+    });
 
+    addMemorySaveButton.addEventListener("mousedown", function () {
+        let saveButtonExtension = document.getElementById("pr-save-button-extension");
+        saveButtonExtension.style.marginTop = "5%";
+        saveButtonExtension.style.boxShadow = "0 2px 0px #801FAA";
+    });
+
+    addMemorySaveButton.addEventListener("mouseup", function () {
+        let saveButtonExtension = document.getElementById("pr-save-button-extension");
+        saveButtonExtension.style.marginTop = "0%";
+        saveButtonExtension.style.boxShadow = "0 7px 0px #801FAA";
+    });
 
     memoryList.forEach(memory => {
         memory.style.width = "21rem";
@@ -102,11 +128,23 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }); 
 
+    seeCalendarButton.addEventListener("click", function(){
+        firstRow.style.display = "none";
+        arrow.style.display = "none";
+        addMoreInfo.style.display = "none";
+        addMemoryButton.style.display = "none";
+        seeCalendarButton.style.display = "none";
+        childrenPanel.style.position = "none";
+        closeButton.style.display = "flex";
+        calendar.style.display = "block";
+    });
+
     // Close button
     closeButton.addEventListener("click", function() {
         childDataForm.style.display = "none";
         addMemoryForm.style.display = "none";
         closeButton.style.display = "none";
+        firstRow.style.display = "grid";
         arrow.style.display = "grid";
         addMoreInfo.style.display = "inline-block";
         addMemoryButton.style.display = "inline-block";
@@ -114,8 +152,21 @@ document.addEventListener("DOMContentLoaded", function() {
         childrenPanel.style.position = "fixed";
     });
 
+    // addChild button
+    addChild.addEventListener("click", function() {
+        closeButton.style.display = "flex";
+        arrow.style.display = "none";
+        addMoreInfo.style.display = "none";
+        addMemoryButton.style.display = "none";
+        seeCalendarButton.style.display = "none";
+        childDataForm.style.display = "flex";
+        medicalHistory.style.display = "none";
+        medicalHistoryButton.style.display = "none";
+    });
+
     // addMoreInfo button
     addMoreInfo.addEventListener("click", function() {
+        medicalHistoryButton.style.display = "block";
         childDataForm.style.display = "flex";
         closeButton.style.display = "flex";
         arrow.style.display = "none";
@@ -159,3 +210,19 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+function changeChildImage() {
+    const childPhoto = document.getElementById("pr-child-image");
+    const file = document.getElementById("pr-photo").files[0];
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+        // Convert image to base64-string
+        childPhoto.src = reader.result;
+        // [ulterior] save to db reader.result
+        childPhoto.style.opacity = "1";
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}

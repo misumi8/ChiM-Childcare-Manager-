@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Lexend+Deca:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Lexend+Deca:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
 
 body {
     margin: 0;
@@ -387,6 +388,10 @@ button {
     background-color: #deadf1;
 }
 
+#pr-add-memory-form p {
+    font-family: "Poetsen One", sans-serif;
+}
+
 #pr-add-memory p{
     margin-left: 38.4%;
     color: #eee7f0;
@@ -439,23 +444,52 @@ button {
 
 #pr-add-memory-save-button {
     height: 4rem;
-    width: 7rem;
-    left: 42%;
-    top: -53%;
+    width: 6rem;
+    font-family: "Poetsen One", sans-serif;
+    text-indent: 0.2rem;
     background: #B35BD9;
-    font-size: 1.4rem;
+    font-size: 2rem;
     color: #eee7f0;
+    text-align: center;
     border: none;
-    border-radius: 0.4rem;
+    border-top-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
     box-shadow: 0 7px 0px #801FAA;
-    display: inline-block;
     position: relative;
     transition-duration: 0.15s;
 }
 
-#pr-add-memory-save-button:active {
-    top: -48%;
+#pr-add-memory-save-button:active{
+    margin-top: 5%;
     box-shadow: 0 2px 0px #801FAA;
+    transition: 0.15s;
+}
+
+#pr-save-button-extension {
+    color: #eee7f0;
+    text-indent: -0.5rem;
+    user-select: none;
+    cursor: pointer;
+    font-size: 2.5rem;
+    font-family: "Poetsen One", sans-serif;
+    align-content: center;
+    height: 4rem;
+    text-align: center;
+    width: 2rem;
+    background: #B35BD9;
+    box-shadow: 0 7px 0px #801FAA;
+    transition-duration: 0.15s;
+    border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+}
+
+
+#pr-save-button-container {
+    display: flex;
+    margin-left: 42vw;
+    width: 7rem;
+    z-index: 0;
+    margin-top: -1.5rem;
 }
 
 
@@ -646,11 +680,7 @@ button {
     width: 32%;
     outline: none;
 }
-/* CREATE OR REPLACE TABLE medical_history(
-    user_id INT,
 
-    FOREIGN KEY (user_id) REFERENCES users(id)
-) */
 .row td{
     /* overflow: scroll; */
     word-wrap: break-word;
@@ -772,7 +802,7 @@ table tr {
     word-break: break-all;
     white-space: normal;
     opacity: 0;
-    transition-duration: 0.8s;
+    transition-duration: 0.3s;
 }
 
 .pr-memory #pr-old-style {

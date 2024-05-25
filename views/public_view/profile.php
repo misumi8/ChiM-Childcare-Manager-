@@ -3,8 +3,8 @@
         <div id="pr-child-info">
             <div id="pr-first-row">
                 <div id="pr-child-photo-container">
-                    <img src="../public_view/page-images/pr-photo.jpg"/>
-                    <input type="file" name="addPictures[]" id="pr-photo"></input>
+                    <img id="pr-child-image" src=""/>
+                    <input type="file" id="pr-photo" onchange="changeChildImage()"></input>
                 </div>
                 <div id="pr-child-info">
                     <form action="#" metdod="post" id="pr-child-data-form">
@@ -388,12 +388,23 @@
                             <div id="pr-add-memory-photo"></div>
                             <textarea name="description" id="pr-add-memory-description" maxlengtd="340" placeholder="What's on your mind?"></textarea>
                         </div>
-                        <button type="#" id="pr-add-memory-save-button" onclick="return false;">SAVE</button>
+                        <div id="pr-save-button-container">
+                            <button type="#" id="pr-add-memory-save-button" onclick="return false;">SAVE</button>
+                            <div id="pr-save-button-extension">!</div>
+                        </div>
                     </div>
                     <button type="#" id="pr-add-memory-button" onclick="return false;">Add memory</button>
                 </div>
                 <div id="pr-calendar-sh-fh">
                     <button type="#" id="pr-see-calendar" onclick="return false;">Calendar</button>
+                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FBucharest&bgcolor=%23D81B60&showTitle=0&showTabs=0&showCalendars=0&showTz=0&showPrint=0&showNav=0&hl=ro&src=Yzc5N2RlZDI5Yzc2ZGE1MTFlYjk5NzYyNWZlYzNkMGJiODU0YjE5MzQ5Y2E1M2ExZTRlNzJlNzZmYWJhODI2NEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%237986CB" 
+                        id="pr-calendar"
+                        style="border-width:0; display: none;" 
+                        width="800" 
+                        height="600" 
+                        frameborder="0" 
+                        scrolling="no">
+                    </iframe>
                 </div>
             </div>
             <div id="pr-close-2col-form">

@@ -7,7 +7,7 @@ require_once '../includes/header.php';
     <div class="reg-grid">
         <p id="reg-welcome-text">Welcome!</p>
         <div id="reg-loginbox">
-            <form action="./handlers/registerhandler.php" method="post" id="reg-login-form">
+            <form action="/CHiM/controllers/handlers/registerhandler.php" method="post" id="reg-login-form">
                 <ul>
                     <div id="reg-full-name">
                         <li id="reg-real-name">
@@ -60,7 +60,7 @@ require_once '../includes/header.php';
     </div>
 </div>
 
-<script src="./js/register.js"></script>
+<script src="/CHiM/controllers/js/register.js"></script>
 
 <?php
 require_once '../includes/footer.php';

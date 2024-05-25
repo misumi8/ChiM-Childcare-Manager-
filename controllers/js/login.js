@@ -1,6 +1,15 @@
+var emailRequiered = false;
+var emailFormat = false;
+var passwordRequiered = false;
+var minPassLength = false;
+var passCheckPassed = false;
+
 
 document.querySelector('#login-button').addEventListener('click', function(event) {
     event.preventDefault();
+    const loginbox = document.getElementById('loginbox');
+    const loginButton = document.getElementById('login-button');
+    const notRegisteredYet = document.getElementById('register');
     var email = document.querySelector('.user-name-input');
     var password = document.querySelector('.user-password-input');
     var emailError = document.querySelector('#login-email-error');
@@ -12,21 +21,50 @@ document.querySelector('#login-button').addEventListener('click', function(event
 
     if (!email.value.trim()) {
         emailError.textContent = "Email is required";
+        if(!emailRequiered){
+            loginbox.style.height = (loginbox.clientHeight + 16) + "px";
+            loginButton.style.marginTop = (parseInt(window.getComputedStyle(loginButton).marginTop) + 16) + "px";
+            notRegisteredYet.style.marginTop = (parseInt(window.getComputedStyle(notRegisteredYet).marginTop) + 16) + "px";
+            emailRequiered = true;
+        }
         valid = false;
     } else if (!isEmailValid(email.value.trim())) {
         emailError.textContent = "Invalid email format";
+        if(!passwordRequiered){
+            loginButton.style.marginTop = (parseInt(window.getComputedStyle(loginButton).marginTop) + 16) + "px";
+            notRegisteredYet.style.marginTop = (parseInt(window.getComputedStyle(notRegisteredYet).marginTop) + 16) + "px";
+            loginbox.style.height = (loginbox.clientHeight + 16) + "px";
+            emailFormat = true;
+        }
         valid = false;
     }
 
     var passwordCheck = isPasswordValid(password.value.trim());
     if (!password.value.trim()) {
         passError.textContent = "Password is required";
+        if(!passwordRequiered){
+            loginButton.style.marginTop = (parseInt(window.getComputedStyle(loginButton).marginTop) + 16) + "px";
+            notRegisteredYet.style.marginTop = (parseInt(window.getComputedStyle(notRegisteredYet).marginTop) + 16) + "px";
+            loginbox.style.height = (loginbox.clientHeight + 16) + "px";
+            passwordRequiered = true;
+        }
         valid = false;
     } else if (password.value.length < 8) {
+        if(!minPassLength){
+            loginButton.style.marginTop = (parseInt(window.getComputedStyle(loginButton).marginTop) + 16) + "px";
+            notRegisteredYet.style.marginTop = (parseInt(window.getComputedStyle(notRegisteredYet).marginTop) + 16) + "px";
+            loginbox.style.height = (loginbox.clientHeight + 16) + "px";
+            minPassLength = true;
+        }
         passError.textContent = "Password must be minimum 8 characters long";
         valid = false;
     } else if (passwordCheck) {
-        passError.textContent = passwordCheck;
+        if(!passCheckPassed){
+            loginbox.style.height = (loginbox.clientHeight + 64) + "px";
+            loginButton.style.marginTop = (parseInt(window.getComputedStyle(loginButton).marginTop) + 64) + "px";
+            notRegisteredYet.style.marginTop = (parseInt(window.getComputedStyle(notRegisteredYet).marginTop) + 64) + "px";
+            passCheckPassed = true;
+        }passError.textContent = passwordCheck;
         valid = false;
     }
 

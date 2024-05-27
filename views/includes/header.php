@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../CHiM/views/public_view/styles/feed.css">
     <link rel="stylesheet" href="../CHiM/views/public_view/styles/profile.css">
     <link rel="stylesheet" href="../CHiM/views/public_view/styles/register.css">
+    <link rel="stylesheet" href="../CHiM/views/public_view/styles/notFound.css">
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -1,3 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+
 #nf-main-frame {
-    margin-left: ;
+    height: 100%;
+    width: 100%;
+    /* background-image: url("../page-images/notFound.png");
+    background-repeat: no-repeat;
+    background-size: 74%;
+    background-position-x: 70%; */
+    /* margin-left: 6.92vw; */
 }
+
+#nf-main-frame img {
+    /* transform: scale(68%);
+    position: fixed;
+    top: -13rem;
+    left: -14rem; */
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+}
+
+#nf-main-frame #nf-error-message span{
+    z-index: 0;
+}
+
+#nf-error-message{
+    height: auto;
+    width: auto;
+    position: relative;
+    left: 15%;
+    display: flex;
+    flex-direction: column;
+}
+
+#nf-error-message span:first-child {
+    position: relative;
+    margin-top: 10%;
+    margin-left: -0.55%;
+    font-size: 9rem;
+    color: #a149c6;
+    font-family: 'Lexend Deca';
+    text-shadow: 4px 3px 0px #440C5C;
+    font-weight: 650;
+}
+
+#nf-error-message span:nth-child(2) {
+    position: relative;
+    top: 12%;
+    /* left: 25%; */
+    font-size: 5rem;
+    color: #C674E9;
+    font-family: 'Lexend Deca';
+    text-shadow: 4px 3px 0px #440C5C;
+}   

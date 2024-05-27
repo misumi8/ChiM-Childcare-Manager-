@@ -1,5 +1,8 @@
 <div id="nf-main-frame">
-    <h1> 404 Not Found</h1>
+    <div id="nf-error-message">
+        <span>404</span>
+        <span>Page Not Found</span>
+    </div>
     <img src='../CHiM/views/public_view/page-images/notFound.png'></img>
 </div>
 <?php

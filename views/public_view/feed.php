@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/header.php';
+require_once '../CHiM/views/includes/header.php';
 
 $feedMedia = getFeedMedia()
 /** - de adaugat sortare random a postarilor shared sau de stabilit o forma de sortare 
@@ -20,34 +20,34 @@ $feedMedia = getFeedMedia()
             <?php if ($post['media_type'] == "img") { ?>
                 <div class="feed-content-img"><img src=<?= $post['content']; ?> alt="Content"></div>
             <?php } elseif ($post['media_type'] == "video") { ?>
-                <!-- <div class="feed-content-video"><img src="../users/user1/child1/child1_1.jpg" alt="Content"></div> -->
+                <!-- <div class="feed-content-video"><img src="../CHiM/views/users/user1/child1/child1_1.jpg" alt="Content"></div> -->
             <?php } elseif ($post['media_type'] == "audio") { ?>
-                <!-- <div class="feed-content-audio"><img src="../users/user1/child1/child1_1.jpg" alt="Content"></div> -->
+                <!-- <div class="feed-content-audio"><img src="../CHiM/views/users/user1/child1/child1_1.jpg" alt="Content"></div> -->
             <?php } ?>
         </div>
     <?php endforeach; ?>
     <div class="feed-content-container">
-        <img class="feed-content-auth" src="../users/user1/user1_profile.jpg" alt="Profile picture">
+        <img class="feed-content-auth" src="../CHiM/views/users/user1/user1_profile.jpg" alt="Profile picture">
         <div class="feed-account-name">Jhokn Doe</div>
         <hr>
-        <div class="feed-content-media"><img src="../users/user1/child1/child1_1.jpg" alt="Content"></div>
+        <div class="feed-content-media"><img src="../CHiM/views/users/user1/child1/child1_1.jpg" alt="Content"></div>
     </div>
 
     <div class="feed-content-container">
-        <img class="feed-content-auth" src="../users/user1/user1_profile.jpg" alt="Profile picture">
+        <img class="feed-content-auth" src="../CHiM/views/users/user1/user1_profile.jpg" alt="Profile picture">
         <div class="feed-account-name">Jhon Doe</div>
         <hr>
         <div class="feed-content-media"><img src="../stock2.jpg" alt="Content"></div>
     </div>
 
     <div class="feed-content-container">
-        <img class="feed-content-auth" src="../users/user1/user1_profile.jpg" alt="Profile picture">
+        <img class="feed-content-auth" src="../CHiM/views/users/user1/user1_profile.jpg" alt="Profile picture">
         <div class="feed-account-name">Jhon Doe</div>
         <hr>
-        <div class="feed-content-media"><img src="../users/user1/child1/child1_1.jpg" alt="Content"></div>
+        <div class="feed-content-media"><img src="../CHiM/views/users/user1/child1/child1_1.jpg" alt="Content"></div>
     </div>
 
 </div>
 <?php
-require_once '../includes/footer.php';
+require_once '../CHiM/views/includes/footer.php';
 ?>

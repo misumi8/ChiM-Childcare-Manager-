@@ -33,18 +33,19 @@ body {
 #hp-img-container #hp-join-button:not(hover){
     text-decoration: none;
     align-content: center;
+    overflow: hidden;
     position: absolute;
     font-family: sans-serif;
     color: white;
     font-weight: bold;
     background-color: #C674E9;
-    top: 70%;
+    top: 70vh;
     left: 39%;
-    font-size: 4rem;
-    height: 6.5rem;
-    width: 20.5rem;
+    font-size: 3.5rem;
+    height: 13vh;
+    width: 22%;
     transition-duration: 0.4s;
-    border-radius: 5rem;
+    border-radius: 25vh;
     outline: none;
     /* text-shadow: -4px 7px 3px #801FAA; */
     border: 0.08rem solid #440C5C;

@@ -46,6 +46,7 @@
 .menu-item img{
     padding-top: 0.3rem;
     padding-left: 0.4rem;
+    width: 2.5vw;
 }
 
 .header:not(hover){
@@ -53,7 +54,7 @@
     position: fixed;
     height: 100%;
     transition-duration: 0.3s;
-    width: 3.3rem;
+    width: 3.45vw;
     box-shadow: 8px 0px 50px 0px rgba(68, 12, 92, 0.26);
     top: 0%;
     left: 0%;
@@ -97,7 +98,7 @@
     content: '';
     position: fixed;
     top: 10.8%;
-    width: 3.3rem;
+    width: 3.45vw;
     height: 0.1rem;
     background-color: #e3c9ee;
     box-shadow: 0em 0em 1em rgba(0, 0, 0, 0.2);

@@ -9,12 +9,12 @@
     <meta charset="UTF-8">
     <title>Childcare Manager</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="../public_view/styles/header.css">
-    <link rel="stylesheet" href="../public_view/styles/login.css">
-    <link rel="stylesheet" href="../public_view/styles/home-page.css">
-    <link rel="stylesheet" href="../public_view/styles/feed.css">
-    <link rel="stylesheet" href="../public_view/styles/profile.css">
-    <link rel="stylesheet" href="../public_view/styles/register.css">
+    <link rel="stylesheet" href="../CHiM/views/public_view/styles/header.css">
+    <link rel="stylesheet" href="../CHiM/views/public_view/styles/login.css">
+    <link rel="stylesheet" href="../CHiM/views/public_view/styles/home-page.css">
+    <link rel="stylesheet" href="../CHiM/views/public_view/styles/feed.css">
+    <link rel="stylesheet" href="../CHiM/views/public_view/styles/profile.css">
+    <link rel="stylesheet" href="../CHiM/views/public_view/styles/register.css">
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,13 +30,13 @@
         <div class="line"></div>
         <div class="item-list">
             <div class="menu-item">
-                <img src="../includes/header-images/home_icon.png" alt="Home Page" /><a href="../public_view/home-page.php">Home</a>
+                <img src="../CHiM/views/includes/header-images/home_icon.png" alt="Home Page" /><a href="/CHiM/home">Home</a>
             </div>
             <div class="menu-item">
-                <img src="../includes/header-images/personal_page_icon.png" alt="Personal Page" /><a href="../public_view/profile.php" id="head-my-page">My page</a>
+                <img src="../CHiM/views/includes/header-images/personal_page_icon.png" alt="Personal Page" /><a href="/CHiM/profile" id="head-my-page">My page</a>
             </div>
             <div class="menu-item">
-                <img src="../includes/header-images/web_icon.png" /><a href="../public_view/feed.php">Feed</a>
+                <img src="../CHiM/views/includes/header-images/web_icon.png" /><a href="/CHiM/feed">Feed</a>
             </div>
         </div>
     </div>

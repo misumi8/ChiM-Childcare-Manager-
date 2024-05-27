@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/header.php';
+require_once '../CHiM/views/includes/header.php';
 ?>
 
 <div id="login-frame">
@@ -24,7 +24,7 @@ require_once '../includes/header.php';
                     <button type="submit" id="login-button">Log in</button>
                     <div id="register">
                         Not registered yet?
-                        <a href="register.php">Register</a>
+                        <a href="/CHiM/register">Register</a>
                     </div>
                 </ul>
             </form>
@@ -32,7 +32,7 @@ require_once '../includes/header.php';
     </div>
 </div>
 
-<script src="/CHiM/controllers/js/login.js"> </script>
+<script src="../CHiM/controllers/js/login.js"> </script>
 <?php
-require_once '../includes/footer.php';
+require_once '../CHiM/views/includes/footer.php';
 ?>

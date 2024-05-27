@@ -408,99 +408,99 @@
                 </div>
             </div>
             <div id="pr-close-2col-form">
-                <img src="../public_view/page-images/close_icon.png"/>
+                <img src="../CHiM/views/public_view/page-images/close_icon.png"/>
             </div>
         </div>
 
         <!-- <div id="pr-child-panel-opener"></div> -->
         <div class="pr-child-panel">
             <a href=""><div class="pr-child-container">
-                <img src="../public_view/page-images/user1_profile.jpg">
+                <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                 <span>Child 1</span>
             </div>
             </a>
             <a href=""><div class="pr-child-container">
-                <img src="../public_view/page-images/user1_profile.jpg">
+                <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                 <span>Child 2</span>
             </div>
             </a>
             <a href=""><div class="pr-child-container">
-                <img src="../public_view/page-images/user1_profile.jpg">
+                <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                 <span>Child 3</span>
             </div>
             </a>
             <a href=""><div class="pr-child-container">
-                <img src="../public_view/page-images/user1_profile.jpg">
+                <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                 <span>Child 4</span>
             </div>
             </a>
             <a href=""><div class="pr-child-container">
-                <img src="../public_view/page-images/user1_profile.jpg">
+                <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                 <span>Child 5</span>
             </div>
             </a>
             <a href=""><div class="pr-child-container">
-                <img src="../public_view/page-images/user1_profile.jpg">
+                <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                 <span>Child 6</span>
             </div>
             </a>
             <a href="">
                 <div class="pr-child-container">
-                    <img src="../public_view/page-images/user1_profile.jpg">
+                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                     <span>Child 7</span>
                 </div>
             </a>
             <a href="">
                 <div class="pr-child-container">
-                    <img src="../public_view/page-images/user1_profile.jpg">
+                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                     <span>Child 8</span>
                 </div>
             </a>
             <a href="">
                 <div class="pr-child-container">
-                    <img src="../public_view/page-images/user1_profile.jpg">
+                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                     <span>Child 9</span>
                 </div>
             </a>
             <a href="">
                 <div class="pr-child-container">
-                    <img src="../public_view/page-images/user1_profile.jpg">
+                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                     <span>Child 10</span>
                 </div>
             </a>
             <a href="">
                 <div class="pr-child-container">
-                    <img src="../public_view/page-images/user1_profile.jpg">
+                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                     <span>Child 11</span>
                 </div>
             </a>
             <a href="">
                 <div class="pr-child-container">
-                    <img src="../public_view/page-images/user1_profile.jpg">
+                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                     <span>Child 12</span>
                 </div>
             </a>
             <a href="">
                 <div class="pr-child-container">
-                    <img src="../public_view/page-images/user1_profile.jpg">
+                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                     <span>Child 13</span>
                 </div>
             </a>
             <a href="">
                 <div class="pr-child-container">
-                    <img src="../public_view/page-images/user1_profile.jpg">
+                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
                     <span>Child 14</span>
                 </div>
             </a>
             <button id="pr-p-container">+</button>
         </div>
     </div>
-    <script src="../public_view/js/profile.js"></script>
+    <script src="../CHiM/views/public_view/js/profile.js"></script>
 </body>
 
 <?php
-require_once '../includes/header.php';
+require_once '../CHiM/views/includes/header.php';
 ?>
 <?php
-require_once '../includes/footer.php';
+require_once '../CHiM/views/includes/footer.php';
 ?>

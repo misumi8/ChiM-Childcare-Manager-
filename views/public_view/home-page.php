@@ -1,9 +1,9 @@
 <body>
     <div class="hp-background">
         <div id="hp-img-container">
-            <img src="../public_view/page-images/hp-header.png" alt="Home Page Header"/>
+            <img src="../CHiM/views/public_view/page-images/hp-header.png" alt="Home Page Header"/>
             <div id="hp-img-text">CHiM</div>
-            <a href="../public_view/login.php" id="hp-join-button">Join Us!</a>
+            <a href="/CHiM/login" id="hp-join-button">Join Us!</a>
         </div>
         <div id="hp-text">
             <h1>Childcare Manager</h1>
@@ -27,15 +27,15 @@
         </div>
         <div class="free-space"></div>
         <div id="hp-delim">
-            <img src="../public_view/page-images/hp-header-delim.png" alt="hp-delim"/>
+            <img src="../CHiM/views/public_view/page-images/hp-header-delim.png" alt="hp-delim"/>
         </div>
         <div class="free-space">
             <h2>Created by:</h2>
             <div id="hp-cr">
                 <p>Chiriac Andrei</p>
                 <p>Georgescu Răzvan</p>
-                <img src="../public_view/page-images/andrei.jpg"/>
-                <img src="../public_view/page-images/razvan-new.jpg"/>
+                <img src="../CHiM/views/public_view/page-images/andrei.jpg"/>
+                <img src="../CHiM/views/public_view/page-images/razvan-new.jpg"/>
             </div>
         </div>
     </div>
@@ -43,9 +43,9 @@
 
 
 <?php
-require_once '../includes/header.php';
+require_once '../CHiM/views/includes/header.php';
 ?>
 
 <?php
-require_once '../includes/footer.php';
+require_once '../CHiM/views/includes/footer.php';
 ?>

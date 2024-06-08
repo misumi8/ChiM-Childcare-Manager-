@@ -20,7 +20,7 @@ function pdoConnectMysqli()
 function getUserInfo($email, $user_password)
 {
     $hashed_pass = password_hash($user_password, PASSWORD_DEFAULT);
-    $stmt = $GLOBALS['pdo']->prepare("SELECT id, email, fname, lname, birthday, profile_pic FROM users WHERE user_password = ? AND email = ? ");
+    $stmt = $GLOBALS['pdo']->prepare("SELECT id, email, fname, lname, birthday, profile_pic FROM users WHERE password = ? AND email = ? ");
     $stmt->execute([$hashed_pass, $email]);
     $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -69,7 +69,7 @@ function registerNewUser($email, $user_password, $fname, $lname, $birthday)
     $hashed_pass = password_hash($user_password, PASSWORD_DEFAULT);
 
     if (empty(getUserInfo($email, $user_password))) {
-        $stmt = $GLOBALS['pdo']->prepare("INSERT INTO users (email, user_password, fname, lname, birthday) VALUES  (?, ?, ?, ?, ?)");
+        $stmt = $GLOBALS['pdo']->prepare("INSERT INTO users (email, password, fname, lname, birthday) VALUES  (?, ?, ?, ?, ?)");
         $stmt->execute([$email, $hashed_pass, $fname, $lname, $birthday]);
         return true;
     } else {

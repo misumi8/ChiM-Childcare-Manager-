@@ -1,3 +1,10 @@
+<?php
+require_once '../CHiM/views/includes/header.php';
+?>
+<?php
+require_once '../CHiM/views/includes/footer.php';
+?>
+
 <body>
     <div id="pr-frame">
         <div id="pr-child-info">
@@ -165,7 +172,7 @@
                                     </table>
                                     <div id="pr-buttons-medical-history">
                                         <button type="#" class="pr-button-medical-record" onclick="return false;"><span>Add medical record</span></button>
-                                        <button type="#" class="pr-button-medical-record" onclick="return false;"><span>Save</span></button>
+                                        <button type="#" class="pr-button-medical-record pr-medical-big-text" onclick="return false;"><span>Save</span></button>
                                     </div> 
                                 </div>
                             </div>
@@ -385,7 +392,9 @@
                         <div id="pr-sent-animation"></div>
                         <p>Create memory:</p>
                         <div id="pr-add-memory-form-container">
-                            <div id="pr-add-memory-photo"></div>
+                            <div id="pr-add-memory-photo">
+                                <input type="file">
+                            </div>
                             <textarea name="description" id="pr-add-memory-description" maxlengtd="340" placeholder="What's on your mind?"></textarea>
                         </div>
                         <div id="pr-save-button-container">
@@ -397,14 +406,69 @@
                 </div>
                 <div id="pr-calendar-sh-fh">
                     <button type="#" id="pr-see-calendar" onclick="return false;">Calendar</button>
-                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FBucharest&bgcolor=%23D81B60&showTitle=0&showTabs=0&showCalendars=0&showTz=0&showPrint=0&showNav=0&hl=ro&src=Yzc5N2RlZDI5Yzc2ZGE1MTFlYjk5NzYyNWZlYzNkMGJiODU0YjE5MzQ5Y2E1M2ExZTRlNzJlNzZmYWJhODI2NEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%237986CB" 
-                        id="pr-calendar"
-                        style="border-width:0; display: none;" 
-                        width="800" 
-                        height="600" 
-                        frameborder="0" 
-                        scrolling="no">
-                    </iframe>
+                    <div id="pr-calendar-list">
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div class="pr-list-item">
+                            <input type="date" disabled>
+                            <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
+                        </div>
+                        <div id="pr-calendar-buttons">
+                            <button type="#" class="pr-button-medical-record pr-calendar-button" onclick="return false;"><span>New</span></button>
+                            <button type="#" class="pr-button-medical-record pr-calendar-button" onclick="return false;"><span>Save</span></button>
+                            <button type="#" class="pr-export-pdf" onclick="return false;"></button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="pr-close-2col-form">
@@ -497,10 +561,3 @@
     </div>
     <script src="../CHiM/views/public_view/js/profile.js"></script>
 </body>
-
-<?php
-require_once '../CHiM/views/includes/header.php';
-?>
-<?php
-require_once '../CHiM/views/includes/footer.php';
-?>

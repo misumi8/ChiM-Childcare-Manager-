@@ -153,7 +153,8 @@ button {
     opacity: 0;
     height: 20rem;
     width: 20rem;
-    margin-top: -20rem;
+    position: relative;
+    top: -20.67rem;
 }
 
 #pr-child-photo-container{
@@ -176,7 +177,7 @@ button {
     filter: blur(0.03rem);
     position: relative;
     display: block;
-    top: -2.45rem;
+    top: -23.2rem;/* top: -2.45rem; */
     left: -0.025rem;
     height: 2.5rem;
     width: 20.05rem;
@@ -404,6 +405,15 @@ button {
     display: flex;
     flex-direction: row;
     margin-top: 3.5%;
+    height: 78%;
+}
+
+#pr-add-memory-form-container input {
+    opacity: 0;
+    height: 27rem;
+    width: 25%;
+    position: absolute;
+    z-index: 1;
 }
 
 #pr-add-memory-photo {
@@ -535,7 +545,7 @@ button {
     resize: none;
     border: none;
     outline: none;
-    height: 27rem;
+    height: 25rem;
     width: 24rem;
     text-align: center;
     font-family: "Schibsted Grotesk";
@@ -732,7 +742,7 @@ table tr {
 }
 
 .pr-button-medical-record:active {
-    margin-top: 5.5%;
+    margin-top: 6.5%;
     box-shadow: 0 2px 0px #801FAA;
 }
 
@@ -836,6 +846,108 @@ table tr {
 
 .pr-memory:last-child {
     margin-right: 1rem;
+}
+
+#pr-calendar-list {
+    display: none; /*none by default, */
+    position: relative;
+    left: -43.7vw;
+    top: -6.53rem;
+    width: 79.6vw;
+    height: 100vh;
+}
+
+.pr-list-item {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    position: relative;
+    width: 79.6vw;
+    height: 20vh;
+    background-color: #E3C9EE;
+    /* border-bottom: #440C5C solid 0.2rem; */
+    /* border-radius: 1%; */
+    align-items: center;
+    box-shadow: inset 0px -54px 25px -70px #440C5C;
+    transition-duration: 0.05s;
+}
+
+/* .pr-list-item:hover, .pr-list-item:nth-child(even):hover{
+    box-shadow: inset 0px -54px 25px -6px #440C5C;
+} */
+
+.pr-list-item input {
+    background-color: #E3C9EE;
+    justify-content: center;
+    display: flex;
+    color: #440C5C;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    height: 75%;
+    border: none;
+    /* border-right: #440C5C solid 0.2rem; */
+    outline: none;
+    margin-left: 2.5rem;
+}
+
+.pr-list-item:nth-child(even), .pr-list-item:nth-child(even) input{
+    background-color: #e0b7ee;
+}
+
+.pr-list-item span {
+    text-align: center;
+    padding: 1rem;
+    font-size: 1rem;
+    text-shadow: none;
+}
+
+#pr-calendar-buttons {
+    display: grid;
+    grid-template-columns: 30% 30% 5%;
+    margin-left: 33%;
+}
+
+.pr-calendar-button {
+    top: 1.2rem;
+    left: -5rem;
+    background: linear-gradient(110deg, #B35BD9 40%, #a145c8 100%);
+    font-size: 2.3rem;
+    font-weight: 550;
+    height: 4rem;
+    font-style: italic;
+    border-radius: 0.45rem;
+    transform: skewX(-1deg); /* / */
+}
+
+.pr-button-medical-record:hover {
+    color: #e6cef0;
+}
+
+.pr-export-pdf {
+    background-image: url("../page-images/pdf-export.png");
+    background-color: transparent;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 0.5rem 0.4rem 0;
+    border: none;
+    margin-left: 16.1rem;
+    margin-top: 3.9rem;
+    transition-duration: 0.1s;
+}
+
+.pr-export-pdf:hover {
+    background-image: url("../page-images/pdf-export-hover.png");
+}
+
+.pr-export-pdf:active {
+    background-size: 95%;
+}
+
+.pr-medical-big-text {
+    font-size: 2.3rem;
 }
 
 @media only screen and (max-width: 1475px) {

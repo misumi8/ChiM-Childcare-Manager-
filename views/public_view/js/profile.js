@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const memoryList = document.querySelectorAll('.pr-memory');
     const saveButtonExtension = document.getElementById("pr-save-button-extension");
     const firstRow = document.getElementById("pr-first-row");
-    const calendar = document.getElementById("pr-calendar");
     const addChild = document.getElementById("pr-p-container");
+    const calendar = document.getElementById("pr-calendar-list");
     // addNewChild.addEventListener("click", function () {
     //     alert("Button Pressed");
     //     var xhr = new XMLHttpRequest();
@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    
     addMemorySaveButton.addEventListener("mousedown", function () {
         let saveButtonExtension = document.getElementById("pr-save-button-extension");
         saveButtonExtension.style.marginTop = "5%";
@@ -129,6 +130,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }); 
 
     seeCalendarButton.addEventListener("click", function(){
+        calendar.style.display = "block";
         firstRow.style.display = "none";
         arrow.style.display = "none";
         addMoreInfo.style.display = "none";
@@ -141,6 +143,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Close button
     closeButton.addEventListener("click", function() {
+        calendar.style.display = "none";
         childDataForm.style.display = "none";
         addMemoryForm.style.display = "none";
         closeButton.style.display = "none";
@@ -154,6 +157,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // addChild button
     addChild.addEventListener("click", function() {
+        calendar.style.display = "none";
         closeButton.style.display = "flex";
         arrow.style.display = "none";
         addMoreInfo.style.display = "none";
@@ -166,6 +170,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // addMoreInfo button
     addMoreInfo.addEventListener("click", function() {
+        calendar.style.display = "none";
         medicalHistoryButton.style.display = "block";
         childDataForm.style.display = "flex";
         closeButton.style.display = "flex";
@@ -177,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // medical history button
     medicalHistoryButton.addEventListener("click", function() {
+        calendar.style.display = "none";
         childDataForm.style.display = "flex";
         closeButton.style.display = "none";
         arrow.style.display = "none";
@@ -185,6 +191,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // addMemory button
     addMemoryButton.addEventListener("click", function() {
+        calendar.style.display = "none";
         closeButton.style.display = "flex";
         arrow.style.display = "none";
         addMoreInfo.style.display = "none";

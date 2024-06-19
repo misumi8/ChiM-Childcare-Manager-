@@ -1,4 +1,5 @@
 <?php
+// FUTURE -> transfer to /models
 define('DATABASE_HOST', 'localhost');
 define('DATABASE_USER', 'root');
 define('DATABASE_PASS', '');
@@ -7,6 +8,7 @@ define('DATABASE_NAME', 'CHIM');
 $pdo = pdoConnectMysqli();
 
 session_start();
+require_once $_SERVER['DOCUMENT_ROOT'] . "/CHiM/models/database2.php";
 
 function pdoConnectMysqli()
 {

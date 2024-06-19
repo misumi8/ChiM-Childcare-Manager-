@@ -69,6 +69,7 @@
     font-size: 1.3rem;
     transition-duration: 0.1s;
     margin: 0.4em; /* top right bottom left */
+    margin-top: 0.32rem;
     text-overflow: clip; 
 }
 

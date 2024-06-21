@@ -37,6 +37,43 @@ function changeChildImage(childId) {
     }
 }
 
+function updateChildList() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../CHiM/controllers/updateChildList.php', true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                var newHtml = xhr.responseText;
+                var container = document.getElementById('pr-children-container');
+                container.innerHTML = newHtml;
+            } else {
+                alert('Произошла ошибка при загрузке данных о детях.');
+            }
+        }
+    };
+    xhr.send();
+}
+
+
+function addNewChild(){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../CHiM/controllers/addNewChild.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status != 200) {
+                alert("setSessionChildId error");
+            }
+            else {
+                //alert(xhr.responseText);
+                return xhr.responseText;
+            }
+        }
+        //alert("Reload successfully");
+    };
+    xhr.send();
+}
+
 function setSessionChildId(userId, childId) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '../CHiM/controllers/sessionChildId.php', true);

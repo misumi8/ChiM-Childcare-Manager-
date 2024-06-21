@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const memories = document.getElementById("pr-memories");
     const timeline = document.getElementById("pr-timeline");
     const line = document.getElementById("pr-line");
-    const addNewChild = document.getElementById("pr-p-container");
     const memoryList = document.querySelectorAll('.pr-memory');
     const saveButtonExtension = document.getElementById("pr-save-button-extension");
     const firstRow = document.getElementById("pr-first-row");
@@ -26,13 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const calendar = document.getElementById("pr-calendar-list");
     const addMemoryInput = document.getElementById("pr-add-memory-input");
 
-    // addNewChild.addEventListener("click", function () {
-    //     alert("Button Pressed");
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.open('GET', '../public_view/php-scripts/addNewChild.php', true);
-    //     xhr.send();    
-    // }); 
-
+    let newChildAdded = false;
     childDataForm.addEventListener("submit", function (event) {
         event.preventDefault();
         const nameInput = document.getElementById("pr-name-input");
@@ -43,29 +36,43 @@ document.addEventListener("DOMContentLoaded", function() {
         //const hobbyInput = document.getElementById("pr-hobby-input");
         //const favFoodInput = document.getElementById("pr-food-input");
 
-        if(!/^[A-Za-zăîâțș]+$/.test(nameInput.value)){
-            nameInput.style.backgroundColor = "#e54141";
+        if(!/^[A-Za-zăîâțș ]+$/.test(nameInput.value)){
+            nameInput.classList.toggle("pr-wrong-input");
+            nameInput.style.backgroundColor = "rgb(229, 65, 65)";
             console.log(nameInput.placeholder);
-            nameInput.placeholder.style.backgroundColor = "white";
+            //nameInput.placeholder.style.backgroundColor = "white";
+            setTimeout(function(){nameInput.style.backgroundColor = "rgb(229, 65, 65)"; nameInput.classList.toggle("pr-wrong-input");}, 1000);
             return;
         }
-        else nameInput.style.backgroundColor = "";
+        else nameInput.style.backgroundColor = "rgb(223, 223, 223)";
         //alert(dobInput.value);
         if(!/^\d{4}-\d{2}-\d{2}$/.test(dobInput.value) || new Date(dobInput.value) > new Date() || new Date(dobInput.value) < new Date('1920-01-01')){
-            dobInput.style.backgroundColor = "#e54141";
+            dobInput.classList.toggle("pr-wrong-input");
+            dobInput.style.backgroundColor = "rgb(229, 65, 65)";
+
+            setTimeout(function(){dobInput.style.backgroundColor = "rgb(229, 65, 65)"; dobInput.classList.toggle("pr-wrong-input");}, 1000);
             return;
         }
-        else dobInput.style.backgroundColor = "";   
+        else dobInput.style.backgroundColor = "rgb(223, 223, 223)";   
 
         if(!/^[0-9]+$/.test(heightInput.value) || Number(heightInput.value) > 200){
-            heightInput.style.backgroundColor = "#e54141";
+            heightInput.classList.toggle("pr-wrong-input");
+            heightInput.style.backgroundColor = "rgb(229, 65, 65)";
+            setTimeout(function(){heightInput.style.backgroundColor = "rgb(229, 65, 65)"; heightInput.classList.toggle("pr-wrong-input");}, 1000);
             return;
         }
-        else heightInput.style.backgroundColor = "";
+        else heightInput.style.backgroundColor = "rgb(223, 223, 223)";
         
+        if(newChildAdded) newChildId = addNewChild();
+
         const form = new FormData(childDataForm);
         const isMale = document.getElementById("male").checked ? "Male" : "Female";
         updateChildInfo(form.get('name'), form.get('date-of-birth'), isMale, form.get('height'), form.get('hobby'), form.get('food'));
+
+        if(newChildAdded) {
+            newChildAdded = false;
+            location.reload();
+        }
     });
 
     let important = false;
@@ -213,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // addChild button
-    addChild.addEventListener("click", function() {
+    addChild.addEventListener("click", async function() {
         calendar.style.display = "none";
         closeButton.style.display = "flex";
         arrow.style.display = "none";
@@ -223,6 +230,25 @@ document.addEventListener("DOMContentLoaded", function() {
         childDataForm.style.display = "flex";
         medicalHistory.style.display = "none";
         medicalHistoryButton.style.display = "none";
+    
+        //alert(updateChildList());
+        //document.getElementById('pr-child-panel').innerHTML = updateChildList();
+        //alert(document.getElementById('pr-child-panel').innerHTML);
+
+        const nameInput = document.getElementById("pr-name-input");
+        const dobInput = document.getElementById("pr-dob-input");
+        const heightInput = document.getElementById("pr-height-input");
+        const hobbyInput = document.getElementById("pr-hobby-input");
+        const favFoodInput = document.getElementById("pr-food-input");
+        nameInput.value = "";
+        dobInput.value = "";
+        heightInput.value = "";
+        hobbyInput.value = "";
+        favFoodInput.value = "";
+        newChildAdded = true;
+        //const genderMaleInput = document.getElementById("male");
+        //const genderFemaleInput = document.getElementById("female");
+        
     });
 
     // addMoreInfo button

@@ -6,6 +6,15 @@
     if(empty($_SESSION['child_id'])) $_SESSION['child_id'] = '1'; // initially, must be the first child of the user_id
     //
 
+    function addNewChild($userId){
+        $stmt = $GLOBALS['pdo']->prepare("SELECT max(id) as id FROM children");
+        $stmt->execute();
+        $newChildId = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $GLOBALS['pdo']->prepare("INSERT INTO children (user_id, id) VALUES (?, ?)");
+        $stmt->execute([$userId, $newChildId['id'] + 1]);
+        return $newChildId['id'] + 1;
+    }
+
     function getChildInfo($child_id){
         $stmt = $GLOBALS['pdo']->prepare("SELECT id, user_id, fullname, birthday, height, gender, fav_food, fav_hobby, photo FROM children WHERE id = ?");
         $stmt->execute([$child_id]);
@@ -17,7 +26,7 @@
         $stmt = $GLOBALS['pdo']->prepare("SELECT photo FROM children WHERE id = ?");
         $stmt->execute([$child_id]);
         $childPic = $stmt->fetch(PDO::FETCH_ASSOC);
-        return base64_encode($childPic['photo']);
+        return $childPic['photo'] == null ? base64_encode("") : base64_encode($childPic['photo']);
     }
 
     function setChildPic($child_id, $photo) {

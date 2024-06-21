@@ -3,7 +3,7 @@
     $childInfo = getChildInfo($_SESSION['child_id']);
     $childPic = getChildPic($_SESSION['child_id']);
     $photoExist = !empty($childPic) ? 1 : 0;
-    $childDOB = new DateTime($childInfo['birthday']);
+    $childDOB = $childInfo['birthday'] != null ? new DateTime($childInfo['birthday']) : new DateTime();
     $today = new DateTime();
     $childAge = ($childDOB->diff($today))->y; // -> y = int years
     $childAgeMonths =  ($childDOB->diff($today))->m;

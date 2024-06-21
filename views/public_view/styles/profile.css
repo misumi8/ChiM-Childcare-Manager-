@@ -70,7 +70,7 @@ button {
     background-color: #e2e2e2;
 }
 
-.pr-child-panel {
+#pr-child-panel {
     /* overflow-y: scroll;
     position: fixed; */
     position: fixed;
@@ -84,7 +84,7 @@ button {
     color: white;
 }
 
-.pr-child-panel a{
+#pr-child-panel a{
     cursor: pointer;
     font-family: Lato;
     text-decoration: none;
@@ -269,9 +269,33 @@ button {
 
 #pr-2col-table .pr-child-info-input{
     text-indent: 0.3rem;
+    background-color: white;
     font-size: 1em;
     border-radius: 0.3rem;    
     text-shadow: 0px 0px 1px #440C5C;
+}
+
+/* .pr-normal-input {
+    background-color: rgb(223, 223, 223);
+} */
+
+.pr-wrong-input {
+    background-color: rgb(229, 65, 65);
+    animation: wrongInputAnimation 1s ease;
+}
+
+@keyframes wrongInputAnimation {
+    0% {background-color: rgb(229, 65, 65)}
+    10% {background-color: rgb(203, 43, 43)}
+    20% {background-color: rgb(229, 65, 65)}
+    30% {background-color: rgb(203, 43, 43)}
+    40% {background-color: rgb(229, 65, 65)}
+    50% {background-color: rgb(203, 43, 43)}
+    60% {background-color: rgb(229, 65, 65)}
+    70% {background-color: rgb(203, 43, 43)}
+    80% {background-color: rgb(229, 65, 65)}
+    90% {background-color: rgb(203, 43, 43)}
+    100% {background-color: rgb(229, 65, 65)}
 }
 
 #pr-2col-table {
@@ -324,7 +348,7 @@ button {
     width: 0.9rem;
     height: 0.9rem;
     border: 0.1rem solid #a7a7a7;
-    background-color: rgb(223, 223, 223);
+    /* background-color: rgb(223, 223, 223); */
     transition-duration: 0.1s;
     transition-timing-function: linear; /* Same speed */
    /* outline: none;

@@ -3,8 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Lexend+Deca:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
-
-body {
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Playwrite+IS:wght@100..400&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');body {
     margin: 0;
     padding: 0;
     background-color: #E3C9EE;
@@ -65,6 +64,7 @@ button {
 }
 
 .pr-child-panel a{
+    cursor: pointer;
     font-family: Lato;
     text-decoration: none;
     color: white;
@@ -79,6 +79,15 @@ button {
     text-indent: 0.5rem;
     box-shadow: 0px 0px 1px #440C5C; 
     transition-duration: 0.3s;
+}
+
+.pr-child-container span {
+    user-select: none; 
+    font-family: "Noto Sans JP", sans-serif;
+    text-shadow: 3px 2px 3px black;
+    font-size: 1.01rem;
+    color: #e9e9e9;
+    margin-bottom: 0.25rem;
 }
 
 .pr-child-container:hover {
@@ -221,10 +230,16 @@ button {
 
 #pr-last-info-item {
     height: 3rem;
+    /* text-align: center;
+    margin-right: 7rem; */
 }
 
 .pr-answer{
     color: black;
+    font-family: "Noto Sans JP", sans-serif;
+    margin-left: 0.3rem;
+    font-size: 1.22rem;
+    font-weight: 650;
 }
 
 #pr-2col-table .pr-child-info-input{
@@ -361,7 +376,7 @@ button {
     transition-duration: 0.3s;
     background-color: #dfbced;
     border: none;
-    margin-left: 32%;
+    margin-left: 31%;
     margin-right: auto;
     box-shadow: 0px 0px 2px black;
     margin-top: -4.68rem;
@@ -772,7 +787,7 @@ table tr {
 #pr-memories {
     display: flex;
     overflow-x: auto;
-    width: 82vw;
+    width: 79.65vw;
     margin-left: 3.3rem;
     height: 21.1rem;
     margin-top: -10.5rem;
@@ -790,6 +805,7 @@ table tr {
     transition-duration: 0.5s;
     display: grid;
     grid-template-rows: 7.5% 91.5%;
+    white-space: nowrap;
 }
 
 .pr-memory:hover {
@@ -809,10 +825,10 @@ table tr {
     margin-top: 0.45rem;
     align-content: center;
     font-size: 0.9rem;
-    word-break: break-all;
+    word-break: break-word;
     white-space: normal;
     opacity: 0;
-    transition-duration: 0.3s;
+    transition-duration: 0.2s;
 }
 
 .pr-memory #pr-old-style {
@@ -841,7 +857,7 @@ table tr {
 }
 
 .pr-memory:first-child {
-    margin-left: 1rem;
+    margin-left: 1.5rem;
 }
 
 .pr-memory:last-child {

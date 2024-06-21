@@ -1,17 +1,17 @@
 <?php
 require_once '../CHiM/views/includes/header.php';
 ?>
-<?php
-require_once dirname(__DIR__,2) . '/views/includes/footer.php';
-?>
+
 
 <body>
     <div id="pr-frame">
         <div id="pr-child-info">
             <div id="pr-first-row">
                 <div id="pr-child-photo-container">
-                    <img id="pr-child-image" src=""/>
-                    <input type="file" id="pr-photo" onchange="changeChildImage()"></input>
+                    <?php
+                        echo "<img id='pr-child-image' style='opacity:" . $photoExist . "' src='data:image/jpeg;base64," . $childPic . "'/>";
+                    ?>
+                    <input type="file" id="pr-photo" onchange="changeChildImage(<?php echo $_SESSION['child_id']; ?>)"></input>
                 </div>
                 <div id="pr-child-info">
                     <form action="#" metdod="post" id="pr-child-data-form">
@@ -180,14 +180,46 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                     </form>
 
                     <div id="pr-2col-table-info">
-                        <span>Name: <span class="pr-answer">Ilie</span></span>
-                        <span>Age: <span class="pr-answer">3</span></span>
-                        <span>Date of birth: <span class="pr-answer">01.11.2020</span></span>
-                        <span>Zodiac sign: <span class="pr-answer">Libra</span></span>
-                        <span>Favorite food: <span class="pr-answer">Apples</span></span>
-                        <span>Favorite game: <span class="pr-answer">Hide and seek</span></span>
+                        <span>Name: <span class="pr-answer">
+                            <?php 
+                                echo $childInfo['fullname'];
+                            ?>
+                        </span></span>
+                        <span>Date of birth: <span class="pr-answer">
+                            <?php 
+                                echo $childDOB;
+                            ?>
+                        </span></span>    
+                        <span>Age: <span class="pr-answer">
+                            <?php 
+                                echo $childAge . " years, " . $childAgeMonths . " months";
+                            ?>
+                        </span></span>                    
+                        <span>Height: <span class="pr-answer">
+                            <?php 
+                                echo $childInfo['height'] . " cm.";
+                            ?>
+                        </span></span>                        
+                        <span>Favorite food: <span class="pr-answer">
+                            <?php 
+                                echo $childInfo['fav_food'];
+                            ?>
+                        </span></span>
+                        <span>Gender: <span class="pr-answer">
+                            <?php 
+                                echo $childInfo['gender'];
+                                // if(strcasecmp($childInfo['gender'], "Male") == 0) echo ' ♂'; // strcasecmp - str comparison, no case consideration
+                                // else echo ' ♀';
+                            ?>
+                        </span></span>
                     </div>
-                    <span id="pr-last-info-item">Greatest fear: <span class="pr-answer">Heights</span></span>
+                    <span id="pr-last-info-item">Hobby: 
+                        <span class="pr-answer">
+                            <?php 
+                                echo $childInfo['fav_hobby'];
+                            ?>
+                        </span>
+                    </span>
                     <button type="#" id="pr-add-more-info-button" onclick="return false;">Add more info</button>
 
                 </div>
@@ -195,196 +227,28 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
             <div id="pr-timeline">
                 <div id="pr-line"></div>
                 <div id="pr-memories">
-                    <!-- Examples: -->
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
+                    <?php
+                        foreach ($childMemories as $memory) {
+                    ?>
+                        <div class="pr-memory">
+                            <div id="pr-old-style">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="pr-memory-content">
+                                <img src="data:image/jpeg;base64,<?php echo base64_encode($memory['content']);?>"/>
+                                <span>
+                                    <?php
+                                        echo $memory['description'];
+                                    ?>
+                                </span>
+                            </div>
                         </div>
-                        <div class="pr-memory-content">
-                            <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://welldoing.org/storage/app/uploads/public/589/369/f0b/589369f0b5b61839200792.jpg"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://media.npr.org/assets/img/2014/05/22/rebeccawoolf_custom-c4cccfacd8d93166f0b5050a6f42821401944d0a.jpg"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://welldoing.org/storage/app/uploads/public/589/369/f0b/589369f0b5b61839200792.jpg"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://media.npr.org/assets/img/2014/05/22/rebeccawoolf_custom-c4cccfacd8d93166f0b5050a6f42821401944d0a.jpg"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://welldoing.org/storage/app/uploads/public/589/369/f0b/589369f0b5b61839200792.jpg"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG58ui_kgwS6vNxOR39igfNvkFNlRKqdTq0qnHpCFJ0g&s"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://cdn.mos.cms.futurecdn.net/2ydo2sRBZWBcZx54A87MVK.jpg"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
-                    <div class="pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="https://welldoing.org/storage/app/uploads/public/589/369/f0b/589369f0b5b61839200792.jpg"/>
-                            <span>Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text Some Text</span>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    ?>
                 </div>
-                <!-- <div id="pr-arrow"></div> -->
             </div>
             <div id="pr-child-buttons">
                 <div id="pr-add-memory">
@@ -478,86 +342,21 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
 
         <!-- <div id="pr-child-panel-opener"></div> -->
         <div class="pr-child-panel">
-            <a href=""><div class="pr-child-container">
-                <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                <span>Child 1</span>
-            </div>
-            </a>
-            <a href=""><div class="pr-child-container">
-                <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                <span>Child 2</span>
-            </div>
-            </a>
-            <a href=""><div class="pr-child-container">
-                <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                <span>Child 3</span>
-            </div>
-            </a>
-            <a href=""><div class="pr-child-container">
-                <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                <span>Child 4</span>
-            </div>
-            </a>
-            <a href=""><div class="pr-child-container">
-                <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                <span>Child 5</span>
-            </div>
-            </a>
-            <a href=""><div class="pr-child-container">
-                <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                <span>Child 6</span>
-            </div>
-            </a>
-            <a href="">
+            <?php foreach ($userChildrenList as $child) { ?>
+            <a onclick="setSessionChildId(<?php echo $_SESSION['user_id']; ?>, <?php echo $child['id'];?>)">
                 <div class="pr-child-container">
-                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                    <span>Child 7</span>
+                    <img id="pr-child-img-container<?php echo $child['id'];?>" src="data:image/jpeg;base64,<?php echo base64_encode($child['photo']);?>">
+                    <span><?php echo $child['fullname'];?></span>   
                 </div>
             </a>
-            <a href="">
-                <div class="pr-child-container">
-                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                    <span>Child 8</span>
-                </div>
-            </a>
-            <a href="">
-                <div class="pr-child-container">
-                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                    <span>Child 9</span>
-                </div>
-            </a>
-            <a href="">
-                <div class="pr-child-container">
-                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                    <span>Child 10</span>
-                </div>
-            </a>
-            <a href="">
-                <div class="pr-child-container">
-                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                    <span>Child 11</span>
-                </div>
-            </a>
-            <a href="">
-                <div class="pr-child-container">
-                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                    <span>Child 12</span>
-                </div>
-            </a>
-            <a href="">
-                <div class="pr-child-container">
-                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                    <span>Child 13</span>
-                </div>
-            </a>
-            <a href="">
-                <div class="pr-child-container">
-                    <img src="../CHiM/views/public_view/page-images/user1_profile.jpg">
-                    <span>Child 14</span>
-                </div>
-            </a>
+            <?php } ?>
             <button id="pr-p-container">+</button>
         </div>
     </div>
     <script src="../CHiM/views/public_view/js/profile.js"></script>
+    <script src="../CHiM/models/profileModel.js"></script>
 </body>
+
+<?php
+require_once dirname(__DIR__,2) . '/views/includes/footer.php';
+?>

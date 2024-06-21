@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function() {
             important = false;
         }
     });
-
     
     addMemorySaveButton.addEventListener("mousedown", function () {
         let saveButtonExtension = document.getElementById("pr-save-button-extension");
@@ -82,25 +81,28 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         })
 
-        memory.addEventListener('click', () => {
+        memory.addEventListener('click', async () => {
             let memoryDescription = memory.querySelectorAll('span');
             if(oddClick){
                 oddClick = false;
                 console.log("odd click");
                 memory.style.width = "42rem";
                 memory.style.display = "absolute";
-                memoryDescription.forEach(memoryDescription => {
+                memoryDescription.forEach(async memoryDescription => {
+                    await new Promise(r => setTimeout(r, 380));
                     memoryDescription.style.opacity = "1";
-                })
+                });
             }
             else {
                 oddClick = true;
                 console.log("even click");
-                memory.style.width = "21rem";
-                memory.style.display = "auto";
                 memoryDescription.forEach(memoryDescription => {
                     memoryDescription.style.opacity = "0";
                 })
+                //await new Promise(r => setTimeout(r, 10));
+                memory.style.width = "21rem";
+                memory.style.display = "auto";
+                
             }
         })
     })
@@ -217,19 +219,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-
-function changeChildImage() {
-    const childPhoto = document.getElementById("pr-child-image");
-    const file = document.getElementById("pr-photo").files[0];
-    const reader = new FileReader();
-    reader.addEventListener("load", () => {
-        // Convert image to base64-string
-        childPhoto.src = reader.result;
-        // [ulterior] save to db reader.result
-        childPhoto.style.opacity = "1";
-    }, false);
-
-    if (file) {
-        reader.readAsDataURL(file);
-    }
-}

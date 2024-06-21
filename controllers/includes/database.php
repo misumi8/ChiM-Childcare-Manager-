@@ -1,10 +1,12 @@
 <?php
+// FUTURE -> transfer to /models
 define('DATABASE_HOST', 'localhost');
 define('DATABASE_USER', 'root');
 define('DATABASE_PASS', '');
 define('DATABASE_NAME', 'CHIM');
 
 session_start();
+require_once $_SERVER['DOCUMENT_ROOT'] . "/CHiM/models/database2.php";
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

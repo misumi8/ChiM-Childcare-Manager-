@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const addMemoryButton = document.getElementById("pr-add-memory-button");
     const seeCalendarButton = document.getElementById("pr-see-calendar");
     const addMemoryForm = document.getElementById("pr-add-memory-form");
+    const memoryForm = document.getElementById("pr-memory-form");
     const addMemorySaveButton = document.getElementById("pr-add-memory-save-button");
     const addMemoryPhotoSelection = document.getElementById("pr-add-memory-photo");
     const addMemoryDescription = document.getElementById("pr-add-memory-description");
@@ -23,12 +24,49 @@ document.addEventListener("DOMContentLoaded", function() {
     const firstRow = document.getElementById("pr-first-row");
     const addChild = document.getElementById("pr-p-container");
     const calendar = document.getElementById("pr-calendar-list");
+    const addMemoryInput = document.getElementById("pr-add-memory-input");
+
     // addNewChild.addEventListener("click", function () {
     //     alert("Button Pressed");
     //     var xhr = new XMLHttpRequest();
     //     xhr.open('GET', '../public_view/php-scripts/addNewChild.php', true);
     //     xhr.send();    
     // }); 
+
+    childDataForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const nameInput = document.getElementById("pr-name-input");
+        const dobInput = document.getElementById("pr-dob-input");
+        //const genderMaleInput = document.getElementById("male");
+        //const genderFemaleInput = document.getElementById("female");
+        const heightInput = document.getElementById("pr-height-input");
+        //const hobbyInput = document.getElementById("pr-hobby-input");
+        //const favFoodInput = document.getElementById("pr-food-input");
+
+        if(!/^[A-Za-zăîâțș]+$/.test(nameInput.value)){
+            nameInput.style.backgroundColor = "#e54141";
+            console.log(nameInput.placeholder);
+            nameInput.placeholder.style.backgroundColor = "white";
+            return;
+        }
+        else nameInput.style.backgroundColor = "";
+        //alert(dobInput.value);
+        if(!/^\d{4}-\d{2}-\d{2}$/.test(dobInput.value) || new Date(dobInput.value) > new Date() || new Date(dobInput.value) < new Date('1920-01-01')){
+            dobInput.style.backgroundColor = "#e54141";
+            return;
+        }
+        else dobInput.style.backgroundColor = "";   
+
+        if(!/^[0-9]+$/.test(heightInput.value) || Number(heightInput.value) > 200){
+            heightInput.style.backgroundColor = "#e54141";
+            return;
+        }
+        else heightInput.style.backgroundColor = "";
+        
+        const form = new FormData(childDataForm);
+        const isMale = document.getElementById("male").checked ? "Male" : "Female";
+        updateChildInfo(form.get('name'), form.get('date-of-birth'), isMale, form.get('height'), form.get('hobby'), form.get('food'));
+    });
 
     let important = false;
     saveButtonExtension.addEventListener("click", function(){
@@ -42,7 +80,23 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     
-    addMemorySaveButton.addEventListener("mousedown", function () {
+    let contentUploaded = true;
+    memoryForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if(addMemoryInput.files.length > 0) {
+            contentUploaded = true;
+            const form = new FormData(memoryForm);
+            const photo = form.get('photo');
+            //alert(photo);
+            
+            const description = form.get('description');
+            addMemory(photo, description, important);
+        }
+        else contentUploaded = false;
+        //else alert("content is required");
+    });
+
+    addMemorySaveButton.addEventListener("mousedown", function (event) {
         let saveButtonExtension = document.getElementById("pr-save-button-extension");
         saveButtonExtension.style.marginTop = "5%";
         saveButtonExtension.style.boxShadow = "0 2px 0px #801FAA";
@@ -155,6 +209,7 @@ document.addEventListener("DOMContentLoaded", function() {
         addMemoryButton.style.display = "inline-block";
         seeCalendarButton.style.display = "inline-block";
         childrenPanel.style.position = "fixed";
+        //location.reload(true);
     });
 
     // addChild button
@@ -204,8 +259,12 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // save button (in add-memory form)
     addMemorySaveButton.addEventListener("click", function() {
-        arrowAnimation.classList.toggle("linear-throw");
-        setTimeout(function(){arrowAnimation.classList.toggle("linear-throw");}, 1500);
+        setTimeout(function(){
+            if(contentUploaded) arrowAnimation.style.backgroundImage = "url('../CHiM/views/public_view/page-images/arrow-animation.png')";
+            else arrowAnimation.style.backgroundImage = "url('../CHiM/views/public_view/page-images/arrow-animation-no-content.png')";
+            arrowAnimation.classList.toggle("linear-throw");
+            setTimeout(function(){arrowAnimation.classList.toggle("linear-throw"); memoryForm.reset();}, 1500);
+        }, 100);
     });
 
     if(medicalHistory.style.display != "none") {

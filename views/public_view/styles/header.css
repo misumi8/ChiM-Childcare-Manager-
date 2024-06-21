@@ -41,6 +41,7 @@
 
 .menu-item a{
     padding-left: 1rem;
+    margin-top: 0.8rem;
 }
 
 .menu-item img{
@@ -69,7 +70,7 @@
     font-size: 1.3rem;
     transition-duration: 0.1s;
     margin: 0.4em; /* top right bottom left */
-    margin-top: 0.32rem;
+    margin-top: 0.48rem;
     text-overflow: clip; 
 }
 

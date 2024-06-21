@@ -1,9 +1,10 @@
 <?php
 require_once './views/includes/header.php';
-require_once './views/includes/footer.php';
+require_once dirname(__DIR__,2) . '/views/includes/footer.php';
 require_once './controllers/childInfo.php';
 //echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA" . $childInfo['id'];
 //echo "IDIDIDIDIDIDIDIDIDIDID" . $_SESSION['child_id'];
+//addChildMemory(1, 8, 0, 0, "awd", "awdj", "0");
 ?>
 
 <body>
@@ -17,55 +18,64 @@ require_once './controllers/childInfo.php';
                     <input type="file" id="pr-photo" onchange="changeChildImage(<?php echo $_SESSION['child_id']; ?>)"></input>
                 </div>
                 <div id="pr-child-info">
-                    <form action="#" metdod="post" id="pr-child-data-form">
+                    <form metdod="post" id="pr-child-data-form"> <!-- action="./controllers/updateChildInfo.php"-->
                         <ul id="pr-2col-table">
                             <li>
                                 <label for="Name">Full name:</label>
-                                <input requred type="text" 
-                                        pattern="^[a-z0-9A-Z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+                                <input requred type="text"
+                                        id="pr-name-input" 
                                         class="pr-child-info-input" 
                                         name="name" 
-                                        placeholder="Name" />
+                                        placeholder="Name" 
+                                        value="<?php echo $childInfo['fullname']; ?>"/>
                             </li>
                             <li>
-                                <label for="date-of-birtd">Date of birtd:</label>
+                                <label for="date-of-birtd">Date of birth:</label>
                                 <input requred type="date" 
+                                        id="pr-dob-input" 
                                         class="pr-child-info-input" 
-                                        name="date-of-birtd" 
-                                        placeholder="Date of birth" />
+                                        name="date-of-birth" 
+                                        placeholder="Date of birth"
+                                        value="<?php echo $childInfo['birthday']; ?>" />
                             </li>
                             <li>
                                 <label for="gender">Gender:</label>
-                                <input type="radio" id="male" name="gender" value="male">
+                                <input type="radio" id="male" name="gender-type" value="Male" <?php echo $childInfo['gender'] == "Male" ? 'checked' : '';?>/>
                                 <label for="male">Boy</label>
-                                <input type="radio" id="female" name="gender" value="female">
+                                <input type="radio" id="female" name="gender-type" value="Female" <?php echo $childInfo['gender'] == "Female" ? 'checked' : '';?>/> 
                                 <label for="female">Girl</label>
                             </li>
                             <li>
                                 <label for="height">Height:</label>
                                 <input requred type="text" 
+                                        id="pr-height-input"
                                         class="pr-child-info-input" 
                                         name="height" 
-                                        placeholder="Height" />
+                                        placeholder="Height"
+                                        value="<?php echo $childInfo['height']; ?>" />
                             </li>
                             <li>
                                 <label for="hobby">Favorite hobby:</label>
                                 <input requred type="text" 
-                                        pattern="^[a-z0-9A-Z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+                                        id="pr-hobby-input"
                                         class="pr-child-info-input" 
                                         name="hobby" 
-                                        placeholder="Hobby" />
+                                        placeholder="Hobby"
+                                        value="<?php echo $childInfo['fav_hobby']; ?>" />
                             </li>
                             <li>
                                 <label for="food">Favorite food:</label>
                                 <input requred type="text" 
-                                        pattern="^[a-z0-9A-Z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+                                        id="pr-food-input"
                                         class="pr-child-info-input" 
                                         name="food" 
-                                        placeholder="Food" />
+                                        placeholder="Food" 
+                                        value="<?php echo $childInfo['fav_food']; ?>"/>
                             </li>
-                            <button type="#" id="pr-medical-history-button" onclick="return false;">Medical history</button>
-                            <div id="pr-medical-history">
+                            <button type="submit" class="pr-profile-info-button" >Save</button>
+                            <button type="#" id="pr-medical-history-button" onclick="return false;"></button>
+                    </form>
+                    <div id="pr-medical-history">
                                 <div id="pr-medical-table">
                                     <table>
                                         <thead>
@@ -81,7 +91,6 @@ require_once './controllers/childInfo.php';
                                                 <td>
                                                     <textarea class="pr-table-cell">HTML tables</textarea>
                                                     <input requred type="date" 
-                                                        pattern="^[a-z0-9A-Z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
                                                         class="pr-medical-record-date" 
                                                         name="medical-record-date" 
                                                         placeholder="Date of record"
@@ -94,7 +103,6 @@ require_once './controllers/childInfo.php';
                                                 <td>
                                                     <textarea class="pr-table-cell">Web accessibility</textarea>
                                                     <input requred type="date" 
-                                                        pattern="^[a-z0-9A-Z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
                                                         class="pr-medical-record-date" 
                                                         name="medical-record-date" 
                                                         placeholder="Date of record"
@@ -107,7 +115,6 @@ require_once './controllers/childInfo.php';
                                                 <td>
                                                     <textarea class="pr-table-cell">JavaScript frameworks</textarea>
                                                     <input requred type="date" 
-                                                        pattern="^[a-z0-9A-Z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
                                                         class="pr-medical-record-date" 
                                                         name="medical-record-date" 
                                                         placeholder="Date of record"
@@ -120,7 +127,6 @@ require_once './controllers/childInfo.php';
                                                 <td>
                                                     <textarea class="pr-table-cell">Web performance</textarea>
                                                     <input requred type="date" 
-                                                            pattern="^[a-z0-9A-Z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
                                                             class="pr-medical-record-date" 
                                                             name="medical-record-date" 
                                                             placeholder="Date of record"
@@ -134,7 +140,6 @@ require_once './controllers/childInfo.php';
                                                 <td>
                                                     <textarea class="pr-table-cell">HTML tables</textarea>
                                                     <input requred type="date" 
-                                                        pattern="^[a-z0-9A-Z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
                                                         class="pr-medical-record-date" 
                                                         name="medical-record-date" 
                                                         placeholder="Date of record"
@@ -147,7 +152,6 @@ require_once './controllers/childInfo.php';
                                                 <td>
                                                     <textarea class="pr-table-cell">Web accessibility</textarea>
                                                     <input requred type="date" 
-                                                        pattern="^[a-z0-9A-Z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
                                                         class="pr-medical-record-date" 
                                                         name="medical-record-date" 
                                                         placeholder="Date of record"
@@ -162,7 +166,6 @@ require_once './controllers/childInfo.php';
                                                     <textarea class="pr-table-cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                                     </textarea>
                                                     <input requred type="date" 
-                                                        pattern="^[a-z0-9A-Z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
                                                         class="pr-medical-record-date" 
                                                         name="medical-record-date" 
                                                         placeholder="Date of record"
@@ -180,7 +183,6 @@ require_once './controllers/childInfo.php';
                                 </div>
                             </div>
                         </ul>
-                    </form>
 
                     <div id="pr-2col-table-info">
                         <span>Name: <span class="pr-answer">
@@ -195,7 +197,7 @@ require_once './controllers/childInfo.php';
                         </span></span>    
                         <span>Age: <span class="pr-answer">
                             <?php 
-                                echo $childAge . " years, " . $childAgeMonths . " months";
+                                echo $childAge . ($childAge > 1 ? " years, " : " year, ") . $childAgeMonths . ($childAgeMonths > 1 ? " months" : " month");
                             ?>
                         </span></span>                    
                         <span>Height: <span class="pr-answer">
@@ -233,7 +235,7 @@ require_once './controllers/childInfo.php';
                     <?php
                         foreach ($childMemories as $memory) {
                     ?>
-                        <div class="pr-memory">
+                        <div class="<?php echo $memory['important'] != 0 ? "pr-important-memory" : "pr-not-important-memory" ?> pr-memory">
                             <div id="pr-old-style">
                                 <div></div>
                                 <div></div>
@@ -243,7 +245,7 @@ require_once './controllers/childInfo.php';
                                 <img src="data:image/jpeg;base64,<?php echo base64_encode($memory['content']);?>"/>
                                 <span>
                                     <?php
-                                        echo $memory['description'];
+                                        echo $memory['media_description'];
                                     ?>
                                 </span>
                             </div>
@@ -258,16 +260,20 @@ require_once './controllers/childInfo.php';
                     <div id="pr-add-memory-form">
                         <div id="pr-sent-animation"></div>
                         <p>Create memory:</p>
-                        <div id="pr-add-memory-form-container">
-                            <div id="pr-add-memory-photo">
-                                <input type="file">
+                        <!-- <div> id="pr-add-memory-form-container" -->
+                        <form method="post" id="pr-memory-form" action="#"> <!-- action="./controllers/addNewMemory.php" -->
+                            <div id="pr-add-memory-form-container">
+                                <div id="pr-add-memory-photo">
+                                    <input type="file" name="photo" id="pr-add-memory-input">
+                                </div>
+                                <textarea name="description" id="pr-add-memory-description" maxlengtd="340" placeholder="What's on your mind?"></textarea>
                             </div>
-                            <textarea name="description" id="pr-add-memory-description" maxlengtd="340" placeholder="What's on your mind?"></textarea>
-                        </div>
-                        <div id="pr-save-button-container">
-                            <button type="#" id="pr-add-memory-save-button" onclick="return false;">SAVE</button>
-                            <div id="pr-save-button-extension">!</div>
-                        </div>
+                            <div id="pr-save-button-container">
+                                <button type="submit" id="pr-add-memory-save-button">SAVE</button> <!-- onclick="return false;" -->
+                                <div id="pr-save-button-extension">!</div>
+                            </div>
+                        </form>
+                        <!-- </div> -->
                     </div>
                     <button type="#" id="pr-add-memory-button" onclick="return false;">Add memory</button>
                 </div>

@@ -1,6 +1,7 @@
 .feed-content-container {
     background-color: #fefefe;
     width: 35rem;
+    max-width: 35rem;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -15,7 +16,7 @@
 .feed-account-name {
     display: flex;
     flex-direction: row;
-    align-items:center;
+    align-items: center;
     height: 3.2rem;
     margin-bottom: 0.15rem;
     margin-top: 0.2rem;
@@ -30,25 +31,37 @@
     position: absolute;
 }
 
-.feed-content-media {
-    width: 33rem;
-    padding-top: 0.7rem;
+.feed-content-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.feed-content-media img{
+.feed-content-img img {
+    width: 35rem;
+    height: auto;
+    object-fit: contain;
+}
+
+.feed-content-video video {
+    max-width: 100%;
+    height: auto;
+}
+
+.feed-content-audio audio {
     width: 100%;
-    border-radius: 0.6%;
 }
 
 .feed-background {
-    background-image:url(../page-images/=.png);
+    background-image: url(../page-images/=.png);
     background-repeat: repeat;
     background-size: contain;
     margin-top: -10px;
     margin-bottom: -10px;
 }
 
-.feed-content-container hr{
+.feed-content-container hr {
     border: 0.097rem solid black; 
     width: 100%;
     padding: 0;

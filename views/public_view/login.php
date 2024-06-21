@@ -1,5 +1,11 @@
 <?php
-require_once '../CHiM/views/includes/header.php';
+require_once dirname(__DIR__, 2) . '/views/includes/header.php';
+$failedLoginAttempt = '';
+
+if (isset($_SESSION['login_errors'])) {
+    $failedLoginAttempt = $_SESSION['login_errors'];
+    unset($_SESSION['login_errors']);
+}
 ?>
 
 <div id="login-frame">
@@ -10,16 +16,16 @@ require_once '../CHiM/views/includes/header.php';
             <form action="/CHiM/controllers/handlers/loginhandler.php" method="post" id="login-form">
                 <ul>
                     <li id="user-name">
-                        <label for="email">Email adress:</label><br />
-                        <input requred type="text" class="user-name-input" name="email" placeholder="Email address" />
+                        <label for="user-name-input-id">Email address:</label><br />
+                        <input required type="text" class="user-name-input" id="user-name-input-id" name="email" placeholder="Email address" autocomplete="on" />
                         <br>
-                        <span id="login-email-error"></span>
+                        <span id="login-email-error"><?= htmlspecialchars($failedLoginAttempt); ?></span>
                     </li>
-                    <li id="user-password">
-                        <label for="password">Password:</label><br />
-                        <input requred type="text" class="user-password-input" name="user_password" placeholder="Password" />
+                    <li id="user-password-input">
+                        <label for="user-password-input-id">Password:</label><br />
+                        <input required type="password" class="user-password-input" id="user-password-input-id" name="user_password" placeholder="Password" />
                         <br>
-                        <span id="login-password-error"></span>
+                        <span id="login-password-error"><?= htmlspecialchars($failedLoginAttempt); ?></span>
                     </li>
                     <button type="submit" id="login-button">Log in</button>
                     <div id="register">
@@ -32,7 +38,12 @@ require_once '../CHiM/views/includes/header.php';
     </div>
 </div>
 
-<script src="../CHiM/controllers/js/login.js"> </script>
+<script>
+    var failedLoginAttempt = "<?= $failedLoginAttempt; ?>";
+</script>
+
+<script src="login.js"></script>
+
 <?php
-require_once '../CHiM/views/includes/footer.php';
+require_once dirname(__DIR__, 2) . '/views/includes/footer.php';
 ?>

@@ -2,7 +2,7 @@
 require_once '../CHiM/views/includes/header.php';
 ?>
 <?php
-require_once '../CHiM/views/includes/footer.php';
+require_once dirname(__DIR__,2) . '/views/includes/footer.php';
 ?>
 
 <body>

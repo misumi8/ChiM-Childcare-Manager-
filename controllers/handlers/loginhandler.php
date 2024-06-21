@@ -1,26 +1,24 @@
 <?php
 require_once "../includes/database.php";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-$email = cleanInput($_POST["email"]);
-$user_password = cleanInput($_POST["user_password"]);
+session_start();
 
-if(empty($email) || empty($user_password)){
-    header("Location: /CHiM/views/public_view/login.php");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = cleanInput($_POST["email"]);
+    $user_password = cleanInput($_POST["user_password"]);
+
+    error_log("Login attempt: Email - " . $email);
+
+    $userInfo = getUserInfo($email, $user_password);
+    if ($userInfo) {
+        $_SESSION['userInfo'] = $userInfo;
+        header("Location: /CHiM/profile?id=" . $_SESSION['userInfo']['id']);
+    } else {
+        $_SESSION['login_errors'] = "Invalid email or password.";
+        header("Location: /CHiM/login");
+    }
     exit();
 }
 
-$userInfo = getUserInfo($email, $user_password);
-
-if(empty($userInfo)){
-    header("Location: /CHiM/views/public_view/login.php");
-    exit();
-}
-
-$_SESSION['userInfo'] = $userInfo;
-header("Location: /CHiM/views/public_view/profile.php");
-exit();
-}
-
-header("Location: /CHiM/views/public_view/login.php");
+header("Location: /CHiM/login");
 exit();

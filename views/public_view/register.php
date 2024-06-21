@@ -63,5 +63,5 @@ require_once '../CHiM/views/includes/header.php';
 <script src="../CHiM/controllers/js/register.js"></script>
 
 <?php
-require_once '../CHiM/views/includes/footer.php';
+require_once dirname(__DIR__,2) . '/views/includes/footer.php';
 ?>

@@ -1,11 +1,7 @@
 <?php
-require_once './views/includes/header.php';
-require_once dirname(__DIR__,2) . '/views/includes/footer.php';
-require_once './controllers/childInfo.php';
-//echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA" . $childInfo['id'];
-//echo "IDIDIDIDIDIDIDIDIDIDID" . $_SESSION['child_id'];
-//addChildMemory(1, 8, 0, 0, "awd", "awdj", "0");
+require_once '../CHiM/views/includes/header.php';
 ?>
+
 
 <body>
     <div id="pr-frame">
@@ -365,3 +361,7 @@ require_once './controllers/childInfo.php';
     <script src="../CHiM/views/public_view/js/profile.js"></script>
     <script src="../CHiM/models/profileModel.js"></script>
 </body>
+
+<?php
+require_once dirname(__DIR__,2) . '/views/includes/footer.php';
+?>

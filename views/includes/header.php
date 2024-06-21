@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-    require_once "../CHiM/controllers/includes/database.php";
+    require_once dirname(__DIR__,2) . '/controllers/includes/database.php';
 ?>
 
 <head>
@@ -19,16 +19,10 @@
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Lexend+Deca:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-
-    <!-- Full calendar -->
-    <link href='https://unpkg.com/@fullcalendar/core/main.css' rel='stylesheet' />
-    <link href='https://unpkg.com/@fullcalendar/daygrid/main.css' rel='stylesheet' />
-    <script src='https://unpkg.com/@fullcalendar/core/main.js'></script>
-    <script src='https://unpkg.com/@fullcalendar/daygrid/main.js'></script>
 </head>
 
 <body>

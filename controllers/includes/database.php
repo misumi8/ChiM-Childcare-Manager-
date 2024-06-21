@@ -5,34 +5,38 @@ define('DATABASE_USER', 'root');
 define('DATABASE_PASS', '');
 define('DATABASE_NAME', 'CHIM');
 
-$pdo = pdoConnectMysqli();
-
 session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . "/CHiM/models/database2.php";
 
-function pdoConnectMysqli()
-{
-    try {
-        return new PDO('mysql:host=' . DATABASE_HOST . ';dbname=' . DATABASE_NAME . ';charset=utf8', DATABASE_USER, DATABASE_PASS);
-    } catch (PDOException $exception) {
-        exit('Failed to connect to database');
-    }
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+try {
+    $GLOBALS['pdo'] = new PDO('mysql:host=' . DATABASE_HOST . ';dbname=' . DATABASE_NAME . ';charset=utf8', DATABASE_USER, DATABASE_PASS);
+    $GLOBALS['pdo']->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Could not connect to the database: " . $e->getMessage());
 }
+
+
 
 function getUserInfo($email, $user_password)
 {
-    $hashed_pass = password_hash($user_password, PASSWORD_DEFAULT);
-    $stmt = $GLOBALS['pdo']->prepare("SELECT id, email, fname, lname, birthday, profile_pic FROM users WHERE user_password = ? AND email = ? ");
-    $stmt->execute([$hashed_pass, $email]);
+    $stmt = $GLOBALS['pdo']->prepare("SELECT id, email, user_password, fname, lname, birthday, profile_pic FROM users WHERE email = ?");
+    $stmt->execute([$email]);
     $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!empty($userInfo)) {
+    if ($userInfo && password_verify($user_password, $userInfo['user_password'])) {
+        unset($userInfo['user_password']);
         $userChildrenInfo = getUserChildrenInfo($userInfo['id']);
-        $userInfo = array_merge($userInfo, $userChildrenInfo);
+        $userInfo = array_merge($userInfo, ['children' => $userChildrenInfo]);
+        return $userInfo;
     }
 
-    return $userInfo;
+    return null;
 }
+
 
 function doesEmailExist($email)
 {
@@ -45,7 +49,7 @@ function doesEmailExist($email)
 
 function getUserInfoPost($userId)
 {
-    $stmt = $GLOBALS['pdo']->prepare("SELECT fname, lname, profile_pic FROM users WHERE id = ? ");
+    $stmt = $GLOBALS['pdo']->prepare("SELECT fname, lname, profile_pic FROM users WHERE id = ?");
     $stmt->execute([$userId]);
     $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -54,16 +58,23 @@ function getUserInfoPost($userId)
 
 function getUserChildrenInfo($userId)
 {
-    $stmt = $GLOBALS['pdo']->prepare("SELECT * FROM children WHERE user_id = ? ");
+    $stmt = $GLOBALS['pdo']->prepare("SELECT * FROM children WHERE user_id = ?");
     $stmt->execute([$userId]);
     $userChildrenInfo = $stmt->fetchALL(PDO::FETCH_ASSOC);
     // de adaugat media si relationships
     return $userChildrenInfo;
 }
 
-function getFeedMedia()
-{
-    return $GLOBALS['pdo']->query("SELECT * FROM media WHERE shared = true")->fetchALL(PDO::FETCH_ASSOC);
+function getFeedMedia($limit = 10, $offset = 0) {
+    try {
+        $stmt = $GLOBALS['pdo']->prepare("SELECT * FROM media WHERE shared = true ORDER BY shared_at DESC LIMIT ? OFFSET ?");
+        $stmt->bindParam(1, $limit, PDO::PARAM_INT);
+        $stmt->bindParam(2, $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Database error: " . $e->getMessage());
+    }
 }
 
 function registerNewUser($email, $user_password, $fname, $lname, $birthday)

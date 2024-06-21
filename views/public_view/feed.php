@@ -1,53 +1,48 @@
 <?php
 require_once '../CHiM/views/includes/header.php';
-
-$feedMedia = getFeedMedia()
-/** - de adaugat sortare random a postarilor shared sau de stabilit o forma de sortare 
- *  - de adaugat mecanism social media website - style unde se incarca doar o bucata
- *  din tot content-ul in foreach si abia cand user-ul da scroll down se mai incarca alta bucata 
- *  - de inlocuit css feed-content-media cu feed-content-video, feed-content-audio si feed-content-img
- *  - de adaugat data la care s-a facut media row-ul shared = true si adaugat la postare(?)
- * */
+require_once '../CHiM/helpers/image_processing.php';
 ?>
 
 <div class="feed-background">
-    <?php foreach ($feedMedia as $post) :
+    <?php
+    $feedMedia = getFeedMedia();
+    foreach ($feedMedia as $post) :
         $authorInfo = getUserInfoPost($post['user_id']); ?>
         <div class="feed-content-container">
-            <img class="feed-content-auth" src=<?= $authorInfo['profile_pic']; ?> alt="Profile picture">
-            <div class="feed-account-name"><?= $authorInfo['fname'] . " " . $authorInfo['lname']; ?></div>
+            <img class="feed-content-auth" src="data:image/jpeg;base64,<?= base64_encode($authorInfo['profile_pic']); ?>" alt="Profile picture">
+            <div class="feed-account-name"><?= htmlspecialchars($authorInfo['fname'] . " " . $authorInfo['lname']); ?></div>
             <hr>
-            <?php if ($post['media_type'] == "img") { ?>
-                <div class="feed-content-img"><img src=<?= $post['content']; ?> alt="Content"></div>
-            <?php } elseif ($post['media_type'] == "video") { ?>
-                <!-- <div class="feed-content-video"><img src="../CHiM/views/users/user1/child1/child1_1.jpg" alt="Content"></div> -->
+            <?php 
+            if ($post['media_type'] == "img") { 
+                $imageData = resizeImage($post['content'], 560, 560); // Resize to 35rem (560px)
+                if ($imageData !== false) {
+                    $base64Image = base64_encode($imageData); ?>
+                    <div class="feed-content-img">
+                        <img src="data:image/jpeg;base64,<?= $base64Image; ?>" alt="Content">
+                    </div>
+                <?php 
+                }
+            } elseif ($post['media_type'] == "video") { ?>
+                <div class="feed-content-video">
+                    <video controls width="560"> <!-- Set width to 35rem (560px) -->
+                        <source src="data:video/mp4;base64,<?= base64_encode($post['content']); ?>" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             <?php } elseif ($post['media_type'] == "audio") { ?>
-                <!-- <div class="feed-content-audio"><img src="../CHiM/views/users/user1/child1/child1_1.jpg" alt="Content"></div> -->
+                <div class="feed-content-audio">
+                    <audio controls>
+                        <source src="data:audio/mpeg;base64,<?= base64_encode($post['content']); ?>" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
             <?php } ?>
         </div>
     <?php endforeach; ?>
-    <div class="feed-content-container">
-        <img class="feed-content-auth" src="../CHiM/views/users/user1/user1_profile.jpg" alt="Profile picture">
-        <div class="feed-account-name">Jhokn Doe</div>
-        <hr>
-        <div class="feed-content-media"><img src="../CHiM/views/users/user1/child1/child1_1.jpg" alt="Content"></div>
-    </div>
-
-    <div class="feed-content-container">
-        <img class="feed-content-auth" src="../CHiM/views/users/user1/user1_profile.jpg" alt="Profile picture">
-        <div class="feed-account-name">Jhon Doe</div>
-        <hr>
-        <div class="feed-content-media"><img src="../stock2.jpg" alt="Content"></div>
-    </div>
-
-    <div class="feed-content-container">
-        <img class="feed-content-auth" src="../CHiM/views/users/user1/user1_profile.jpg" alt="Profile picture">
-        <div class="feed-account-name">Jhon Doe</div>
-        <hr>
-        <div class="feed-content-media"><img src="../CHiM/views/users/user1/child1/child1_1.jpg" alt="Content"></div>
-    </div>
-
 </div>
+
+<script src='../CHiM/controllers/js/feed.js'></script>
+
 <?php
-require_once '../CHiM/views/includes/footer.php';
+require_once dirname(__DIR__,2) . '/views/includes/footer.php';
 ?>

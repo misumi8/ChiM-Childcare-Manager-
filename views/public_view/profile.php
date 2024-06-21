@@ -3,11 +3,8 @@ require_once '../CHiM/views/includes/header.php';
 require_once dirname(__DIR__,2) . '/views/includes/footer.php';
 require_once './controllers/childInfo.php';
 require_once dirname(__DIR__,2) . '/views/includes/footer.php';
-
-//echo addNewChild($_SESSION['user_id']);
-
 ?>
-
+<span id="pr-child-id"><?php echo $_SESSION['child_id'];?></span>
 <div id="pr-frame">
     <div id="pr-child-info">
         <div id="pr-first-row">
@@ -21,7 +18,7 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                 <form metdod="post" id="pr-child-data-form"> <!-- action="./controllers/updateChildInfo.php"-->
                     <ul id="pr-2col-table">
                         <li>
-                            <label for="Name">Full name:</label>
+                            <label for="Name">Name:</label>
                             <input requred type="text"
                                     id="pr-name-input" 
                                     class="pr-child-info-input" 
@@ -277,7 +274,370 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
             </div>
             <div id="pr-calendar-sh-fh">
                 <button type="#" id="pr-see-calendar" onclick="return false;">Calendar</button>
-                <div id="pr-calendar-list">
+                <div id="pr-schedules">
+                    <div id="pr-schedule-delimeter">
+                        <div id="pr-bottom-border1"></div>
+                        <button type="#" id="pr-open-feeding-schedule" class="pr-schedule-type-buttons">Feeding schedule</button>
+                        <div id="pr-bottom-border2"></div>
+                        <button type="#" id="pr-open-sleeping-schedule" class="pr-schedule-type-buttons">Sleeping schedule</button>
+                        <div id="pr-bottom-border3"></div>
+                    </div>
+                    <div id="pr-feeding-schedule" class="pr-schedule">
+                        <div class="pr-schedule-4">
+                            <div id="pr-sunday" class="pr-weekday">
+                                <span class="pr-weekday-span">Sunday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pr-monday" class="pr-weekday">
+                                <span class="pr-weekday-span">Monday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>18:10</span>
+                                        <span>Milk</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pr-tuesday" class="pr-weekday">
+                                <span class="pr-weekday-span">Tuesday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>18:10</span>
+                                        <span>Milk</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pr-wednesday" class="pr-weekday">
+                                <span class="pr-weekday-span">Wednesday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>18:10</span>
+                                        <span>Milk</span>
+                                    </div>
+                                </div>
+                            </div>      
+                        </div>  
+                        <div class="pr-schedule-3">         
+                            <div id="pr-thursday" class="pr-weekday">
+                                <span class="pr-weekday-span">Thursday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>18:10</span>
+                                        <span>Milk</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pr-friday" class="pr-weekday">
+                                <span class="pr-weekday-span">Friday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>18:10</span>
+                                        <span>Milk</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pr-saturday" class="pr-weekday">
+                                <span class="pr-weekday-span">Saturday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>18:10</span>
+                                        <span>Milk</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pr-sleeping-schedule" class="pr-schedule">
+                        <div class="pr-schedule-4">
+                            <div id="pr-sunday" class="pr-weekday">
+                                <span class="pr-weekday-span">Sunday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pr-monday" class="pr-weekday">
+                                <span class="pr-weekday-span">Monday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>18:10</span>
+                                        <span>Milk</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pr-tuesday" class="pr-weekday">
+                                <span class="pr-weekday-span">Tuesday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>18:10</span>
+                                        <span>Milk</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pr-wednesday" class="pr-weekday">
+                                <span class="pr-weekday-span">Wednesday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>18:10</span>
+                                        <span>Milk</span>
+                                    </div>
+                                </div>
+                            </div>      
+                        </div>  
+                        <div class="pr-schedule-3">         
+                            <div id="pr-thursday" class="pr-weekday">
+                                <span class="pr-weekday-span">Thursday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>18:10</span>
+                                        <span>Milk</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                    <div class=pr-schedule-record>
+                                        <span>17:40</span>
+                                        <span>Fruit salad</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pr-friday" class="pr-weekday">
+                                <span class="pr-weekday-span">Friday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>18:10</span>
+                                        <span>Milk</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pr-saturday" class="pr-weekday">
+                                <span class="pr-weekday-span">Saturday</span>
+                                <div class="pr-schedule-records">
+                                    <div class=pr-schedule-record>
+                                        <span>18:10</span>
+                                        <span>Milk</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div id="pr-calendar-list">
                     <div class="pr-list-item">
                         <input type="date" disabled>
                         <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
@@ -339,7 +699,7 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                         <button type="#" class="pr-button-medical-record pr-calendar-button" onclick="return false;"><span>Save</span></button>
                         <button type="#" class="pr-export-pdf" onclick="return false;"></button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div id="pr-close-2col-form">
@@ -352,7 +712,7 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
             <a onclick="setSessionChildId(<?php echo $_SESSION['user_id']; ?>, <?php echo $child['id'];?>)">
                 <div class="pr-child-container">
                     <img id="pr-child-img-container<?php echo $child['id'];?>" src="data:image/jpeg;base64,<?php echo $child['photo'] != null ? base64_encode($child['photo']) : base64_encode(file_get_contents('../CHiM/views/public_view/page-images/no-user-icon.png'));?>">
-                    <span><?php echo $child['fullname'];?></span>   
+                    <span id="pr-child-span<?php echo $child['id'];?>"><?php echo $child['fullname'];?></span>   
                 </div>
             </a>
         <?php } ?>

@@ -22,8 +22,30 @@ document.addEventListener("DOMContentLoaded", function() {
     const saveButtonExtension = document.getElementById("pr-save-button-extension");
     const firstRow = document.getElementById("pr-first-row");
     const addChild = document.getElementById("pr-p-container");
-    const calendar = document.getElementById("pr-calendar-list");
+    const calendar = document.getElementById("pr-schedules");
     const addMemoryInput = document.getElementById("pr-add-memory-input");
+    const feedingScheduleButton = document.getElementById("pr-open-feeding-schedule");
+    const sleepingScheduleButton = document.getElementById("pr-open-sleeping-schedule");
+
+    feedingScheduleButton.addEventListener("click", () => {
+        const feedingSchedule = document.getElementById("pr-feeding-schedule");
+        const sleepingSchedule = document.getElementById("pr-sleeping-schedule");
+        feedingSchedule.style.display = "grid";
+        feedingSchedule.style.backgroundColor = "#e4c5f3";
+        feedingScheduleButton.style.backgroundColor = "#e4c5f3";
+        sleepingScheduleButton.style.backgroundColor = "#e6cef0";
+        sleepingSchedule.style.display = "none";
+    });
+
+    sleepingScheduleButton.addEventListener("click", () => {
+        const feedingSchedule = document.getElementById("pr-feeding-schedule");
+        const sleepingSchedule = document.getElementById("pr-sleeping-schedule");
+        sleepingSchedule.style.display = "grid";
+        sleepingSchedule.style.backgroundColor = "#e4c5f3";
+        sleepingScheduleButton.style.backgroundColor = "#e4c5f3";
+        feedingScheduleButton.style.backgroundColor = "#e6cef0";
+        feedingSchedule.style.display = "none";
+    });
 
     let newChildAdded = false;
     childDataForm.addEventListener("submit", function (event) {
@@ -36,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
         //const hobbyInput = document.getElementById("pr-hobby-input");
         //const favFoodInput = document.getElementById("pr-food-input");
 
-        if(!/^[A-Za-zăîâțș ]+$/.test(nameInput.value)){
+        if(!/^[A-Za-zăîâțș ]+$/.test(nameInput.value) || nameInput.value.length > 18 || nameInput.value.length < 2) {
             nameInput.classList.toggle("pr-wrong-input");
             nameInput.style.backgroundColor = "rgb(229, 65, 65)";
             console.log(nameInput.placeholder);
@@ -44,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(function(){nameInput.style.backgroundColor = "rgb(229, 65, 65)"; nameInput.classList.toggle("pr-wrong-input");}, 1000);
             return;
         }
-        else nameInput.style.backgroundColor = "rgb(223, 223, 223)";
+        else nameInput.style.backgroundColor = "white";
         //alert(dobInput.value);
         if(!/^\d{4}-\d{2}-\d{2}$/.test(dobInput.value) || new Date(dobInput.value) > new Date() || new Date(dobInput.value) < new Date('1920-01-01')){
             dobInput.classList.toggle("pr-wrong-input");
@@ -53,15 +75,15 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(function(){dobInput.style.backgroundColor = "rgb(229, 65, 65)"; dobInput.classList.toggle("pr-wrong-input");}, 1000);
             return;
         }
-        else dobInput.style.backgroundColor = "rgb(223, 223, 223)";   
+        else dobInput.style.backgroundColor = "white";   
 
-        if(!/^[0-9]+$/.test(heightInput.value) || Number(heightInput.value) > 200){
+        if(!/^[0-9]+$/.test(heightInput.value) || Number(heightInput.value) > 270 || Number(heightInput.value) < 22){
             heightInput.classList.toggle("pr-wrong-input");
             heightInput.style.backgroundColor = "rgb(229, 65, 65)";
             setTimeout(function(){heightInput.style.backgroundColor = "rgb(229, 65, 65)"; heightInput.classList.toggle("pr-wrong-input");}, 1000);
             return;
         }
-        else heightInput.style.backgroundColor = "rgb(223, 223, 223)";
+        else heightInput.style.backgroundColor = "white";
         
         if(newChildAdded) newChildId = addNewChild();
 
@@ -144,26 +166,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
         memory.addEventListener('click', async () => {
             let memoryDescription = memory.querySelectorAll('span');
-            if(oddClick){
-                oddClick = false;
-                console.log("odd click");
-                memory.style.width = "42rem";
-                memory.style.display = "absolute";
-                memoryDescription.forEach(async memoryDescription => {
-                    await new Promise(r => setTimeout(r, 380));
-                    memoryDescription.style.opacity = "1";
-                });
-            }
-            else {
-                oddClick = true;
-                console.log("even click");
-                memoryDescription.forEach(memoryDescription => {
-                    memoryDescription.style.opacity = "0";
-                })
-                //await new Promise(r => setTimeout(r, 10));
-                memory.style.width = "21rem";
-                memory.style.display = "auto";
-                
+            if(memory.querySelectorAll('span')[0].textContent.length > 61) {
+                //alert(memory.querySelectorAll('span')[0].textContent.length);
+                if(oddClick){
+                    oddClick = false;
+                    console.log("odd click");
+                    memory.style.width = "42rem";
+                    memory.style.display = "absolute";
+                    memoryDescription.forEach(async memoryDescription => {
+                        await new Promise(r => setTimeout(r, 380));
+                        memoryDescription.style.opacity = "1";
+                    });
+                }
+                else {
+                    oddClick = true;
+                    console.log("even click");
+                    memoryDescription.forEach(memoryDescription => {
+                        memoryDescription.style.opacity = "0";
+                    })
+                    //await new Promise(r => setTimeout(r, 10));
+                    memory.style.width = "21rem";
+                    memory.style.display = "auto";
+                    
+                }
             }
         })
     })
@@ -201,7 +226,6 @@ document.addEventListener("DOMContentLoaded", function() {
         seeCalendarButton.style.display = "none";
         childrenPanel.style.position = "none";
         closeButton.style.display = "flex";
-        calendar.style.display = "block";
     });
 
     // Close button

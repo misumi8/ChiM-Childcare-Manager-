@@ -26,6 +26,418 @@ document.addEventListener("DOMContentLoaded", function() {
     const addMemoryInput = document.getElementById("pr-add-memory-input");
     const feedingScheduleButton = document.getElementById("pr-open-feeding-schedule");
     const sleepingScheduleButton = document.getElementById("pr-open-sleeping-schedule");
+    
+    const feedingScheduleNewSundayRecordButton = document.querySelector('#pr-feeding-schedule #pr-sunday .pr-add-new-record-button');
+    const feedingScheduleNewMondayRecordButton = document.querySelector('#pr-feeding-schedule #pr-monday .pr-add-new-record-button');
+    const feedingScheduleNewTuesdayRecordButton = document.querySelector('#pr-feeding-schedule #pr-tuesday .pr-add-new-record-button');
+    const feedingScheduleNewWednesdayRecordButton = document.querySelector('#pr-feeding-schedule #pr-wednesday .pr-add-new-record-button');
+    const feedingScheduleNewThursdayRecordButton = document.querySelector('#pr-feeding-schedule #pr-thursday .pr-add-new-record-button');
+    const feedingScheduleNewFridayRecordButton = document.querySelector('#pr-feeding-schedule #pr-friday .pr-add-new-record-button');
+    const feedingScheduleNewSaturdayRecordButton = document.querySelector('#pr-feeding-schedule #pr-saturday .pr-add-new-record-button');
+    
+    const sleepingScheduleNewSundayRecordButton = document.querySelector('#pr-sleeping-schedule #pr-sunday .pr-add-new-record-button');
+    const sleepingScheduleNewMondayRecordButton = document.querySelector('#pr-sleeping-schedule #pr-monday .pr-add-new-record-button');
+    const sleepingScheduleNewTuesdayRecordButton = document.querySelector('#pr-sleeping-schedule #pr-tuesday .pr-add-new-record-button');
+    const sleepingScheduleNewWednesdayRecordButton = document.querySelector('#pr-sleeping-schedule #pr-wednesday .pr-add-new-record-button');
+    const sleepingScheduleNewThursdayRecordButton = document.querySelector('#pr-sleeping-schedule #pr-thursday .pr-add-new-record-button');
+    const sleepingScheduleNewFridayRecordButton = document.querySelector('#pr-sleeping-schedule #pr-friday .pr-add-new-record-button');
+    const sleepingScheduleNewSaturdayRecordButton = document.querySelector('#pr-sleeping-schedule #pr-saturday .pr-add-new-record-button');
+    
+    const sleepingScheduleNewSundayRecordInput = document.querySelector('#pr-sleeping-schedule #pr-sunday .pr-new-record');
+    const sleepingScheduleNewSaturdayRecordInput = document.querySelector('#pr-sleeping-schedule #pr-saturday .pr-new-record');
+    const sleepingScheduleNewFridayRecordInput = document.querySelector('#pr-sleeping-schedule #pr-friday .pr-new-record');
+    const sleepingScheduleNewThursdayRecordInput = document.querySelector('#pr-sleeping-schedule #pr-thursday .pr-new-record');
+    const sleepingScheduleNewWednesdayRecordInput = document.querySelector('#pr-sleeping-schedule #pr-wednesday .pr-new-record');
+    const sleepingScheduleNewTuesdayRecordInput = document.querySelector('#pr-sleeping-schedule #pr-tuesday .pr-new-record');
+    const sleepingScheduleNewMondayRecordInput = document.querySelector('#pr-sleeping-schedule #pr-monday .pr-new-record');
+    
+    const feedingScheduleNewSaturdayRecordInput = document.querySelector('#pr-feeding-schedule #pr-saturday .pr-new-record');
+    const feedingScheduleNewFridayRecordInput = document.querySelector('#pr-feeding-schedule #pr-friday .pr-new-record');
+    const feedingScheduleNewThursdayRecordInput = document.querySelector('#pr-feeding-schedule #pr-thursday .pr-new-record');
+    const feedingScheduleNewWednesdayRecordInput = document.querySelector('#pr-feeding-schedule #pr-wednesday .pr-new-record');
+    const feedingScheduleNewTuesdayRecordInput = document.querySelector('#pr-feeding-schedule #pr-tuesday .pr-new-record');
+    const feedingScheduleNewMondayRecordInput = document.querySelector('#pr-feeding-schedule #pr-monday .pr-new-record');
+    const feedingScheduleNewSundayRecordInput = document.querySelector('#pr-feeding-schedule #pr-sunday .pr-new-record');
+
+    // FEEDING SCHEDULE 
+    feedingScheduleNewSaturdayRecordButton.addEventListener("click", function() {
+        feedingScheduleNewSaturdayRecordInput.style.display = "grid";
+    });
+
+    feedingScheduleNewFridayRecordButton.addEventListener("click", function() {
+        feedingScheduleNewFridayRecordInput.style.display = "grid";
+    });
+
+    feedingScheduleNewThursdayRecordButton.addEventListener("click", function() {
+        feedingScheduleNewThursdayRecordInput.style.display = "grid";
+    });
+
+    feedingScheduleNewWednesdayRecordButton.addEventListener("click", function() {
+        feedingScheduleNewWednesdayRecordInput.style.display = "grid";
+    });
+
+    feedingScheduleNewTuesdayRecordButton.addEventListener("click", function() {
+        feedingScheduleNewTuesdayRecordInput.style.display = "grid";
+    });
+
+    feedingScheduleNewMondayRecordButton.addEventListener("click", function() {
+        feedingScheduleNewMondayRecordInput.style.display = "grid";
+    });
+
+    feedingScheduleNewSundayRecordButton.addEventListener("click", function() {
+        feedingScheduleNewSundayRecordInput.style.display = "grid";
+    });
+
+    feedingScheduleNewSundayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(feedingScheduleNewSundayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = feedingScheduleNewSundayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = feedingScheduleNewSundayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewFeedingRecord("sunday", form.get('record-time'), form.get('record-text'));
+        const sundayScheduleRecords = document.querySelector('#pr-feeding-schedule #pr-sunday .pr-schedule-records');
+        setTimeout(function(){updateHTMLFeedingRecordList(sundayScheduleRecords, "sunday");}, 50);
+        feedingScheduleNewSundayRecordInput.reset();
+    });
+
+    feedingScheduleNewMondayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(feedingScheduleNewMondayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = feedingScheduleNewMondayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = feedingScheduleNewMondayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewFeedingRecord("monday", form.get('record-time'), form.get('record-text'));
+        const mondayScheduleRecords = document.querySelector('#pr-feeding-schedule #pr-monday .pr-schedule-records');
+        setTimeout(function(){updateHTMLFeedingRecordList(mondayScheduleRecords, "monday");}, 50);
+        feedingScheduleNewMondayRecordInput.reset();
+    });
+    
+    feedingScheduleNewTuesdayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(feedingScheduleNewTuesdayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = feedingScheduleNewTuesdayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = feedingScheduleNewTuesdayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewFeedingRecord("tuesday", form.get('record-time'), form.get('record-text'));
+        const tuesdayScheduleRecords = document.querySelector('#pr-feeding-schedule #pr-tuesday .pr-schedule-records');
+        setTimeout(function(){updateHTMLFeedingRecordList(tuesdayScheduleRecords, "tuesday");}, 50);
+        feedingScheduleNewTuesdayRecordInput.reset();
+    });
+
+    feedingScheduleNewWednesdayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(feedingScheduleNewWednesdayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = feedingScheduleNewWednesdayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = feedingScheduleNewWednesdayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewFeedingRecord("wednesday", form.get('record-time'), form.get('record-text'));
+        const wednesdayScheduleRecords = document.querySelector('#pr-feeding-schedule #pr-wednesday .pr-schedule-records');
+        setTimeout(function(){updateHTMLFeedingRecordList(wednesdayScheduleRecords, "wednesday");}, 50);
+        feedingScheduleNewWednesdayRecordInput.reset();
+    });
+
+    feedingScheduleNewThursdayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(feedingScheduleNewThursdayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = feedingScheduleNewThursdayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = feedingScheduleNewThursdayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewFeedingRecord("thursday", form.get('record-time'), form.get('record-text'));
+        const thursdayScheduleRecords = document.querySelector('#pr-feeding-schedule #pr-thursday .pr-schedule-records');
+        setTimeout(function(){updateHTMLFeedingRecordList(thursdayScheduleRecords, "thursday");}, 50);
+        feedingScheduleNewThursdayRecordInput.reset();
+    });
+
+    feedingScheduleNewFridayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(feedingScheduleNewFridayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = feedingScheduleNewFridayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = feedingScheduleNewFridayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewFeedingRecord("friday", form.get('record-time'), form.get('record-text'));
+        const fridayScheduleRecords = document.querySelector('#pr-feeding-schedule #pr-friday .pr-schedule-records');
+        setTimeout(function(){updateHTMLFeedingRecordList(fridayScheduleRecords, "friday");}, 50);
+        feedingScheduleNewFridayRecordInput.reset();
+    });
+
+    feedingScheduleNewSaturdayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(feedingScheduleNewSaturdayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = feedingScheduleNewSaturdayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = feedingScheduleNewSaturdayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewFeedingRecord("saturday", form.get('record-time'), form.get('record-text'));
+        const saturdayScheduleRecords = document.querySelector('#pr-feeding-schedule #pr-saturday .pr-schedule-records');
+        setTimeout(function(){updateHTMLFeedingRecordList(saturdayScheduleRecords, "saturday");}, 50);
+        feedingScheduleNewSaturdayRecordInput.reset();
+    });
+
+    // SLEEPING SCHEDULE 
+    sleepingScheduleNewSundayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(sleepingScheduleNewSundayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = sleepingScheduleNewSundayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = sleepingScheduleNewSundayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewSleepingRecord("sunday", form.get('record-time'), form.get('record-text'));
+        const sundayScheduleRecords = document.querySelector('#pr-sleeping-schedule #pr-sunday .pr-schedule-records');
+        setTimeout(function(){updateHTMLSleepingRecordList(sundayScheduleRecords, "sunday");}, 50);
+        sleepingScheduleNewSundayRecordInput.reset();
+    });
+
+    sleepingScheduleNewMondayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(sleepingScheduleNewMondayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = sleepingScheduleNewMondayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = sleepingScheduleNewMondayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewSleepingRecord("monday", form.get('record-time'), form.get('record-text'));
+        const mondayScheduleRecords = document.querySelector('#pr-sleeping-schedule #pr-monday .pr-schedule-records');
+        setTimeout(function(){updateHTMLSleepingRecordList(mondayScheduleRecords, "monday");}, 50);
+        sleepingScheduleNewMondayRecordInput.reset();
+    });
+    
+    sleepingScheduleNewTuesdayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(sleepingScheduleNewTuesdayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = sleepingScheduleNewTuesdayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = sleepingScheduleNewTuesdayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewSleepingRecord("tuesday", form.get('record-time'), form.get('record-text'));
+        const tuesdayScheduleRecords = document.querySelector('#pr-sleeping-schedule #pr-tuesday .pr-schedule-records');
+        setTimeout(function(){updateHTMLSleepingRecordList(tuesdayScheduleRecords, "tuesday");}, 50);
+        sleepingScheduleNewTuesdayRecordInput.reset();
+    });
+
+    sleepingScheduleNewWednesdayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(sleepingScheduleNewWednesdayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = sleepingScheduleNewWednesdayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = sleepingScheduleNewWednesdayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewSleepingRecord("wednesday", form.get('record-time'), form.get('record-text'));
+        const wednesdayScheduleRecords = document.querySelector('#pr-sleeping-schedule #pr-wednesday .pr-schedule-records');
+        setTimeout(function(){updateHTMLSleepingRecordList(wednesdayScheduleRecords, "wednesday");}, 50);
+        sleepingScheduleNewWednesdayRecordInput.reset();
+    });
+
+    sleepingScheduleNewThursdayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(sleepingScheduleNewThursdayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = sleepingScheduleNewThursdayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = sleepingScheduleNewThursdayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewSleepingRecord("thursday", form.get('record-time'), form.get('record-text'));
+        const thursdayScheduleRecords = document.querySelector('#pr-sleeping-schedule #pr-thursday .pr-schedule-records');
+        setTimeout(function(){updateHTMLSleepingRecordList(thursdayScheduleRecords, "thursday");}, 50);
+        sleepingScheduleNewThursdayRecordInput.reset();
+    });
+
+    sleepingScheduleNewFridayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(sleepingScheduleNewFridayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = sleepingScheduleNewFridayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = sleepingScheduleNewFridayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewSleepingRecord("friday", form.get('record-time'), form.get('record-text'));
+        const fridayScheduleRecords = document.querySelector('#pr-sleeping-schedule #pr-friday .pr-schedule-records');
+        setTimeout(function(){updateHTMLSleepingRecordList(fridayScheduleRecords, "friday");}, 50);
+        sleepingScheduleNewFridayRecordInput.reset();
+    });
+
+    sleepingScheduleNewSaturdayRecordInput.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = new FormData(sleepingScheduleNewSaturdayRecordInput);
+        if(form.get('record-time').length == 0){
+            let wrongInput = sleepingScheduleNewSaturdayRecordInput.querySelector('.pr-new-record-time');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }
+        if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
+            let wrongInput = sleepingScheduleNewSaturdayRecordInput.querySelector('.pr-new-record-text');
+            wrongInput.classList.toggle('pr-wrong-input');
+            wrongInput.style.borderRadius = "0.2rem";
+            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            return;
+        }  
+        addNewSleepingRecord("saturday", form.get('record-time'), form.get('record-text'));
+        const saturdayScheduleRecords = document.querySelector('#pr-sleeping-schedule #pr-saturday .pr-schedule-records');
+        setTimeout(function(){updateHTMLSleepingRecordList(saturdayScheduleRecords, "saturday");}, 50);
+        sleepingScheduleNewSaturdayRecordInput.reset();
+    });
+    
+    sleepingScheduleNewSundayRecordButton.addEventListener("click", function() {
+        sleepingScheduleNewSundayRecordInput.style.display = "grid";
+    });
+
+    sleepingScheduleNewSaturdayRecordButton.addEventListener("click", function() {
+        sleepingScheduleNewSaturdayRecordInput.style.display = "grid";
+    });
+
+    sleepingScheduleNewFridayRecordButton.addEventListener("click", function() {
+        sleepingScheduleNewFridayRecordInput.style.display = "grid";
+    });
+
+    sleepingScheduleNewThursdayRecordButton.addEventListener("click", function() {
+        sleepingScheduleNewThursdayRecordInput.style.display = "grid";
+    });
+
+    sleepingScheduleNewWednesdayRecordButton.addEventListener("click", function() {
+        sleepingScheduleNewWednesdayRecordInput.style.display = "grid";
+    });
+
+    sleepingScheduleNewTuesdayRecordButton.addEventListener("click", function() {
+        sleepingScheduleNewTuesdayRecordInput.style.display = "grid";
+    });
+
+    sleepingScheduleNewMondayRecordButton.addEventListener("click", function() {
+        sleepingScheduleNewMondayRecordInput.style.display = "grid";
+    });
 
     feedingScheduleButton.addEventListener("click", () => {
         const feedingSchedule = document.getElementById("pr-feeding-schedule");
@@ -33,7 +445,9 @@ document.addEventListener("DOMContentLoaded", function() {
         feedingSchedule.style.display = "grid";
         feedingSchedule.style.backgroundColor = "#e4c5f3";
         feedingScheduleButton.style.backgroundColor = "#e4c5f3";
-        sleepingScheduleButton.style.backgroundColor = "#e6cef0";
+        //feedingScheduleButton.style.fontSize = "1.27rem";
+        sleepingScheduleButton.style.backgroundColor = "rgb(208 202 210)";
+        //sleepingScheduleButton.style.fontSize = "1.2rem";
         sleepingSchedule.style.display = "none";
     });
 
@@ -42,13 +456,15 @@ document.addEventListener("DOMContentLoaded", function() {
         const sleepingSchedule = document.getElementById("pr-sleeping-schedule");
         sleepingSchedule.style.display = "grid";
         sleepingSchedule.style.backgroundColor = "#e4c5f3";
+        //sleepingScheduleButton.style.fontSize = "1.27rem";
         sleepingScheduleButton.style.backgroundColor = "#e4c5f3";
-        feedingScheduleButton.style.backgroundColor = "#e6cef0";
+        feedingScheduleButton.style.backgroundColor = "rgb(208 202 210)";
+        //feedingScheduleButton.style.fontSize = "1.2rem";
         feedingSchedule.style.display = "none";
     });
 
     let newChildAdded = false;
-    childDataForm.addEventListener("submit", function (event) {
+    childDataForm.addEventListener("submit", async function (event) {
         event.preventDefault();
         const nameInput = document.getElementById("pr-name-input");
         const dobInput = document.getElementById("pr-dob-input");
@@ -86,7 +502,7 @@ document.addEventListener("DOMContentLoaded", function() {
         else heightInput.style.backgroundColor = "white";
         
         if(newChildAdded) newChildId = addNewChild();
-
+        await new Promise(r => setTimeout(r, 100));
         const form = new FormData(childDataForm);
         const isMale = document.getElementById("male").checked ? "Male" : "Female";
         updateChildInfo(form.get('name'), form.get('date-of-birth'), isMale, form.get('height'), form.get('hobby'), form.get('food'));
@@ -224,12 +640,13 @@ document.addEventListener("DOMContentLoaded", function() {
         addMoreInfo.style.display = "none";
         addMemoryButton.style.display = "none";
         seeCalendarButton.style.display = "none";
-        childrenPanel.style.position = "none";
         closeButton.style.display = "flex";
+        closeButton.style.top = "1.3%";
     });
 
     // Close button
     closeButton.addEventListener("click", function() {
+        closeButton.style.top = "2%";
         calendar.style.display = "none";
         childDataForm.style.display = "none";
         addMemoryForm.style.display = "none";

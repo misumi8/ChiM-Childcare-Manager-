@@ -167,3 +167,127 @@ function updateChildInfo(name, dob, gender, height, hobby, food){
     };
     xhr.send(params);
 }
+
+function addNewFeedingRecord(weekday, time, text){
+    //alert('fucntion called');
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../CHiM/controllers/addNewFeedingRecord.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var params = 'record-time=' + encodeURIComponent(time) + '&record-text=' + encodeURIComponent(text) + '&weekday=' + encodeURIComponent(weekday);
+    //alert('params created');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status != 200) {
+                alert(xhr.responseText);
+            }
+            //else alert(xhr.responseText);
+        }
+    };
+    xhr.send(params);
+}
+
+function addNewSleepingRecord(weekday, time, text){
+    //alert('fucntion called');
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../CHiM/controllers/addNewSleepingRecord.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var params = 'record-time=' + encodeURIComponent(time) + '&record-text=' + encodeURIComponent(text) + '&weekday=' + encodeURIComponent(weekday);
+    //alert('params created');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status != 200) {
+                alert(xhr.responseText);
+            }
+            //else alert(xhr.responseText);
+        }
+    };
+    xhr.send(params);
+}
+
+function updateHTMLFeedingRecordList(recordList, weekday) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../CHiM/controllers/getUpdatedHtmlFeedingRecordList.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var param = 'weekday=' + encodeURIComponent(weekday);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status != 200) {
+                alert(xhr.responseText);
+            }
+            else {
+                //alert(xhr.responseText);
+                //document.querySelector('#pr-feeding-schedule #pr-' + weekday + ' .pr-schedule-records').style.display = 'none';
+                recordList.innerHTML = xhr.responseText;
+            }
+        }
+    };
+    xhr.send(param);
+}
+
+function updateHTMLSleepingRecordList(recordList, weekday) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../CHiM/controllers/getUpdatedHtmlSleepingRecordList.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var param = 'weekday=' + encodeURIComponent(weekday);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status != 200) {
+                alert(xhr.responseText);
+            }
+            else {
+                //alert(xhr.responseText);
+                //document.querySelector('#pr-feeding-schedule #pr-' + weekday + ' .pr-schedule-records').style.display = 'none';
+                recordList.innerHTML = xhr.responseText;
+            }
+        }
+    };
+    xhr.send(param);
+}
+
+function removeNewFeedingRecordInput(weekday){
+    const newRecord = document.querySelector('#pr-feeding-schedule #pr-' + weekday + ' .pr-new-record');
+    newRecord.reset();
+    newRecord.style.display = 'none';
+}
+
+function removeNewSleepingRecordInput(weekday){
+    const newRecord = document.querySelector('#pr-sleeping-schedule #pr-' + weekday + ' .pr-new-record');
+    newRecord.reset();
+    newRecord.style.display = 'none';
+}
+
+function deleteFeedingRecord(weekday, recordId){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../CHiM/controllers/deleteFeedingRecord.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var param = 'id=' + encodeURIComponent(recordId);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status != 200) {
+                alert(xhr.responseText);
+            }
+            else {
+                updateHTMLFeedingRecordList(document.querySelector('#pr-feeding-schedule #pr-' + weekday + ' .pr-schedule-records'), weekday);
+            }
+        }
+    };
+    xhr.send(param);
+}
+
+function deleteSleepingRecord(weekday, recordId){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../CHiM/controllers/deleteSleepingRecord.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var param = 'id=' + encodeURIComponent(recordId);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status != 200) {
+                alert(xhr.responseText);
+            }
+            else {
+                updateHTMLSleepingRecordList(document.querySelector('#pr-sleeping-schedule #pr-' + weekday + ' .pr-schedule-records'), weekday);
+            }
+        }
+    };
+    xhr.send(param);
+}

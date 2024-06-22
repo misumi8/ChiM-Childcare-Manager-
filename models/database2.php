@@ -79,4 +79,37 @@
         $stmt->execute([$favFood, $childId]);
     }
 
+    function addNewFeedingRecord($weekday, $time, $text){
+        $stmt = $GLOBALS['pdo']->prepare("INSERT INTO feeding_records(child_id, rec_weekday, record_time, rec_description) values(?,?,?,?)");
+        $stmt->execute([$_SESSION['child_id'], $weekday, $time, $text]);
+    }
+
+    function addNewSleepingRecord($weekday, $time, $text){
+        $stmt = $GLOBALS['pdo']->prepare("INSERT INTO sleeping_records(child_id, rec_weekday, record_time, rec_description) values(?,?,?,?)");
+        $stmt->execute([$_SESSION['child_id'], $weekday, $time, $text]);
+    }
+
+    function getFeedingRecords($child_id, $weekday){
+        $stmt = $GLOBALS['pdo']->prepare("SELECT * FROM feeding_records WHERE child_id = ? and rec_weekday = ?");
+        $stmt->execute([$child_id, $weekday]);
+        $feedingRecords = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $feedingRecords;
+    }
+
+    function getSleepingRecords($child_id, $weekday){
+        $stmt = $GLOBALS['pdo']->prepare("SELECT * FROM sleeping_records WHERE child_id = ? and rec_weekday = ?");
+        $stmt->execute([$child_id, $weekday]);
+        $feedingRecords = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $feedingRecords;
+    }
+
+    function deleteFeedingRecord($recordId){
+        $stmt = $GLOBALS['pdo']->prepare("DELETE FROM feeding_records WHERE id = ?");
+        $stmt->execute([$recordId]);
+    }
+
+    function deleteSleepingRecord($recordId){
+        $stmt = $GLOBALS['pdo']->prepare("DELETE FROM sleeping_records WHERE id = ?");
+        $stmt->execute([$recordId]);
+    }
 ?>

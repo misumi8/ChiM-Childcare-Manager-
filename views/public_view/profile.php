@@ -12,7 +12,7 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                 <?php
                     echo "<img id='pr-child-image' style='opacity:" . $photoExist . "' src='data:image/jpeg;base64," . $childPic . "'/>";
                 ?>
-                <input type="file" id="pr-photo" onchange="changeChildImage(<?php echo $_SESSION['child_id']; ?>)"></input>
+                <input type="file" id="pr-photo" onchange="changeChildImage(<?php echo $_SESSION['child_id']; ?>)">
             </div>
             <div id="pr-child-info">
                 <form metdod="post" id="pr-child-data-form"> <!-- action="./controllers/updateChildInfo.php"-->
@@ -285,421 +285,338 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                     <div id="pr-feeding-schedule" class="pr-schedule">
                         <div class="pr-schedule-4">
                             <div id="pr-sunday" class="pr-weekday">
-                                <span class="pr-weekday-span">Sunday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Sunday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($feedingRecordsSunday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteFeedingRecord('sunday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#"> <!-- action="./controllers/records/feedingRecordSunday.php" -->
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewFeedingRecordInput('sunday')"></button>
+                                </form>
                             </div>
                             <div id="pr-monday" class="pr-weekday">
-                                <span class="pr-weekday-span">Monday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>18:10</span>
-                                        <span>Milk</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Monday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($feedingRecordsMonday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteFeedingRecord('monday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#">
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewFeedingRecordInput('monday')"></button>
+                                </form>
                             </div>
                             <div id="pr-tuesday" class="pr-weekday">
-                                <span class="pr-weekday-span">Tuesday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>18:10</span>
-                                        <span>Milk</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Tuesday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($feedingRecordsTuesday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteFeedingRecord('tuesday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#">
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewFeedingRecordInput('tuesday')"></button>
+                                </form>
                             </div>
                             <div id="pr-wednesday" class="pr-weekday">
-                                <span class="pr-weekday-span">Wednesday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>18:10</span>
-                                        <span>Milk</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Wednesday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($feedingRecordsWednesday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteFeedingRecord('wednesday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#">
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewFeedingRecordInput('wednesday')"></button>
+                                </form>
                             </div>      
                         </div>  
                         <div class="pr-schedule-3">         
                             <div id="pr-thursday" class="pr-weekday">
-                                <span class="pr-weekday-span">Thursday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>18:10</span>
-                                        <span>Milk</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Thursday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($feedingRecordsThursday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteFeedingRecord('thursday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#">
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewFeedingRecordInput('thursday')"></button>
+                                </form>
                             </div>
                             <div id="pr-friday" class="pr-weekday">
-                                <span class="pr-weekday-span">Friday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>18:10</span>
-                                        <span>Milk</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Friday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($feedingRecordsFriday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteFeedingRecord('friday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#">
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewFeedingRecordInput('friday')"></button>
+                                </form>
                             </div>
                             <div id="pr-saturday" class="pr-weekday">
-                                <span class="pr-weekday-span">Saturday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>18:10</span>
-                                        <span>Milk</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Saturday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($feedingRecordsSaturday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteFeedingRecord('saturday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#">
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewFeedingRecordInput('saturday')"></button>
+                                </form>
                             </div>
                         </div>
                     </div>
                     <div id="pr-sleeping-schedule" class="pr-schedule">
                         <div class="pr-schedule-4">
                             <div id="pr-sunday" class="pr-weekday">
-                                <span class="pr-weekday-span">Sunday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Sunday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($sleepingRecordsSunday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('sunday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#"> <!-- action="./controllers/records/feedingRecordSunday.php" -->
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('sunday')"></button>
+                                </form>
                             </div>
                             <div id="pr-monday" class="pr-weekday">
-                                <span class="pr-weekday-span">Monday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>18:10</span>
-                                        <span>Milk</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Monday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($sleepingRecordsMonday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('monday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#">
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('monday')"></button>
+                                </form>
                             </div>
                             <div id="pr-tuesday" class="pr-weekday">
-                                <span class="pr-weekday-span">Tuesday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>18:10</span>
-                                        <span>Milk</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Tuesday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($sleepingRecordsTuesday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('tuesday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#">
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('tuesday')"></button>
+                                </form>
                             </div>
                             <div id="pr-wednesday" class="pr-weekday">
-                                <span class="pr-weekday-span">Wednesday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>18:10</span>
-                                        <span>Milk</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Wednesday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($sleepingRecordsWednesday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('wednesday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#">
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('wednesday')"></button>
+                                </form>
                             </div>      
                         </div>  
                         <div class="pr-schedule-3">         
                             <div id="pr-thursday" class="pr-weekday">
-                                <span class="pr-weekday-span">Thursday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>18:10</span>
-                                        <span>Milk</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
-                                    <div class=pr-schedule-record>
-                                        <span>17:40</span>
-                                        <span>Fruit salad</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Thursday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($sleepingRecordsThursday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('thursday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#">
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('thursday')"></button>
+                                </form>
                             </div>
                             <div id="pr-friday" class="pr-weekday">
-                                <span class="pr-weekday-span">Friday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>18:10</span>
-                                        <span>Milk</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Friday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($sleepingRecordsFriday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('friday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#">
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('friday')"></button>
+                                </form>
                             </div>
                             <div id="pr-saturday" class="pr-weekday">
-                                <span class="pr-weekday-span">Saturday</span>
-                                <div class="pr-schedule-records">
-                                    <div class=pr-schedule-record>
-                                        <span>18:10</span>
-                                        <span>Milk</span>
-                                    </div>
+                                <div class="pr-weekday-title">
+                                    <span class="pr-weekday-span">Saturday</span>
+                                    <button type="#" class="pr-add-new-record-button"></button>
                                 </div>
+                                <div class="pr-schedule-records">
+                                    <?php 
+                                    foreach ($sleepingRecordsSaturday as $record) { ?>
+                                        <div class="pr-schedule-record">
+                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo $record['rec_description'];?></span>
+                                            <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('saturday', <?php echo $record['id'];?>)"></button>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                </div>
+                                <form class="pr-new-record" method="post" action="#">
+                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <button type="submit" class="pr-submit-new-record"></button>
+                                    <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('saturday')"></button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- <div id="pr-calendar-list">
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div class="pr-list-item">
-                        <input type="date" disabled>
-                        <span class="pr-item-context">Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text Some text </span>
-                    </div>
-                    <div id="pr-calendar-buttons">
-                        <button type="#" class="pr-button-medical-record pr-calendar-button" onclick="return false;"><span>New</span></button>
-                        <button type="#" class="pr-button-medical-record pr-calendar-button" onclick="return false;"><span>Save</span></button>
-                        <button type="#" class="pr-export-pdf" onclick="return false;"></button>
-                    </div>
-                </div> -->
             </div>
         </div>
         <div id="pr-close-2col-form">

@@ -124,4 +124,16 @@
         $stmt = $GLOBALS['pdo']->prepare("DELETE FROM sleeping_records WHERE id = ?");
         $stmt->execute([$recordId]);
     }
+
+    function addNewMedicalRecord($docName, $diagnosis, $date, $treatment){
+        $stmt = $GLOBALS['pdo']->prepare("INSERT INTO medical_records(child_id, user_id, doctor_name, diagnosis, treatment, record_date) values(?,?,?,?,?,?)");
+        $stmt->execute([$_SESSION['child_id'], $_SESSION['user_id'], $docName, $diagnosis, $treatment, $date]);
+    }
+
+    function getMedicalRecords($child_id, $user_id){
+        $stmt = $GLOBALS['pdo']->prepare("SELECT * FROM medical_records WHERE child_id = ? and user_id = ? ORDER BY record_date ASC");
+        $stmt->execute([$child_id, $user_id]);
+        $medicalRecords = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $medicalRecords;
+    }
 ?>

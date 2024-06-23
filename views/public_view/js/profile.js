@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const feedingScheduleButton = document.getElementById("pr-open-feeding-schedule");
     const sleepingScheduleButton = document.getElementById("pr-open-sleeping-schedule");
     const sharedMemoryButton = document.querySelector('#pr-add-memory-form-container button');
+    const addNewMedicalRecordButton = document.querySelector('.pr-button-medical-record');
+    const saveNewMedicalRecordButton = document.querySelector('.pr-save-new-med-record');
 
     const feedingScheduleNewSundayRecordButton = document.querySelector('#pr-feeding-schedule #pr-sunday .pr-add-new-record-button');
     const feedingScheduleNewMondayRecordButton = document.querySelector('#pr-feeding-schedule #pr-monday .pr-add-new-record-button');
@@ -59,6 +61,45 @@ document.addEventListener("DOMContentLoaded", function() {
     const feedingScheduleNewTuesdayRecordInput = document.querySelector('#pr-feeding-schedule #pr-tuesday .pr-new-record');
     const feedingScheduleNewMondayRecordInput = document.querySelector('#pr-feeding-schedule #pr-monday .pr-new-record');
     const feedingScheduleNewSundayRecordInput = document.querySelector('#pr-feeding-schedule #pr-sunday .pr-new-record');
+
+    addNewMedicalRecordButton.addEventListener('click', function() {
+        const newMedicalRecord = document.querySelector('.pr-new-medical-record');
+        newMedicalRecord.style.display = "contents";
+        //document.querySelector("#pr-medical-table table").scrollTop = document.querySelector("#pr-medical-table table").scrollHeight;
+        //alert(document.getElementById("pr-medical-table").scrollHeight);
+    });
+
+    saveNewMedicalRecordButton.addEventListener('click', function() {
+        const docName = document.querySelector('.pr-new-doc-name');
+        const diagnosis = document.querySelector('.pr-new-diagnosis');
+        const inputDate = document.querySelector('.pr-new-med-rec-date');
+        const treatment = document.querySelector('.pr-new-treatment');
+        //alert("OK");
+        //alert(docName.value + '|' + diagnosis.value + '|' + inputDate.value + '|' + treatment.value);
+        if(docName.value.length <= 0) {
+            wrongInputAnimation(docName);
+            return;
+        }
+        else if(diagnosis.value.length <= 0) {
+            wrongInputAnimation(diagnosis);
+            return;
+        }
+        else if(inputDate.value.length <= 0 || new Date(inputDate.value) > new Date()) {
+            wrongInputAnimation(inputDate);
+            return;
+        }
+        else if(treatment.value.length <= 0) {
+            wrongInputAnimation(treatment);
+            return;
+        }
+        addNewMedicalRecord(docName.value, diagnosis.value, inputDate.value, treatment.value);
+        setTimeout(function(){updateMedicalRecords(document.querySelector('#pr-medical-table table tbody'));}, 100);
+        //alert("OK");
+        docName.value = "";
+        diagnosis.value = "";
+        inputDate.value = "";
+        treatment.value = "";
+    });
 
     let sharedMemory = false;
     sharedMemoryButton.addEventListener('click', function(e) {
@@ -106,16 +147,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const form = new FormData(feedingScheduleNewSundayRecordInput);
         if(form.get('record-time').length == 0){
             let wrongInput = feedingScheduleNewSundayRecordInput.querySelector('.pr-new-record-time');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = feedingScheduleNewSundayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         addNewFeedingRecord("sunday", form.get('record-time'), form.get('record-text'));
@@ -129,16 +166,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const form = new FormData(feedingScheduleNewMondayRecordInput);
         if(form.get('record-time').length == 0){
             let wrongInput = feedingScheduleNewMondayRecordInput.querySelector('.pr-new-record-time');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = feedingScheduleNewMondayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         addNewFeedingRecord("monday", form.get('record-time'), form.get('record-text'));
@@ -152,16 +185,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const form = new FormData(feedingScheduleNewTuesdayRecordInput);
         if(form.get('record-time').length == 0){
             let wrongInput = feedingScheduleNewTuesdayRecordInput.querySelector('.pr-new-record-time');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = feedingScheduleNewTuesdayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         addNewFeedingRecord("tuesday", form.get('record-time'), form.get('record-text'));
@@ -175,16 +204,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const form = new FormData(feedingScheduleNewWednesdayRecordInput);
         if(form.get('record-time').length == 0){
             let wrongInput = feedingScheduleNewWednesdayRecordInput.querySelector('.pr-new-record-time');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = feedingScheduleNewWednesdayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         addNewFeedingRecord("wednesday", form.get('record-time'), form.get('record-text'));
@@ -198,16 +223,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const form = new FormData(feedingScheduleNewThursdayRecordInput);
         if(form.get('record-time').length == 0){
             let wrongInput = feedingScheduleNewThursdayRecordInput.querySelector('.pr-new-record-time');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = feedingScheduleNewThursdayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         addNewFeedingRecord("thursday", form.get('record-time'), form.get('record-text'));
@@ -221,16 +242,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const form = new FormData(feedingScheduleNewFridayRecordInput);
         if(form.get('record-time').length == 0){
             let wrongInput = feedingScheduleNewFridayRecordInput.querySelector('.pr-new-record-time');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = feedingScheduleNewFridayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         addNewFeedingRecord("friday", form.get('record-time'), form.get('record-text'));
@@ -244,16 +261,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const form = new FormData(feedingScheduleNewSaturdayRecordInput);
         if(form.get('record-time').length == 0){
             let wrongInput = feedingScheduleNewSaturdayRecordInput.querySelector('.pr-new-record-time');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = feedingScheduleNewSaturdayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         addNewFeedingRecord("saturday", form.get('record-time'), form.get('record-text'));
@@ -280,9 +293,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = sleepingScheduleNewSundayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         //alert(form.get('start-time') + ' | ' + form.get('end-time'));
@@ -309,9 +320,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = sleepingScheduleNewMondayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         addNewSleepingRecord("monday", form.get('start-time'), form.get('end-time'), form.get('record-text'));
@@ -337,9 +346,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = sleepingScheduleNewTuesdayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         addNewSleepingRecord("tuesday", form.get('start-time'), form.get('end-time'), form.get('record-text'));
@@ -365,9 +372,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = sleepingScheduleNewWednesdayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         addNewSleepingRecord("wednesday", form.get('start-time'), form.get('end-time'), form.get('record-text'));
@@ -393,9 +398,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = sleepingScheduleNewThursdayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         addNewSleepingRecord("thursday", form.get('start-time'), form.get('end-time'), form.get('record-text'));
@@ -421,9 +424,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = sleepingScheduleNewFridayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         addNewSleepingRecord("friday", form.get('start-time'), form.get('end-time'), form.get('record-text'));
@@ -449,9 +450,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         if(form.get('record-text').length > 50 || form.get('record-text').length == 0){
             let wrongInput = sleepingScheduleNewSaturdayRecordInput.querySelector('.pr-new-record-text');
-            wrongInput.classList.toggle('pr-wrong-input');
-            wrongInput.style.borderRadius = "0.2rem";
-            setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input"); wrongInput.style.borderRadius = "0";}, 1000);
+            wrongInputAnimation(wrongInput);
             return;
         }  
         addNewSleepingRecord("saturday", form.get('start-time'), form.get('end-time'), form.get('record-text'));
@@ -783,14 +782,20 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 100);
     });
 
-    if(medicalHistory.style.display != "none") {
-        tableCells.forEach(function(tableCell) {
-            // tableCell.style.height = "";
-            // tableCell.style.height = tableCell.scrollHeight + "px";
-            tableCell.addEventListener("input", function () {
-                // tableCell.style.height = "";
-                tableCell.style.height = tableCell.scrollHeight + "px";
-            });
-        });
-    }
+    // if(medicalHistory.style.display != "none") {
+    //     tableCells.forEach(function(tableCell) {
+    //         // tableCell.style.height = "";
+    //         // tableCell.style.height = tableCell.scrollHeight + "px";
+    //         tableCell.addEventListener("input", function () {
+    //             // tableCell.style.height = "";
+    //             tableCell.style.height = tableCell.scrollHeight + "px";
+    //         });
+    //     });
+    // }
 });
+
+function wrongInputAnimation(wrongInput) {
+    wrongInput.classList.toggle('pr-wrong-input');
+    wrongInput.style.borderRadius = "0.2rem";
+    setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input");}, 1000);
+}

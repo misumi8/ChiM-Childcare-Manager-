@@ -40,7 +40,9 @@
                 <img src="../CHiM/views/includes/header-images/web_icon.png" /><a href="/CHiM/feed">Feed</a>
             </div>
         </div>
-        <button id="log-out" onclick="logOut(); location.reload(true);">Log out</button>
+        <?php if(isset($_SESSION['user_id'])) { 
+            echo '<button id="log-out" onclick="logOut(); location.reload(true);">Log out</button>';
+        }?>
     </div>
     <script src="../CHiM/controllers/js/header.js"></script>
     <script src="../CHiM/models/headerModel.js"></script>

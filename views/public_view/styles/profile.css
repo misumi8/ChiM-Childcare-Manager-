@@ -765,7 +765,7 @@ button {
     border: none;
     resize: none;
     outline: none;
-    height: 15rem;
+    height: 10rem;
     width: 100%;
     background-color: #deadf1;
     border-radius: 0.4rem;
@@ -796,7 +796,17 @@ button {
     border: none;
     text-align: center;
     width: 32%;
+    margin-left: 0.55rem;
     outline: none;
+    color: #262626;
+}
+
+.pr-medical-record-date::-webkit-calendar-picker-indicator{
+    display: none;
+}
+
+.pr-new-diagnosis::placeholder, .pr-new-doc-name::placeholder, .pr-new-treatment::placeholder {
+    color: rgb(23, 23, 23);
 }
 
 .row td{
@@ -828,6 +838,7 @@ table tr {
     height: 3rem;
     background-color: #A635D6;
     border: 0.2rem solid #A635D6;
+    color: #eeeeee;
 }
 
 .pr-button-medical-record {
@@ -1412,6 +1423,10 @@ table tr {
 
 #pr-child-id {
     display: none;
+}
+
+.pr-new-medical-record {
+    display: none; /*flex*/
 }
 
 @media only screen and (max-width: 1475px) {

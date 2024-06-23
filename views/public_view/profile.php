@@ -88,99 +88,44 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach ($medicalRecords as $record) { ?>
                                         <tr class="row">
-                                            <td><textarea class="pr-table-cell">Chris</textarea></td>
+                                            <td><textarea class="pr-table-cell" readonly><?php echo $record['doctor_name'];?></textarea></td>
                                             <td>
-                                                <textarea class="pr-table-cell">HTML tables</textarea>
+                                                <textarea class="pr-table-cell" readonly><?php echo $record['diagnosis'];?></textarea>
                                                 <input requred type="date" 
                                                     class="pr-medical-record-date" 
                                                     name="medical-record-date" 
                                                     placeholder="Date of record"
-                                                    value="11.01.2001"/>  
+                                                    value="<?php echo $record['record_date'];?>"
+                                                    disabled/>  
                                             </td>
-                                            <td><textarea class="pr-table-cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                            </textarea></td>                                            </tr>
-                                        <tr class="row">
-                                            <td><textarea class="pr-table-cell" >Dennis</textarea></td>
                                             <td>
-                                                <textarea class="pr-table-cell">Web accessibility</textarea>
-                                                <input requred type="date" 
-                                                    class="pr-medical-record-date" 
-                                                    name="medical-record-date" 
-                                                    placeholder="Date of record"
-                                                    value="11.01.2001"/>   
-                                            </td>
-                                            <td><textarea class="pr-table-cell">45</textarea></td>
+                                                <textarea class="pr-table-cell" readonly><?php echo $record['treatment'];?></textarea>
+                                            </td>                                            
                                         </tr>
-                                        <tr class="row">
-                                            <td><textarea class="pr-table-cell">Sarah</textarea></td>
+                                        <?php } ?>
+                                        <tr class="row pr-new-medical-record">
                                             <td>
-                                                <textarea class="pr-table-cell">JavaScript frameworks</textarea>
+                                                <textarea class="pr-table-cell pr-new-doc-name" maxlength="50" placeholder="Doctor name"></textarea>
+                                            </td>
+                                            <td>
+                                                <textarea class="pr-table-cell pr-new-diagnosis" maxlength="150" placeholder="Diagnosis"></textarea>
                                                 <input requred type="date" 
-                                                    class="pr-medical-record-date" 
+                                                    class="pr-medical-record-date pr-new-med-rec-date" 
                                                     name="medical-record-date" 
                                                     placeholder="Date of record"
-                                                    value="11.01.2001"/>  
+                                                   />  
                                             </td>
-                                            <td><textarea class="pr-table-cell">29</textarea></td>
-                                        </tr>
-                                        <tr class="row">
-                                            <td><textarea class="pr-table-cell">Karen</textarea></td>
                                             <td>
-                                                <textarea class="pr-table-cell">Web performance</textarea>
-                                                <input requred type="date" 
-                                                        class="pr-medical-record-date" 
-                                                        name="medical-record-date" 
-                                                        placeholder="Date of record"
-                                                        value="11.01.2001"/>  
+                                                <textarea class="pr-table-cell pr-new-treatment" maxlength="300" placeholder="Treatment"></textarea>
                                             </td>
-                                            <td><textarea class="pr-table-cell">36</textarea></td>
-                                        </tr>
-                                        <tr class="row">
-                                            <td><textarea class="pr-table-cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                            </textarea></td>
-                                            <td>
-                                                <textarea class="pr-table-cell">HTML tables</textarea>
-                                                <input requred type="date" 
-                                                    class="pr-medical-record-date" 
-                                                    name="medical-record-date" 
-                                                    placeholder="Date of record"
-                                                    value="11.01.2001"/>  
-                                            </td>
-                                            <td><textarea class="pr-table-cell">22</textarea></td>
-                                        </tr>
-                                        <tr class="row">
-                                            <td><textarea class="pr-table-cell">Dennis</textarea></td>
-                                            <td>
-                                                <textarea class="pr-table-cell">Web accessibility</textarea>
-                                                <input requred type="date" 
-                                                    class="pr-medical-record-date" 
-                                                    name="medical-record-date" 
-                                                    placeholder="Date of record"
-                                                    value="11.01.2001"/>  
-                                            </td>
-                                            <td><textarea class="pr-table-cell">45</textarea></td>
-                                        </tr>
-                                        <tr class="row">
-                                            <td><textarea class="pr-table-cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                            </textarea></td>
-                                            <td>
-                                                <textarea class="pr-table-cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                                </textarea>
-                                                <input requred type="date" 
-                                                    class="pr-medical-record-date" 
-                                                    name="medical-record-date" 
-                                                    placeholder="Date of record"
-                                                    value="11.01.2001"/>  
-                                            </td>
-                                            <td><textarea class="pr-table-cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                            </textarea></td>
                                         </tr>
                                     </tbody>
                                 </table>
                                 <div id="pr-buttons-medical-history">
                                     <button type="#" class="pr-button-medical-record" onclick="return false;"><span>Add medical record</span></button>
-                                    <button type="#" class="pr-button-medical-record pr-medical-big-text" onclick="return false;"><span>Save</span></button>
+                                    <button type="#" class="pr-button-medical-record pr-medical-big-text pr-save-new-med-record" onclick="return false;"><span>Save</span></button>
                                 </div> 
                             </div>
                         </div>

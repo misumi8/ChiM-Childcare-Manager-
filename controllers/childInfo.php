@@ -10,7 +10,8 @@
     $childDOB = $childDOB->format('d.m.Y');
     $childMemories = getChildMemories($_SESSION['child_id']);
     $userChildrenList = getUserChildrenInfo($_SESSION['user_id']);
-
+    $medicalRecords = getMedicalRecords($_SESSION['child_id'], $_SESSION['user_id']);
+    
     $feedingRecordsSunday = getFeedingRecords($_SESSION['child_id'], "sunday");
     $feedingRecordsMonday = getFeedingRecords($_SESSION['child_id'], "monday");
     $feedingRecordsTuesday = getFeedingRecords($_SESSION['child_id'], "tuesday");

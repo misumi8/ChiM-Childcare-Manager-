@@ -7,6 +7,7 @@ function logOut(){
             if (xhr.status != 200) {
                 alert(xhr.responseText);
             }
+            else location.reload(true);
             //else alert(xhr.responseText);
         }
     };

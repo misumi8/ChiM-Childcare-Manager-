@@ -292,3 +292,37 @@ function deleteSleepingRecord(weekday, recordId){
     };
     xhr.send(param);
 }
+
+function addNewMedicalRecord(docName, diagnosis, date, treatment){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../CHiM/controllers/addNewMedicalRecord.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var params = 'docName=' + encodeURIComponent(docName) + '&diagnosis=' + encodeURIComponent(diagnosis) + '&date=' + encodeURIComponent(date) + '&treatment=' + encodeURIComponent(treatment);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status != 200) {
+                alert(xhr.responseText);
+            }
+        }
+    };
+    xhr.send(params);
+}
+
+function updateMedicalRecords(recordList){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../CHiM/controllers/getUpdatedHtmlMedicalRecordList.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status != 200) {
+                alert(xhr.responseText);
+            }
+            else {
+                //alert(xhr.responseText);
+                //document.querySelector('#pr-feeding-schedule #pr-' + weekday + ' .pr-schedule-records').style.display = 'none';
+                recordList.innerHTML = xhr.responseText;
+            }
+        }
+    };
+    xhr.send();
+}

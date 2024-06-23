@@ -1287,6 +1287,10 @@ table tr {
     margin-left: -1.75rem
 }
 
+/* #pr-sleeping-schedule .pr-new-record-text::placeholder {
+    margin-left: 0;
+} */
+
 .pr-new-record input {
     text-shadow: 0px 0px 1px #440C5C;
     text-align: center;
@@ -1368,7 +1372,7 @@ table tr {
 }
 
 .pr-new-record .pr-hide-schedule-record-input {
-    background-image: url(../page-images/icons8-close-24.png);
+    background-image: url("../page-images/icons8-close-24.png");
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
@@ -1386,6 +1390,29 @@ table tr {
    background-size: 68%;
 }
 
+#pr-add-memory-form-container button {
+    background-image: url("../page-images/icons8-share-90.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    position: relative;
+    top: 54.6vh;
+    right: 3.4vw;
+    background-size: 100%;
+    height: 3rem;
+    width: 3rem;
+    transition-duration: 0.3s;
+}
+
+#pr-add-memory-form-container button:not(:active) {
+    transition-duration: 0.3s;
+}
+
+#pr-child-id {
+    display: none;
+}
 
 @media only screen and (max-width: 1475px) {
     #pr-add-memory-form-container {

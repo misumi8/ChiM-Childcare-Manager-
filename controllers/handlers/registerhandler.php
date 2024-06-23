@@ -15,6 +15,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(registerNewUser($email, $user_password, $fname, $lname, $birthday)){
         $_SESSION['userInfo'] = getUserInfo($email, $user_password);
+        $_SESSION['user_id'] = $_SESSION['userInfo']['id'];
+        $_SESSION['child_id'] = getFirstMetChildId($_SESSION['user_id']);
         header("Location: /CHiM/profile?id=" . $_SESSION['userInfo']['id']);
         exit();
     }

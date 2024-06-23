@@ -1,9 +1,14 @@
 <?php
-require_once '../CHiM/views/includes/header.php';
-require_once dirname(__DIR__,2) . '/views/includes/footer.php';
-require_once './controllers/childInfo.php';
-require_once dirname(__DIR__,2) . '/views/includes/footer.php';
+    require_once '../CHiM/views/includes/header.php';
+    require_once dirname(__DIR__,2) . '/views/includes/footer.php';
+    require_once './controllers/childInfo.php';
+    require_once dirname(__DIR__,2) . '/views/includes/footer.php';
+    if (!isset($_SESSION['user_id'])) {
+        echo '<script>alert("You are not logged in. Please log in and try again :)");'
+           . 'window.location.href = "/CHiM/login";</script>';
+    }
 ?>
+
 <span id="pr-child-id"><?php echo $_SESSION['child_id'];?></span>
 <div id="pr-frame">
     <div id="pr-child-info">
@@ -262,6 +267,7 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                 <input type="file" name="photo" id="pr-add-memory-input">
                             </div>
                             <textarea name="description" id="pr-add-memory-description" maxlengtd="340" placeholder="What's on your mind?"></textarea>
+                            <button type="button"></button>
                         </div>
                         <div id="pr-save-button-container">
                             <button type="submit" id="pr-add-memory-save-button">SAVE</button> <!-- onclick="return false;" -->
@@ -472,7 +478,7 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                 <form class="pr-new-record" method="post" action="#"> <!-- action="./controllers/records/feedingRecordSunday.php" -->
                                     <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
                                     <input type="time" class="pr-new-record-time" name="end-time">
-                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="...">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('sunday')"></button>
                                 </form>
@@ -498,7 +504,7 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                 <form class="pr-new-record" method="post" action="#">
                                     <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
                                     <input type="time" class="pr-new-record-time" name="end-time">
-                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="...">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('monday')"></button>
                                 </form>
@@ -524,7 +530,7 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                 <form class="pr-new-record" method="post" action="#">
                                     <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
                                     <input type="time" class="pr-new-record-time" name="end-time">
-                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="...">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('tuesday')"></button>
                                 </form>
@@ -550,7 +556,7 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                 <form class="pr-new-record" method="post" action="#">
                                     <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
                                     <input type="time" class="pr-new-record-time" name="end-time">
-                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="...">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('wednesday')"></button>
                                 </form>
@@ -578,7 +584,7 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                 <form class="pr-new-record" method="post" action="#">
                                     <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
                                     <input type="time" class="pr-new-record-time" name="end-time">
-                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="...">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('thursday')"></button>
                                 </form>
@@ -604,7 +610,7 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                 <form class="pr-new-record" method="post" action="#">
                                     <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
                                     <input type="time" class="pr-new-record-time" name="end-time">
-                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="...">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('friday')"></button>
                                 </form>
@@ -630,7 +636,7 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                 <form class="pr-new-record" method="post" action="#">
                                     <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
                                     <input type="time" class="pr-new-record-time" name="end-time">
-                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
+                                    <input type="text" class="pr-new-record-text" name="record-text" placeholder="...">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('saturday')"></button>
                                 </form>

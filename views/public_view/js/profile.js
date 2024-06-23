@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const addMemoryInput = document.getElementById("pr-add-memory-input");
     const feedingScheduleButton = document.getElementById("pr-open-feeding-schedule");
     const sleepingScheduleButton = document.getElementById("pr-open-sleeping-schedule");
-    
+    const sharedMemoryButton = document.querySelector('#pr-add-memory-form-container button');
+
     const feedingScheduleNewSundayRecordButton = document.querySelector('#pr-feeding-schedule #pr-sunday .pr-add-new-record-button');
     const feedingScheduleNewMondayRecordButton = document.querySelector('#pr-feeding-schedule #pr-monday .pr-add-new-record-button');
     const feedingScheduleNewTuesdayRecordButton = document.querySelector('#pr-feeding-schedule #pr-tuesday .pr-add-new-record-button');
@@ -58,6 +59,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const feedingScheduleNewTuesdayRecordInput = document.querySelector('#pr-feeding-schedule #pr-tuesday .pr-new-record');
     const feedingScheduleNewMondayRecordInput = document.querySelector('#pr-feeding-schedule #pr-monday .pr-new-record');
     const feedingScheduleNewSundayRecordInput = document.querySelector('#pr-feeding-schedule #pr-sunday .pr-new-record');
+
+    let sharedMemory = false;
+    sharedMemoryButton.addEventListener('click', function(e) {
+        if(!sharedMemory){
+            sharedMemoryButton.style.backgroundImage = 'url("../CHiM/views/public_view/page-images/icons8-share-90-pressed.png")';
+            sharedMemory = true;
+        }
+        else {
+            sharedMemoryButton.style.backgroundImage = 'url("../CHiM/views/public_view/page-images/icons8-share-90.png")';
+            sharedMemory = false;
+        }
+    });
 
     // FEEDING SCHEDULE 
     feedingScheduleNewSaturdayRecordButton.addEventListener("click", function() {
@@ -253,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function() {
     sleepingScheduleNewSundayRecordInput.addEventListener('submit', function(event) {
         event.preventDefault();
         const form = new FormData(sleepingScheduleNewSundayRecordInput);
-        if(form.get('start-time').length == 0 || form.get('end-time').length == 0){
+        if(form.get('start-time').length == 0 || form.get('end-time').length == 0 || form.get('start-time') >= form.get('end-time')){
             let wrongInput = sleepingScheduleNewSundayRecordInput.querySelectorAll('.pr-new-record-time');
             wrongInput[0].classList.toggle('pr-wrong-input');
             wrongInput[0].style.borderRadius = "0.2rem";
@@ -282,7 +295,7 @@ document.addEventListener("DOMContentLoaded", function() {
     sleepingScheduleNewMondayRecordInput.addEventListener('submit', function(event) {
         event.preventDefault();
         const form = new FormData(sleepingScheduleNewMondayRecordInput);
-        if(form.get('start-time').length == 0 || form.get('end-time').length == 0){
+        if(form.get('start-time').length == 0 || form.get('end-time').length == 0 || form.get('start-time') >= form.get('end-time')){
             let wrongInput = sleepingScheduleNewMondayRecordInput.querySelectorAll('.pr-new-record-time');
             wrongInput[0].classList.toggle('pr-wrong-input');
             wrongInput[0].style.borderRadius = "0.2rem";
@@ -310,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function() {
     sleepingScheduleNewTuesdayRecordInput.addEventListener('submit', function(event) {
         event.preventDefault();
         const form = new FormData(sleepingScheduleNewTuesdayRecordInput);
-        if(form.get('start-time').length == 0 || form.get('end-time').length == 0){
+        if(form.get('start-time').length == 0 || form.get('end-time').length == 0 || form.get('start-time') >= form.get('end-time')){
             let wrongInput = sleepingScheduleNewTuesdayRecordInput.querySelectorAll('.pr-new-record-time');
             wrongInput[0].classList.toggle('pr-wrong-input');
             wrongInput[0].style.borderRadius = "0.2rem";
@@ -338,7 +351,7 @@ document.addEventListener("DOMContentLoaded", function() {
     sleepingScheduleNewWednesdayRecordInput.addEventListener('submit', function(event) {
         event.preventDefault();
         const form = new FormData(sleepingScheduleNewWednesdayRecordInput);
-        if(form.get('start-time').length == 0 || form.get('end-time').length == 0){
+        if(form.get('start-time').length == 0 || form.get('end-time').length == 0 || form.get('start-time') >= form.get('end-time')){
             let wrongInput = sleepingScheduleNewWednesdayRecordInput.querySelectorAll('.pr-new-record-time');
             wrongInput[0].classList.toggle('pr-wrong-input');
             wrongInput[0].style.borderRadius = "0.2rem";
@@ -366,7 +379,7 @@ document.addEventListener("DOMContentLoaded", function() {
     sleepingScheduleNewThursdayRecordInput.addEventListener('submit', function(event) {
         event.preventDefault();
         const form = new FormData(sleepingScheduleNewThursdayRecordInput);
-        if(form.get('start-time').length == 0 || form.get('end-time').length == 0){
+        if(form.get('start-time').length == 0 || form.get('end-time').length == 0 || form.get('start-time') >= form.get('end-time')){
             let wrongInput = sleepingScheduleNewThursdayRecordInput.querySelectorAll('.pr-new-record-time');
             wrongInput[0].classList.toggle('pr-wrong-input');
             wrongInput[0].style.borderRadius = "0.2rem";
@@ -394,7 +407,7 @@ document.addEventListener("DOMContentLoaded", function() {
     sleepingScheduleNewFridayRecordInput.addEventListener('submit', function(event) {
         event.preventDefault();
         const form = new FormData(sleepingScheduleNewFridayRecordInput);
-        if(form.get('start-time').length == 0 || form.get('end-time').length == 0){
+        if(form.get('start-time').length == 0 || form.get('end-time').length == 0 || form.get('start-time') >= form.get('end-time')){
             let wrongInput = sleepingScheduleNewFridayRecordInput.querySelectorAll('.pr-new-record-time');
             wrongInput[0].classList.toggle('pr-wrong-input');
             wrongInput[0].style.borderRadius = "0.2rem";
@@ -422,7 +435,7 @@ document.addEventListener("DOMContentLoaded", function() {
     sleepingScheduleNewSaturdayRecordInput.addEventListener('submit', function(event) {
         event.preventDefault();
         const form = new FormData(sleepingScheduleNewSaturdayRecordInput);
-        if(form.get('start-time').length == 0 || form.get('end-time').length == 0){
+        if(form.get('start-time').length == 0 || form.get('end-time').length == 0 || form.get('start-time') >= form.get('end-time')){
             let wrongInput = sleepingScheduleNewSaturdayRecordInput.querySelectorAll('.pr-new-record-time');
             wrongInput[0].classList.toggle('pr-wrong-input');
             wrongInput[0].style.borderRadius = "0.2rem";
@@ -571,7 +584,7 @@ document.addEventListener("DOMContentLoaded", function() {
             //alert(photo);
             
             const description = form.get('description');
-            addMemory(photo, description, important);
+            addMemory(photo, description, important, sharedMemory);
         }
         else contentUploaded = false;
         //else alert("content is required");

@@ -1,6 +1,6 @@
 <?php
 require_once '../includes/database.php';
-require_once '../../helpers/image_processing.php';
+require_once '../../models/image_processing.php';
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 10;

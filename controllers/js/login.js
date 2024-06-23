@@ -1,6 +1,5 @@
 document.querySelector('#login-button').addEventListener('click', function(event) {
     event.preventDefault();
-    
     var emailRequiered = false;
     var emailFormat = false;
     var passwordRequiered = false;
@@ -22,45 +21,52 @@ document.querySelector('#login-button').addEventListener('click', function(event
 
     if (!email.value.trim()) {
         emailError.textContent = "Email is required";
-        if (!emailRequiered) {
-            resizeLoginForm(loginbox, loginButton, notRegisteredYet);
-            emailRequiered = true;
-        }
+        wrongInputAnimation(email);
+        // if (!emailRequiered) {
+        //     resizeLoginForm(loginbox, loginButton, notRegisteredYet);
+        //     emailRequiered = true;
+        // }
         valid = false;
     } else if (!isEmailValid(email.value.trim())) {
         emailError.textContent = "Invalid email format";
-        if (!emailFormat) {
-            resizeLoginForm(loginbox, loginButton, notRegisteredYet);
-            emailFormat = true;
-        }
+        wrongInputAnimation(email);
+        // if (!emailFormat) {
+        //     resizeLoginForm(loginbox, loginButton, notRegisteredYet);
+        //     emailFormat = true;
+        // }
         valid = false;
     }
 
-    var passwordCheck = isPasswordValid(password.value.trim());
+    //var passwordCheck = isPasswordValid(password.value.trim());
     if (!password.value.trim()) {
         passError.textContent = "Password is required";
-        if (!passwordRequiered) {
-            resizeLoginForm(loginbox, loginButton, notRegisteredYet);
-            passwordRequiered = true;
-        }
+        wrongInputAnimation(password);
+        // if (!passwordRequiered) {
+        //     resizeLoginForm(loginbox, loginButton, notRegisteredYet);
+        //     passwordRequiered = true;
+        // }
         valid = false;
-    } else if (password.value.length < 8) {
-        if (!minPassLength) {
-            resizeLoginForm(loginbox, loginButton, notRegisteredYet);
-            minPassLength = true;
-        }
+    } 
+    else if (password.value.length < 8) {
+        // if (!minPassLength) {
+        //     resizeLoginForm(loginbox, loginButton, notRegisteredYet);
+        //     minPassLength = true;
+        // }
         passError.textContent = "Password must be minimum 8 characters long";
+        wrongInputAnimation(password);
         valid = false;
-    } else if (passwordCheck) {
-        if (!passCheckPassed) {
-            resizeLoginForm(loginbox, loginButton, notRegisteredYet, 64);
-            passCheckPassed = true;
-        }
-        passError.textContent = passwordCheck;
-        valid = false;
-    }
+    } 
+    // else if (passwordCheck) {
+    //     if (!passCheckPassed) {
+    //         resizeLoginForm(loginbox, loginButton, notRegisteredYet, 64);
+    //         passCheckPassed = true;
+    //     }
+    //     passError.textContent = passwordCheck;
+    //     valid = false;
+    // }
 
     if (valid) {
+        //alert("AAAAAAAAA");
         document.querySelector('#login-form').submit();
     }
 });
@@ -70,13 +76,15 @@ document.addEventListener('DOMContentLoaded', function() {
         var emailError = document.querySelector('#login-email-error');
         var passError = document.querySelector('#login-password-error');
         emailError.textContent = failedLoginAttempt;
+        //emailError.style.fontSize = "0.75rem";
         passError.textContent = failedLoginAttempt;
+        //passError.style.fontSize = "0.75rem";
 
         const loginbox = document.getElementById('loginbox');
         const loginButton = document.getElementById('login-button');
         const notRegisteredYet = document.getElementById('register');
 
-        resizeLoginForm(loginbox, loginButton, notRegisteredYet);
+        //resizeLoginForm(loginbox, loginButton, notRegisteredYet);
     }
 });
 
@@ -110,11 +118,15 @@ function isPasswordValid(password) {
             errorMsg = errorMsg.replace("Password must contain at least one special character.", "");
         }
     }
-    return errorMsg;
 }
 
 function resizeLoginForm(loginbox, loginButton, notRegisteredYet, additionalHeight = 16) {
     loginbox.style.height = (loginbox.clientHeight + additionalHeight) + "px";
     loginButton.style.marginTop = (parseInt(window.getComputedStyle(loginButton).marginTop) + additionalHeight) + "px";
     notRegisteredYet.style.marginTop = (parseInt(window.getComputedStyle(notRegisteredYet).marginTop) + additionalHeight) + "px";
+}
+
+function wrongInputAnimation(input){
+    input.classList.toggle('pr-wrong-input');
+    setTimeout(function(){input.classList.toggle("pr-wrong-input"); input.style.color = "";}, 1000);
 }

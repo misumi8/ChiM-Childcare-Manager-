@@ -21,7 +21,7 @@
     justify-content: space-around;
     grid-template-rows: 10% 10% 10%;
     width: 100%;
-    height: 100%;
+    height: 83.55%;
 }
 
 .header:hover .item-list{
@@ -30,7 +30,7 @@
     justify-content: space-around;
     grid-template-rows: 10% 10% 10%;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
 }
 
 .menu-item {
@@ -50,7 +50,49 @@
     width: 2.5vw;
 }
 
-.header:not(hover){
+.header #log-out {
+    background-image: url("../page-images/icons8-emergency-exit-15.png");
+    background-repeat: no-repeat;
+    background-position-x: 68.5%;
+    background-position-y: 65%;
+    opacity: 0;
+    border: none;
+    color: white;
+    background-color: transparent;
+    outline: none;
+    font-size: 1rem;
+    text-align: center;
+    width:100%;
+    /* height: 10%; */
+    margin-top: -50vh;
+    margin-left: -0.45em;
+    transition-duration: 0.5s;
+    font-family: "Noto Sans JP", sans-serif;
+    /* text-shadow: 4px 3px 0px #440C5C; */
+}
+
+.header #log-out:hover {
+    transition-duration: 0.3s;
+    color: #e3dde6;
+    text-shadow: 2px 1.5px 0px #440C5C;
+    background-image: url("../page-images/icons8-emergency-exit-15-hover.png");
+}
+
+.header #log-out:not(:hover) {
+    transition-duration: 0.3s;
+}
+
+.header:hover #log-out {
+    opacity: 1;
+}
+
+.header:not(:hover) #log-out {
+    opacity: 0;
+    transition-duration: 0.1s;
+}
+
+
+.header{
     overflow: hidden; 
     position: fixed;
     height: 100%;
@@ -62,7 +104,7 @@
     background-color: #B35BD9;
 }
 
-.header:not(hover) a, .header:not(hover) #header-text {
+.header a, .header #header-text {
     text-align: center;
     text-decoration: none;
     color: transparent;
@@ -96,7 +138,7 @@
     text-shadow: 4px 3px 0px #440C5C;
 }
 
-.header:not(hover) .line {
+.header .line {
     content: '';
     position: fixed;
     top: 10.8%;

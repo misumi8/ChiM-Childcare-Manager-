@@ -94,20 +94,21 @@ function setSessionChildId(userId, childId) {
     xhr.send(params);
 }
 
-async function addMemory(content, description, important){
+async function addMemory(content, description, important, shared){
     const reader = new FileReader();
     
     reader.addEventListener("load", () => {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '../CHiM/controllers/addNewMemory.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        var params = 'description=' + encodeURIComponent(description) + '&important=' + encodeURIComponent(important ? 1 : 0) + '&content=' + encodeURIComponent(reader.result);
+        var params = 'description=' + encodeURIComponent(description) + '&shared=' + encodeURIComponent(shared ? 1 : 0) + '&important=' + encodeURIComponent(important ? 1 : 0) + '&content=' + encodeURIComponent(reader.result);
         xhr.onreadystatechange = function() {
             if (xhr.readyState == XMLHttpRequest.DONE) {
                 if (xhr.status != 200) {
                     alert("addMemory error");
                 }
                 else {
+                    //alert(xhr.responseText);
                     location.reload(true); // true -> cache ignore
                 }
             }

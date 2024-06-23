@@ -12,6 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userInfo = getUserInfo($email, $user_password);
     if ($userInfo) {
         $_SESSION['userInfo'] = $userInfo;
+        $_SESSION['user_id'] = $userInfo['id'];
+        $_SESSION['child_id'] = getFirstMetChildId($_SESSION['user_id']);
         header("Location: /CHiM/profile?id=" . $_SESSION['userInfo']['id']);
     } else {
         $_SESSION['login_errors'] = "Invalid email or password.";

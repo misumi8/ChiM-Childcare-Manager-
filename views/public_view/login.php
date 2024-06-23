@@ -17,13 +17,13 @@ if (isset($_SESSION['login_errors'])) {
                 <ul>
                     <li id="user-name">
                         <label for="user-name-input-id">Email address:</label><br />
-                        <input required type="text" class="user-name-input" id="user-name-input-id" name="email" placeholder="Email address" autocomplete="on" />
+                        <input type="text" class="user-name-input" id="user-name-input-id" name="email" placeholder="Email address" autocomplete="on" />
                         <br>
                         <span id="login-email-error"><?= htmlspecialchars($failedLoginAttempt); ?></span>
                     </li>
                     <li id="user-password-input">
                         <label for="user-password-input-id">Password:</label><br />
-                        <input required type="password" class="user-password-input" id="user-password-input-id" name="user_password" placeholder="Password" />
+                        <input type="password" class="user-password-input" id="user-password-input-id" name="user_password" placeholder="Password" />
                         <br>
                         <span id="login-password-error"><?= htmlspecialchars($failedLoginAttempt); ?></span>
                     </li>
@@ -42,7 +42,7 @@ if (isset($_SESSION['login_errors'])) {
     var failedLoginAttempt = "<?= $failedLoginAttempt; ?>";
 </script>
 
-<script src="login.js"></script>
+<script src="..\CHiM\controllers\js\login.js"></script>
 
 <?php
 require_once dirname(__DIR__, 2) . '/views/includes/footer.php';

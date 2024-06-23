@@ -37,18 +37,18 @@ require_once '../CHiM/views/includes/header.php';
                     </li>
                     <li class="reg-user-input">
                         <label for="register_user_password">Password:</label><br />
-                        <input type="text" class="reg-user-password-input" id="reg-pass" name="register_user_password" placeholder="Password" />
+                        <input type="password" class="reg-user-password-input" id="reg-pass" name="register_user_password" placeholder="Password" />
                         <br>
                         <span id="login-password-error"></span>
                     </li>
                     <li class="reg-password-repeat-input">
                         <label for="register_user_password_repeat">Repeat your password:</label><br />
-                        <input type="text" class="reg-user-password-repeat" id="reg-pass-repeat" name="register_user_password_repeat" placeholder="Repeat password" />
+                        <input type="password" class="reg-user-password-repeat" id="reg-pass-repeat" name="register_user_password_repeat" placeholder="Repeat password" />
                         <br>
                         <span id="login-password-repeat-error"></span>
                     </li>
                     <br>
-                    <button type="submit" id="login-button">Sign up</button>
+                    <button type="submit" id="reg-register-button">Sign up</button>
                     <br><br>
                     <div id="reg-login">
                         Already have an account?

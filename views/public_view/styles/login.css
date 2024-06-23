@@ -42,7 +42,7 @@ body {
     from {
         margin-top: -5%;
         background: linear-gradient(to right, #b35bd9 20%, #a635d6 40%, #a635d6 60%, #b35bd9 20%);
-        margin-left: -17.5vw;
+        margin-left: -14vw;
     }
     to {
         margin-top: -5%;
@@ -109,13 +109,14 @@ body {
     box-shadow: 0rem 0rem 0.15rem rgb(177, 177, 177);
 }
   
-#login-button:not(hover) {
+#login-button {
     outline: none;
     border: 0.01rem solid rgb(203, 203, 203);
     box-shadow: 0rem 0rem 0.15rem rgb(177, 177, 177);
     width: 8rem;
+    margin-top: 0.35rem;
     height: 2.2rem;
-    border-radius: 1rem;
+    border-radius: 0.8rem;
     margin-left: 28%;
     transition-duration: 0.3s;
     font-size: 0.95rem;
@@ -130,7 +131,6 @@ body {
     transition-duration: 0.2s;
     width: 8rem;
     height: 2.2rem;
-    border-radius: 1rem;
     margin-left: 28%;
 }
 
@@ -143,4 +143,34 @@ body {
 
 #login-email-error, #login-password-error, #login-fname-error, #login-lname-error, #login-password-repeat-error, #login-dob-error {
     color: rgb(184, 5, 5);
+    font-size: 0.75rem;
+}
+
+#login-form ul li span {
+    color: rgb(184, 5, 5);
+    font-size: 0.75rem;
+    /* margin-right: -31rem; */
+    width: 82%;
+    /* height: 1rem; */
+    text-align: right;
+    display: inline-grid;
+}
+
+.pr-wrong-input {
+    background-color: rgb(229, 65, 65);
+    animation: wrongInputAnimation 1s ease;
+}
+
+@keyframes wrongInputAnimation {
+    0% {background-color: rgb(229, 65, 65)}
+    10% {background-color: rgb(203, 43, 43)}
+    20% {background-color: rgb(229, 65, 65)}
+    30% {background-color: rgb(203, 43, 43)}
+    40% {background-color: rgb(229, 65, 65)}
+    50% {background-color: rgb(203, 43, 43)}
+    60% {background-color: rgb(229, 65, 65)}
+    70% {background-color: rgb(203, 43, 43)}
+    80% {background-color: rgb(229, 65, 65)}
+    90% {background-color: rgb(203, 43, 43)}
+    100% {background-color: rgb(229, 65, 65)}
 }

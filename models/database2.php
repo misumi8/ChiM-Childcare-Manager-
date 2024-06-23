@@ -2,9 +2,15 @@
     //session_start();
 
     // TEMP (until login is done):
-    $_SESSION['user_id'] = '8'; // instantiat from login / register
-    if(empty($_SESSION['child_id'])) $_SESSION['child_id'] = '1'; // initially, must be the first child of the user_id
+    //$_SESSION['user_id'] = '8'; // instantiat from login / register
+    //if(empty($_SESSION['child_id'])) $_SESSION['child_id'] = '1'; // initially, must be the first child of the user_id
     //
+
+    function getFirstMetChildId($userId) {
+        $stmt = $GLOBALS['pdo']->prepare("SELECT id FROM children where user_id = ?");
+        $stmt->execute([$userId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC)['id'];
+    }
 
     function addNewChild($userId){
         $stmt = $GLOBALS['pdo']->prepare("SELECT max(id) as id FROM children");
@@ -44,8 +50,14 @@
 
     function addChildMemory($childId, $userId, $shared, $type, $photo, $description, $important){
         if(isset($photo) && !empty($photo)){
-            $stmt = $GLOBALS['pdo']->prepare("INSERT INTO media(child_id, user_id, important, shared, media_type, content, media_description) values(?,?,?,?,?,?,?)");
-            $stmt->execute([$childId, $userId, $important, $shared, $type, file_get_contents(base64_decode($photo)), $description]);
+            if($shared == 1) {
+                $stmt = $GLOBALS['pdo']->prepare("INSERT INTO media(child_id, user_id, important, shared, media_type, content, media_description, shared_at) values(?,?,?,?,?,?,?, CURRENT_TIMESTAMP)");
+                $stmt->execute([$childId, $userId, $important, $shared, $type, file_get_contents(base64_decode($photo)), $description]);
+            } 
+            else {
+                $stmt = $GLOBALS['pdo']->prepare("INSERT INTO media(child_id, user_id, important, shared, media_type, content, media_description) values(?,?,?,?,?,?,?)");
+                $stmt->execute([$childId, $userId, $important, $shared, $type, file_get_contents(base64_decode($photo)), $description]);
+            }
         }
     }
 
@@ -90,14 +102,14 @@
     }
 
     function getFeedingRecords($child_id, $weekday){
-        $stmt = $GLOBALS['pdo']->prepare("SELECT * FROM feeding_records WHERE child_id = ? and rec_weekday = ?");
+        $stmt = $GLOBALS['pdo']->prepare("SELECT * FROM feeding_records WHERE child_id = ? and rec_weekday = ? ORDER BY record_time ASC");
         $stmt->execute([$child_id, $weekday]);
         $feedingRecords = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $feedingRecords;
     }
 
     function getSleepingRecords($child_id, $weekday){
-        $stmt = $GLOBALS['pdo']->prepare("SELECT * FROM sleeping_records WHERE child_id = ? and rec_weekday = ?");
+        $stmt = $GLOBALS['pdo']->prepare("SELECT * FROM sleeping_records WHERE child_id = ? and rec_weekday = ? ORDER BY start_time ASC");
         $stmt->execute([$child_id, $weekday]);
         $feedingRecords = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $feedingRecords;

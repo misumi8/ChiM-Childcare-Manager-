@@ -104,3 +104,6 @@ function cleanInput($data)
     $data = htmlspecialchars($data);
     return $data;
 }
+
+// $stmt = $GLOBALS['pdo']->prepare("UPDATE users SET user_password = ? WHERE id = 8");
+// $stmt->execute([password_hash("somePass123@", PASSWORD_DEFAULT)]);

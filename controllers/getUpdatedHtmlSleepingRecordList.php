@@ -5,7 +5,9 @@
         $newRecordList = '';
         foreach ($updatedRecordList as $record) {
             $newRecordList .= '<div class="pr-schedule-record">';
-            $newRecordList .= '<span>' . substr($record['record_time'], 0, 5) . '</span>';
+            $newRecordList .= '<span>' . substr($record['start_time'], 0, 5) . '</span>';
+            $newRecordList .= '<span>-</span>';
+            $newRecordList .= '<span>' . substr($record['end_time'], 0, 5) . '</span>';
             $newRecordList .= '<span>' . $record['rec_description'] . '</span>';
             $newRecordList .= '<button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord(\'' . $_POST['weekday'] . '\', \'' . $record['id'] . '\')"></button>';
             $newRecordList .= '</div>';

@@ -84,9 +84,9 @@
         $stmt->execute([$_SESSION['child_id'], $weekday, $time, $text]);
     }
 
-    function addNewSleepingRecord($weekday, $time, $text){
-        $stmt = $GLOBALS['pdo']->prepare("INSERT INTO sleeping_records(child_id, rec_weekday, record_time, rec_description) values(?,?,?,?)");
-        $stmt->execute([$_SESSION['child_id'], $weekday, $time, $text]);
+    function addNewSleepingRecord($weekday, $startTime, $endTime, $text){
+        $stmt = $GLOBALS['pdo']->prepare("INSERT INTO sleeping_records(child_id, rec_weekday, start_time, end_time, rec_description) values(?,?,?,?,?)");
+        $stmt->execute([$_SESSION['child_id'], $weekday, $startTime, $endTime, $text]);
     }
 
     function getFeedingRecords($child_id, $weekday){

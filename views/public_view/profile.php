@@ -460,7 +460,9 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     <?php 
                                     foreach ($sleepingRecordsSunday as $record) { ?>
                                         <div class="pr-schedule-record">
-                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo substr($record['start_time'], 0, 5);?></span>
+                                            <span>-</span>
+                                            <span><?php echo substr($record['end_time'], 0, 5);?></span>
                                             <span><?php echo $record['rec_description'];?></span>
                                             <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('sunday', <?php echo $record['id'];?>)"></button>
                                         </div>
@@ -468,7 +470,8 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     }?>
                                 </div>
                                 <form class="pr-new-record" method="post" action="#"> <!-- action="./controllers/records/feedingRecordSunday.php" -->
-                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
+                                    <input type="time" class="pr-new-record-time" name="end-time">
                                     <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('sunday')"></button>
@@ -483,7 +486,9 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     <?php 
                                     foreach ($sleepingRecordsMonday as $record) { ?>
                                         <div class="pr-schedule-record">
-                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo substr($record['start_time'], 0, 5);?></span>
+                                            <span>-</span>
+                                            <span><?php echo substr($record['end_time'], 0, 5);?></span>
                                             <span><?php echo $record['rec_description'];?></span>
                                             <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('monday', <?php echo $record['id'];?>)"></button>
                                         </div>
@@ -491,7 +496,8 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     }?>
                                 </div>
                                 <form class="pr-new-record" method="post" action="#">
-                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
+                                    <input type="time" class="pr-new-record-time" name="end-time">
                                     <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('monday')"></button>
@@ -506,7 +512,9 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     <?php 
                                     foreach ($sleepingRecordsTuesday as $record) { ?>
                                         <div class="pr-schedule-record">
-                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo substr($record['start_time'], 0, 5);?></span>
+                                            <span>-</span>
+                                            <span><?php echo substr($record['end_time'], 0, 5);?></span>
                                             <span><?php echo $record['rec_description'];?></span>
                                             <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('tuesday', <?php echo $record['id'];?>)"></button>
                                         </div>
@@ -514,7 +522,8 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     }?>
                                 </div>
                                 <form class="pr-new-record" method="post" action="#">
-                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
+                                    <input type="time" class="pr-new-record-time" name="end-time">
                                     <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('tuesday')"></button>
@@ -529,7 +538,9 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     <?php 
                                     foreach ($sleepingRecordsWednesday as $record) { ?>
                                         <div class="pr-schedule-record">
-                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo substr($record['start_time'], 0, 5);?></span>
+                                            <span>-</span>
+                                            <span><?php echo substr($record['end_time'], 0, 5);?></span>
                                             <span><?php echo $record['rec_description'];?></span>
                                             <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('wednesday', <?php echo $record['id'];?>)"></button>
                                         </div>
@@ -537,7 +548,8 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     }?>
                                 </div>
                                 <form class="pr-new-record" method="post" action="#">
-                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
+                                    <input type="time" class="pr-new-record-time" name="end-time">
                                     <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('wednesday')"></button>
@@ -554,7 +566,9 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     <?php 
                                     foreach ($sleepingRecordsThursday as $record) { ?>
                                         <div class="pr-schedule-record">
-                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo substr($record['start_time'], 0, 5);?></span>
+                                            <span>-</span>
+                                            <span><?php echo substr($record['end_time'], 0, 5);?></span>
                                             <span><?php echo $record['rec_description'];?></span>
                                             <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('thursday', <?php echo $record['id'];?>)"></button>
                                         </div>
@@ -562,7 +576,8 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     }?>
                                 </div>
                                 <form class="pr-new-record" method="post" action="#">
-                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
+                                    <input type="time" class="pr-new-record-time" name="end-time">
                                     <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('thursday')"></button>
@@ -577,7 +592,9 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     <?php 
                                     foreach ($sleepingRecordsFriday as $record) { ?>
                                         <div class="pr-schedule-record">
-                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo substr($record['start_time'], 0, 5);?></span>
+                                            <span>-</span>
+                                            <span><?php echo substr($record['end_time'], 0, 5);?></span>
                                             <span><?php echo $record['rec_description'];?></span>
                                             <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('friday', <?php echo $record['id'];?>)"></button>
                                         </div>
@@ -585,7 +602,8 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     }?>
                                 </div>
                                 <form class="pr-new-record" method="post" action="#">
-                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
+                                    <input type="time" class="pr-new-record-time" name="end-time">
                                     <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('friday')"></button>
@@ -600,7 +618,9 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     <?php 
                                     foreach ($sleepingRecordsSaturday as $record) { ?>
                                         <div class="pr-schedule-record">
-                                            <span><?php echo substr($record['record_time'], 0, 5);?></span>
+                                            <span><?php echo substr($record['start_time'], 0, 5);?></span>
+                                            <span>-</span>
+                                            <span><?php echo substr($record['end_time'], 0, 5);?></span>
                                             <span><?php echo $record['rec_description'];?></span>
                                             <button type="button" class="pr-record-delete-button" onclick="deleteSleepingRecord('saturday', <?php echo $record['id'];?>)"></button>
                                         </div>
@@ -608,7 +628,8 @@ require_once dirname(__DIR__,2) . '/views/includes/footer.php';
                                     }?>
                                 </div>
                                 <form class="pr-new-record" method="post" action="#">
-                                    <input type="time" class="pr-new-record-time" name="record-time">
+                                    <input type="time" class="pr-new-record-time" name="start-time"><span>-</span>
+                                    <input type="time" class="pr-new-record-time" name="end-time">
                                     <input type="text" class="pr-new-record-text" name="record-text" placeholder="&#127860;">
                                     <button type="submit" class="pr-submit-new-record"></button>
                                     <button type="button" class="pr-hide-schedule-record-input" onclick="removeNewSleepingRecordInput('saturday')"></button>

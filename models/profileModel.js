@@ -186,12 +186,12 @@ function addNewFeedingRecord(weekday, time, text){
     xhr.send(params);
 }
 
-function addNewSleepingRecord(weekday, time, text){
+function addNewSleepingRecord(weekday, startTime, endTime, text){
     //alert('fucntion called');
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '../CHiM/controllers/addNewSleepingRecord.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    var params = 'record-time=' + encodeURIComponent(time) + '&record-text=' + encodeURIComponent(text) + '&weekday=' + encodeURIComponent(weekday);
+    var params = 'start-time=' + encodeURIComponent(startTime) + '&end-time=' + encodeURIComponent(endTime) + '&record-text=' + encodeURIComponent(text) + '&weekday=' + encodeURIComponent(weekday);
     //alert('params created');
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE) {

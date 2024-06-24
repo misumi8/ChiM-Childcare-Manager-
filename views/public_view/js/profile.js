@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const sharedMemoryButton = document.querySelector('#pr-add-memory-form-container button');
     const addNewMedicalRecordButton = document.querySelector('.pr-button-medical-record');
     const saveNewMedicalRecordButton = document.querySelector('.pr-save-new-med-record');
+    const hideNewMedicalRecord = document.querySelector('.pr-new-medical-record .pr-delete-medical-record');
 
     const feedingScheduleNewSundayRecordButton = document.querySelector('#pr-feeding-schedule #pr-sunday .pr-add-new-record-button');
     const feedingScheduleNewMondayRecordButton = document.querySelector('#pr-feeding-schedule #pr-monday .pr-add-new-record-button');
@@ -61,6 +62,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const feedingScheduleNewTuesdayRecordInput = document.querySelector('#pr-feeding-schedule #pr-tuesday .pr-new-record');
     const feedingScheduleNewMondayRecordInput = document.querySelector('#pr-feeding-schedule #pr-monday .pr-new-record');
     const feedingScheduleNewSundayRecordInput = document.querySelector('#pr-feeding-schedule #pr-sunday .pr-new-record');
+
+
+    hideNewMedicalRecord.addEventListener('click', () => {
+        document.querySelector('.pr-new-medical-record').style.display = 'none';
+    });
 
     addNewMedicalRecordButton.addEventListener('click', function() {
         const newMedicalRecord = document.querySelector('.pr-new-medical-record');
@@ -606,6 +612,7 @@ document.addEventListener("DOMContentLoaded", function() {
         memory.style.display = "auto";
         let oddClick = true;
         memory.addEventListener('mouseover', () => {
+            memory.querySelector('.pr-memory-content video').setAttribute("controls", "controls");
             if (memory.previousElementSibling) {
                 let prevMemory = memory.previousElementSibling;
                 while(prevMemory){
@@ -617,6 +624,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         })
         memory.addEventListener('mouseout', () => {
+            memory.querySelector('.pr-memory-content video').removeAttribute("controls");
             if (memory.previousElementSibling) {
                 let prevMemory = memory.previousElementSibling;
                 while(prevMemory){

@@ -28,7 +28,7 @@ require_once '../CHiM/models/image_processing.php';
                         if($years > 0) echo substr($post['shared_at'], 0, 10);
                         else if($months > 0) echo $months > 1 ? ($months . ' months ago') : 'One month ago';
                         else if($days > 0) echo $days > 1 ? ($days .' days ago') : 'One day ago';
-                        else if($hours > 0) echo $hours . ($hours > 1 ? ' hours, ' : ' hour, ') . ($minutes == 0 ? '' : ($minutes . ($minutes > 1 ? ' minutes ago' : ' minute ago')));
+                        else if($hours > 0) echo $hours . ($hours > 1 ? ' hours' : ' hour') . ($minutes == 0 ? '' : (', ' . $minutes . ($minutes > 1 ? ' minutes ago' : ' minute ago')));
                         else if($minutes > 0) echo $minutes . ($minutes > 1 ? ' minutes ago' : ' minute ago');
                         else echo $seconds . ($seconds > 1 ? ' seconds ago' : ' second ago');
                     ?>

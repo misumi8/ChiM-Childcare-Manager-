@@ -520,6 +520,10 @@ button {
     z-index: 1;
 }
 
+#pr-new-memory-file-name {
+
+}
+
 #pr-add-memory-photo {
     z-index: 0;
     border-top-left-radius: 2%;
@@ -809,6 +813,43 @@ button {
     color: rgb(23, 23, 23);
 }
 
+.row td:nth-child(3){
+    /* background-color: red; */
+}
+
+.row td:nth-child(3) textarea {
+    margin-bottom: 1rem;
+    position: relative;
+    top: -0.5rem;
+}
+
+.row td button {
+    opacity: 0;
+    transition-duration: 0.3s;
+    position: relative;
+    left: 46%;
+    height: 1rem;
+    width: 1rem;
+    margin-bottom: 0.44rem;
+    z-index: 1;
+    background-color: transparent;
+    background-image: url("../page-images/icons8-close-24.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 130%;
+    border:none;
+    outline: none;
+}
+
+.row:hover td button{
+    opacity: 0.85;
+}
+
+.row:hover td button:active{
+    transition-duration: 0s;
+    opacity: 1;
+}
+
 .row td{
     /* overflow: scroll; */
     word-wrap: break-word;
@@ -953,7 +994,7 @@ table tr {
     box-shadow: 0px 0.5px 2px 0.01px rgba(64, 64, 64);
 }
 
-.pr-memory img{
+.pr-memory img, .pr-memory video {
     object-fit: cover;
     height: 17rem;
     width: 19.5rem;
@@ -962,6 +1003,10 @@ table tr {
     z-index: 1;
     box-shadow: 0px 0px 3px 0px black;
 }
+
+/* .pr-memory video {
+
+} */
 
 .pr-memory:first-child {
     margin-left: 1.5rem;
@@ -1426,8 +1471,10 @@ table tr {
 }
 
 .pr-new-medical-record {
-    display: none; /*flex*/
+    display: none; /*contents?*/
 }
+
+
 
 @media only screen and (max-width: 1475px) {
     #pr-add-memory-form-container {

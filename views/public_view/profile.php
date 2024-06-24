@@ -101,6 +101,7 @@
                                                     disabled/>  
                                             </td>
                                             <td>
+                                                <button type="button" class="pr-delete-medical-record" onclick="deleteMedicalRecord(<?php echo $record['id'];?>)"></button>
                                                 <textarea class="pr-table-cell" readonly><?php echo $record['treatment'];?></textarea>
                                             </td>                                            
                                         </tr>
@@ -118,6 +119,7 @@
                                                    />  
                                             </td>
                                             <td>
+                                                <button type="button" class="pr-delete-medical-record"></button>
                                                 <textarea class="pr-table-cell pr-new-treatment" maxlength="300" placeholder="Treatment"></textarea>
                                             </td>
                                         </tr>
@@ -179,23 +181,29 @@
             <div id="pr-memories">
                 <?php
                     foreach ($childMemories as $memory) {
+                        //if($memory['media_type'] == 'img' || $memory['media_type'] == 'video'){
                 ?>
-                    <div class="<?php echo $memory['important'] != 0 ? "pr-important-memory" : "pr-not-important-memory" ?> pr-memory">
-                        <div id="pr-old-style">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pr-memory-content">
-                            <img src="data:image/jpeg;base64,<?php echo base64_encode($memory['content']);?>"/>
-                            <span>
-                                <?php
-                                    echo $memory['media_description'];
+                        <div class="<?php echo $memory['important'] != 0 ? "pr-important-memory" : "pr-not-important-memory" ?> pr-memory">
+                            <div id="pr-old-style">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="pr-memory-content">
+                                <?php if($memory['media_type'] == 'img') echo '<img src="data:image/jpeg;base64,' . base64_encode($memory['content']) . '"/>';
+                                    else if($memory['media_type'] == 'video') echo '<video>
+                                        <source src="data:video/mp4;base64,' . base64_encode($memory['content']) .'" type="video/mp4">
+                                    </video>';
                                 ?>
-                            </span>
+                                <span>
+                                    <?php
+                                        echo $memory['media_description'];
+                                    ?>
+                                </span>
+                            </div>
                         </div>
-                    </div>
                 <?php
+                        //}
                     }
                 ?>
             </div>
@@ -210,6 +218,7 @@
                         <div id="pr-add-memory-form-container">
                             <div id="pr-add-memory-photo">
                                 <input type="file" name="photo" id="pr-add-memory-input">
+                                <!-- <span id="pr-new-memory-file-name">someName.jpeg</span> -->
                             </div>
                             <textarea name="description" id="pr-add-memory-description" maxlengtd="340" placeholder="What's on your mind?"></textarea>
                             <button type="button"></button>

@@ -13,13 +13,13 @@
                     placeholder="Date of record"
                     value="' . $record['record_date'] . '"
                     disabled/>';  
-        $newRecordList .= '</td>
-                    <td>
-                        <textarea class="pr-table-cell" readonly>' . $record['treatment'] . '</textarea>
+        $newRecordList .= '</td><td>';
+        $newRecordList .= '<button type="button" class="pr-delete-medical-record" onclick="deleteMedicalRecord(\'' . $record['id'] . '\')"></button>'
+                        . '<textarea class="pr-table-cell" readonly>' . $record['treatment'] . '</textarea>
                     </td>                                            
                 </tr>';
     }
-    $newRecordList .= '<tr class="row pr-new-medical-record">
+    $newRecordList .= '<tr class="row pr-new-medical-record" style="display: contents;">
                 <td>
                     <textarea class="pr-table-cell pr-new-doc-name" maxlength="50" placeholder="Doctor name"></textarea>
                 </td>

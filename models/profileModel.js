@@ -108,7 +108,7 @@ async function addMemory(content, description, important, shared){
                     alert("addMemory error");
                 }
                 else {
-                    //alert(xhr.responseText);
+                    alert(xhr.responseText);
                     location.reload(true); // true -> cache ignore
                 }
             }
@@ -325,4 +325,22 @@ function updateMedicalRecords(recordList){
         }
     };
     xhr.send();
+}
+
+function deleteMedicalRecord(recordId){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../CHiM/controllers/deleteMedicalRecord.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var param = 'id=' + encodeURIComponent(recordId);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status != 200) {
+                alert(xhr.responseText);
+            }
+            else {
+                updateMedicalRecords(document.querySelector('#pr-medical-table table tbody'));
+            }
+        }
+    };
+    xhr.send(param);
 }

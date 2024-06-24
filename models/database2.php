@@ -42,7 +42,7 @@
     }
 
     function getChildMemories($child_id){
-        $stmt = $GLOBALS['pdo']->prepare("SELECT content, media_description, important FROM media WHERE child_id = ?");
+        $stmt = $GLOBALS['pdo']->prepare("SELECT * FROM media WHERE child_id = ?");
         $stmt->execute([$child_id]);
         $childMemories = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $childMemories;
@@ -135,5 +135,10 @@
         $stmt->execute([$child_id, $user_id]);
         $medicalRecords = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $medicalRecords;
+    }
+
+    function deleteMedicalRecord($recordId, $childId){
+        $stmt = $GLOBALS['pdo']->prepare("DELETE FROM medical_records WHERE id = ? and child_id = ?");
+        $stmt->execute([$recordId, $childId]);
     }
 ?>

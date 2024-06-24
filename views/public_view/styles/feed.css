@@ -1,5 +1,5 @@
 .feed-content-container {
-    background-color: #fefefe;
+    background-color: #e8e8e8;
     width: 36.5rem;
     max-width: 36.5rem;
     display: flex;
@@ -77,9 +77,8 @@
 }
 
 .feed-background {
-    background-image: url(../page-images/=.png);
-    background-repeat: repeat;
-    background-size: contain;
+    background-image: linear-gradient(transparent 0px, transparent 49px, rgb(0 0 0 / 20%) 50px, transparent 51px, transparent 99px, rgb(0 0 0 / 20%) 100px), linear-gradient(120deg, transparent 0, transparent 48px, rgb(0 0 0 / 20%) 49px, transparent 50px, transparent 98px, rgb(0 0 0 / 20%) 99px, transparent 100px), linear-gradient(60deg, transparent 0, transparent 48px, rgb(0 0 0 / 20%) 49px, transparent 50px, transparent 98px, rgb(0 0 0 / 20%) 99px, transparent 100px), linear-gradient(90deg, #c8a8cf, #d8b4e6);
+    background-size: 100px 100px, 115px 100px, 115px 100px, auto;
     margin-top: -10px;
     margin-bottom: -10px;
 }

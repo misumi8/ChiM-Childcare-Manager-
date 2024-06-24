@@ -21,8 +21,7 @@ try {
 
 
 
-function getUserInfo($email, $user_password)
-{
+function getUserInfo($email, $user_password){
     $stmt = $GLOBALS['pdo']->prepare("SELECT id, email, user_password, fname, lname, birthday, profile_pic FROM users WHERE email = ?");
     $stmt->execute([$email]);
     $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);

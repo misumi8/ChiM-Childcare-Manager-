@@ -82,6 +82,7 @@ button {
     width: 17vw; /* 14rem */
     background-color: #B35BD9;
     color: white;
+    z-index: 1;
 }
 
 #pr-child-panel a{

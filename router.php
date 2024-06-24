@@ -1,4 +1,5 @@
 <?php
+    require_once "..\CHiM\controllers\includes\database.php";
     //$params = split("/", $_SERVER['REQUEST_URI']);
     //$uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
     //echo $uri;
@@ -22,6 +23,10 @@
     }
     else if ($uri == 'register'){
         require_once('../CHiM/views/public_view/register.php');
+    }
+    else if ($uri == 'feed/rss'){
+        updateRss("../CHiM/views/rss.xml");
+        require_once('../CHiM/views/rss.xml');
     }
     else{
         require_once('../CHiM/views/public_view/notFound.php');

@@ -141,4 +141,47 @@
         $stmt = $GLOBALS['pdo']->prepare("DELETE FROM medical_records WHERE id = ? and child_id = ?");
         $stmt->execute([$recordId, $childId]);
     }
+
+    function updateRss($xmlUrl){
+        $xmlContent = '<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+<title>CHiM Feed RSS page</title>
+<link>localhost/CHiM/feed</link>
+<description>Childcare Manager</description>';
+        $media = getFeedMedia();
+        $finfo = finfo_open();
+        foreach($media as $item){
+            $fileUrl = getFileUrl($item['content'], getFileType($item['content']));
+        $xmlContent .= '<item>
+    <title>' . $item['id'] . '</title>
+    <link>localhost/CHiM/feed</link>
+    <description>'. $item['media_description'] .'</description>
+    <enclosure url="' . $fileUrl . '" length="' . strlen($item['content']) . '" type="'. finfo_buffer($finfo, $item['content'], FILEINFO_MIME_TYPE) . '" />
+</item>';
+        }
+        $xmlContent .= '</channel>
+</rss>';
+
+        file_put_contents($xmlUrl, $xmlContent);
+        header('Content-Type: application/rss+xml; charset=utf-8');
+    }
+
+    function getFileUrl($file, $type){
+        $tempFilePath = '../CHiM/views/users/temp_storage/' . uniqid('file_') . $type ;
+        file_put_contents($tempFilePath, $file);
+        return $tempFilePath;
+    }
+
+    function getFileType($file){
+        $finfo = finfo_open();
+        $mimeType = finfo_buffer($finfo, $file, FILEINFO_MIME_TYPE);
+        finfo_close($finfo);
+        if($mimeType == 'image/jpeg') return '.jpg';
+        else if($mimeType == 'image/png') return '.png';
+        else if($mimeType == 'image/gif') return '.gif';
+        else if($mimeType == 'video/mp4') return '.mp4';
+        else if($mimeType == 'video/mkv') return '.mkv';
+        else return '.jpg';
+    }
 ?>

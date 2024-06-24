@@ -11,6 +11,17 @@
 
 <span id="pr-child-id"><?php echo $_SESSION['child_id'];?></span>
 <div id="pr-frame">
+    <div id="pr-child-panel">
+        <?php foreach ($userChildrenList as $child) { ?>
+            <a onclick="setSessionChildId(<?php echo $_SESSION['user_id']; ?>, <?php echo $child['id'];?>)">
+                <div class="pr-child-container">
+                    <img id="pr-child-img-container<?php echo $child['id'];?>" src="data:image/jpeg;base64,<?php echo $child['photo'] != null ? base64_encode($child['photo']) : base64_encode(file_get_contents('../CHiM/views/public_view/page-images/no-user-icon.png'));?>">
+                    <span id="pr-child-span<?php echo $child['id'];?>"><?php echo $child['fullname'];?></span>   
+                </div>
+            </a>
+        <?php } ?>
+        <button id="pr-p-container">+</button>
+    </div>
     <div id="pr-child-info">
         <div id="pr-first-row">
             <div id="pr-child-photo-container">
@@ -604,18 +615,7 @@
             <img src="../CHiM/views/public_view/page-images/close_icon.png"/>
         </div>
     </div>
-    <!-- <div id="pr-child-panel-opener"></div> -->
-    <div id="pr-child-panel">
-        <?php foreach ($userChildrenList as $child) { ?>
-            <a onclick="setSessionChildId(<?php echo $_SESSION['user_id']; ?>, <?php echo $child['id'];?>)">
-                <div class="pr-child-container">
-                    <img id="pr-child-img-container<?php echo $child['id'];?>" src="data:image/jpeg;base64,<?php echo $child['photo'] != null ? base64_encode($child['photo']) : base64_encode(file_get_contents('../CHiM/views/public_view/page-images/no-user-icon.png'));?>">
-                    <span id="pr-child-span<?php echo $child['id'];?>"><?php echo $child['fullname'];?></span>   
-                </div>
-            </a>
-        <?php } ?>
-        <button id="pr-p-container">+</button>
-    </div>
+    <!-- Child list was here, return it if something doesn't work -->
 </div>
 
 <script src="../CHiM/views/public_view/js/profile.js"></script>

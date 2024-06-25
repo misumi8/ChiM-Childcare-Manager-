@@ -128,6 +128,7 @@ button {
 }
 
 #pr-p-container{
+    opacity: 0.7;
     text-decoration: none;
     font-size: 2rem;
     font-weight: bold;
@@ -167,9 +168,11 @@ button {
 #pr-p-container:hover{
     background-color: #A635D6;
     transition-duration: 0.2s;
+    opacity: 0.8;
 }
 
 #pr-p-container:active{
+    opacity: 0.85;
     background-color: #781aa0;
     transition-duration: 0.2s;
 }
@@ -1083,6 +1086,12 @@ table tr {
     color: #e6cef0;
 }
 
+#pr-child-list-no-children-text {
+    margin-left: 1.6vw;
+    margin-top: -0.1rem;
+    user-select: none;
+}
+
 .pr-export-pdf {
     background-image: url("../page-images/pdf-export.png");
     background-color: transparent;
@@ -1477,7 +1486,7 @@ table tr {
 
 
 
-@media only screen and (max-width: 1475px) {
+/* @media only screen and (max-width: 1475px) {
     #pr-add-memory-form-container {
         display: grid;
         grid-template-rows: 50% 50%;
@@ -1498,4 +1507,4 @@ table tr {
     #pr-see-calendar {
         margin-left: -30%;
     }
-}
+} */

@@ -429,13 +429,13 @@
         $stmt->execute([$userId]);
         return $stmt->fetch(PDO::FETCH_ASSOC)['id'];
     }
-
-    function addNewChild($userId){
+    
+    function addNewChild($userId, $name, $dob, $gender, $height, $hobby, $food){
         $stmt = $GLOBALS['pdo']->prepare("SELECT max(id) as id FROM children");
         $stmt->execute();
         $newChildId = $stmt->fetch(PDO::FETCH_ASSOC);
-        $stmt = $GLOBALS['pdo']->prepare("INSERT INTO children (user_id, id) VALUES (?, ?)");
-        $stmt->execute([$userId, $newChildId['id'] + 1]);
+        $stmt = $GLOBALS['pdo']->prepare("INSERT INTO children (user_id, id, fullname, birthday, height, gender, fav_food, fav_hobby) VALUES (?,?,?,?,?,?,?,?)");
+        $stmt->execute([$userId, $newChildId['id'] + 1, $name, $dob, $height, $gender, $food, $hobby]);
         return $newChildId['id'] + 1;
     }
 
@@ -450,7 +450,7 @@
         $stmt = $GLOBALS['pdo']->prepare("SELECT photo FROM children WHERE id = ?");
         $stmt->execute([$child_id]);
         $childPic = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $childPic['photo'] == null ? base64_encode("") : base64_encode($childPic['photo']);
+        return /*$childPic['photo'] == null*/ !isset($childPic['photo']) ? base64_encode("") : base64_encode($childPic['photo']);
     }
 
     function setChildPic($child_id, $photo) {

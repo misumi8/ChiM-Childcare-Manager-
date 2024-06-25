@@ -1,5 +1,5 @@
 <?php
-require_once "../includes/database.php";
+    require_once "..\..\models\database.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = cleanInput($_POST["register_user_email"]);

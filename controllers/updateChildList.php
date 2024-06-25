@@ -1,6 +1,6 @@
 <?php
-require_once "..\..\CHiM\controllers\includes\database.php";
-//ob_start(); ?
+    require_once "..\..\CHiM\models\database.php";
+    //ob_start(); ?
 foreach ($userChildrenList as $child) { ?>
         <a onclick="setSessionChildId(<?php echo $_SESSION['user_id']; ?>, <?php echo $child['id'];?>)">
             <div class="pr-child-container">

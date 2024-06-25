@@ -55,23 +55,51 @@ function updateChildList() {
 }
 
 
-function addNewChild(){
+function addNewChild(name, dob, gender, height, hobby, food){
+    //alert("OK");
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '../CHiM/controllers/addNewChild.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var params = 'name=' + encodeURIComponent(name) +
+        '&dob=' + encodeURIComponent(dob) +
+        '&gender=' + encodeURIComponent(gender) + 
+        '&height=' + encodeURIComponent(height) +
+        '&hobby=' + encodeURIComponent(hobby) +
+        '&food=' + encodeURIComponent(food);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE) {
             if (xhr.status != 200) {
                 alert("setSessionChildId error");
             }
             else {
-                //alert(xhr.responseText);
-                return xhr.responseText;
+                const infoTableSpans = document.querySelectorAll('#pr-2col-table-info span');
+                const lastSpan = document.getElementById('pr-last-info-item').querySelectorAll('span')[0];
+                const childId = document.getElementById('pr-child-id');
+                const childListName = document.getElementById('pr-child-span' + childId.textContent);
+                let today = new Date();
+                let dateDOB = new Date(dob);
+                let years = today.getFullYear() - dateDOB.getFullYear();
+                let months = today.getMonth() - dateDOB.getMonth();
+                while(months < 0) {
+                    years--;
+                    months += 12;
+                }
+                let newDOBformat = dob[8] + dob[9] + '.' + dob[5] + dob[6] + '.' + dob[0] + dob[1] + dob[2] + dob[3];
+                //alert(newDOBformat);
+                childListName.textContent = name;
+                infoTableSpans[1].textContent = name;
+                infoTableSpans[3].textContent = newDOBformat;
+                infoTableSpans[5].textContent = years + (years > 1 ? " years, " : " year, ") + months + (months > 1 ? " months" : "month"); 
+                infoTableSpans[7].textContent = height + " cm.";
+                infoTableSpans[9].textContent = food;
+                infoTableSpans[11].textContent = gender;
+                lastSpan.textContent = hobby;
+                //console.log('yes');
             }
         }
         //alert("Reload successfully");
     };
-    xhr.send();
+    xhr.send(params);
 }
 
 function setSessionChildId(userId, childId) {
@@ -108,7 +136,7 @@ async function addMemory(content, description, important, shared){
                     alert("addMemory error");
                 }
                 else {
-                    alert(xhr.responseText);
+                    //alert(xhr.responseText);
                     location.reload(true); // true -> cache ignore
                 }
             }
@@ -308,10 +336,11 @@ function addNewMedicalRecord(docName, diagnosis, date, treatment){
     xhr.send(params);
 }
 
-function updateMedicalRecords(recordList){
+function updateMedicalRecords(recordList, newRecordDisplay){
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '../CHiM/controllers/getUpdatedHtmlMedicalRecordList.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var param = 'newRecordDisplay=' + encodeURIComponent(newRecordDisplay);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE) {
             if (xhr.status != 200) {
@@ -324,7 +353,7 @@ function updateMedicalRecords(recordList){
             }
         }
     };
-    xhr.send();
+    xhr.send(param);
 }
 
 function deleteMedicalRecord(recordId){
@@ -338,7 +367,7 @@ function deleteMedicalRecord(recordId){
                 alert(xhr.responseText);
             }
             else {
-                updateMedicalRecords(document.querySelector('#pr-medical-table table tbody'));
+                updateMedicalRecords(document.querySelector('#pr-medical-table table tbody'), window.getComputedStyle(document.querySelector('.pr-new-medical-record')).display);
             }
         }
     };

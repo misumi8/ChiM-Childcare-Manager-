@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-    require_once dirname(__DIR__,2) . '/controllers/includes/database.php';
+    require_once dirname(__DIR__,2) . '/models/database.php';
 ?>
 
 <head>

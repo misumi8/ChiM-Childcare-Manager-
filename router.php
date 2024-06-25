@@ -1,5 +1,5 @@
 <?php
-    require_once "..\CHiM\controllers\includes\database.php";
+    require_once "..\CHiM\models\database.php";
     //$params = split("/", $_SERVER['REQUEST_URI']);
     //$uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
     //echo $uri;

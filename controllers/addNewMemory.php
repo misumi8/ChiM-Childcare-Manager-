@@ -1,5 +1,5 @@
 <?php
-    require_once "..\..\CHiM\controllers\includes\database.php";
+    require_once "..\..\CHiM\models\database.php";
     if (isset($_POST['shared']) && isset($_POST['important']) && isset($_POST['content']) && isset($_POST['description'])) {
         $content = base64_encode($_POST['content']);
         $finfo = new finfo(FILEINFO_MIME_TYPE);

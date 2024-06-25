@@ -1,4 +1,4 @@
 <?php
-    require_once "..\..\CHiM\controllers\includes\database.php";
+    require_once "..\..\CHiM\models\database.php";
     session_destroy();
 ?>

@@ -1,5 +1,5 @@
 <?php 
-    require_once "..\..\CHiM\controllers\includes\database.php";
+    require_once "..\..\CHiM\models\database.php";
     if(isset($_POST['record-text']) && isset($_POST['start-time']) && isset($_POST['end-time']) && isset($_POST['weekday'])){
         //echo "success";
         addNewSleepingRecord($_POST['weekday'], $_POST['start-time'], $_POST['end-time'], $_POST['record-text']);

@@ -1,5 +1,5 @@
 <?php 
-    require_once "..\..\CHiM\controllers\includes\database.php";
+    require_once "..\..\CHiM\models\database.php";
     if(isset($_POST['record-time']) && isset($_POST['record-text']) && isset($_POST['weekday'])){
         echo "success";
         addNewFeedingRecord($_POST['weekday'], $_POST['record-time'], $_POST['record-text']);

@@ -1,5 +1,5 @@
 <?php
-    require_once "..\..\CHiM\controllers\includes\database.php";
+    require_once "..\..\CHiM\models\database.php";
     if(isset($_POST['weekday'])){
         $updatedRecordList = getSleepingRecords($_SESSION['child_id'], $_POST['weekday']);
         $newRecordList = '';

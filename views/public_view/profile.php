@@ -12,18 +12,25 @@
 <span id="pr-child-id"><?php echo $_SESSION['child_id'];?></span>
 <div id="pr-frame">
     <div id="pr-child-panel">
-        <?php foreach ($userChildrenList as $child) { ?>
-            <a onclick="setSessionChildId(<?php echo $_SESSION['user_id']; ?>, <?php echo $child['id'];?>)">
-                <div class="pr-child-container">
-                    <img id="pr-child-img-container<?php echo $child['id'];?>" src="data:image/jpeg;base64,<?php echo $child['photo'] != null ? base64_encode($child['photo']) : base64_encode(file_get_contents('../CHiM/views/public_view/page-images/no-user-icon.png'));?>">
-                    <span id="pr-child-span<?php echo $child['id'];?>"><?php echo $child['fullname'];?></span>   
-                </div>
-            </a>
-        <?php } ?>
+        <?php 
+        if(!empty($userChildrenList)){
+            foreach ($userChildrenList as $child) { ?>
+                <a onclick="setSessionChildId(<?php echo $_SESSION['user_id']; ?>, <?php echo $child['id'];?>)">
+                    <div class="pr-child-container">
+                        <img id="pr-child-img-container<?php echo $child['id'];?>" src="data:image/jpeg;base64,<?php echo $child['photo'] != null ? base64_encode($child['photo']) : base64_encode(file_get_contents('../CHiM/views/public_view/page-images/no-user-icon.png'));?>">
+                        <span id="pr-child-span<?php echo $child['id'];?>"><?php echo $child['fullname'];?></span>   
+                    </div>
+                </a>
+            <?php
+            }
+        } 
+        else echo '<img id="pr-child-list-no-children-text" src="../CHiM/views/public_view/page-images/no-children-img.png"></span>';
+        ?>
         <button id="pr-p-container">+</button>
     </div>
     <div id="pr-child-info">
         <div id="pr-first-row">
+            <?php if (!empty($userChildrenList)) { ?>
             <div id="pr-child-photo-container">
                 <?php
                     echo "<img id='pr-child-image' style='opacity:" . $photoExist . "' src='data:image/jpeg;base64," . $childPic . "'/>";
@@ -31,11 +38,11 @@
                 <input type="file" id="pr-photo" onchange="changeChildImage(<?php echo $_SESSION['child_id']; ?>)">
             </div>
             <div id="pr-child-info">
-                <form metdod="post" id="pr-child-data-form"> <!-- action="./controllers/updateChildInfo.php"-->
+                <!-- metdod --> <form method="post" id="pr-child-data-form"> <!-- action="./controllers/ugggateChildInfo.php"-->
                     <ul id="pr-2col-table">
                         <li>
                             <label for="Name">Name:</label>
-                            <input requred type="text"
+                            <input type="text"
                                     id="pr-name-input" 
                                     class="pr-child-info-input" 
                                     name="name" 
@@ -44,7 +51,7 @@
                         </li>
                         <li>
                             <label for="date-of-birtd">Date of birth:</label>
-                            <input requred type="date" 
+                            <input type="date" 
                                     id="pr-dob-input" 
                                     class="pr-child-info-input" 
                                     name="date-of-birth" 
@@ -60,7 +67,7 @@
                         </li>
                         <li>
                             <label for="height">Height:</label>
-                            <input requred type="text" 
+                            <input type="text" 
                                     id="pr-height-input"
                                     class="pr-child-info-input" 
                                     name="height" 
@@ -69,7 +76,7 @@
                         </li>
                         <li>
                             <label for="hobby">Favorite hobby:</label>
-                            <input requred type="text" 
+                            <input type="text" 
                                     id="pr-hobby-input"
                                     class="pr-child-info-input" 
                                     name="hobby" 
@@ -78,7 +85,7 @@
                         </li>
                         <li>
                             <label for="food">Favorite food:</label>
-                            <input requred type="text" 
+                            <input type="text" 
                                     id="pr-food-input"
                                     class="pr-child-info-input" 
                                     name="food" 
@@ -104,7 +111,7 @@
                                             <td><textarea class="pr-table-cell" readonly><?php echo $record['doctor_name'];?></textarea></td>
                                             <td>
                                                 <textarea class="pr-table-cell" readonly><?php echo $record['diagnosis'];?></textarea>
-                                                <input requred type="date" 
+                                                <input type="date" 
                                                     class="pr-medical-record-date" 
                                                     name="medical-record-date" 
                                                     placeholder="Date of record"
@@ -117,20 +124,20 @@
                                             </td>                                            
                                         </tr>
                                         <?php } ?>
-                                        <tr class="row pr-new-medical-record">
+                                        <tr class="row pr-new-medical-record" <?php echo empty($medicalRecords) ? 'style="display: contents;"' : ''; ?>>
                                             <td>
                                                 <textarea class="pr-table-cell pr-new-doc-name" maxlength="50" placeholder="Doctor name"></textarea>
                                             </td>
                                             <td>
                                                 <textarea class="pr-table-cell pr-new-diagnosis" maxlength="150" placeholder="Diagnosis"></textarea>
-                                                <input requred type="date" 
+                                                <input type="date" 
                                                     class="pr-medical-record-date pr-new-med-rec-date" 
                                                     name="medical-record-date" 
                                                     placeholder="Date of record"
                                                    />  
                                             </td>
                                             <td>
-                                                <button type="button" class="pr-delete-medical-record"></button>
+                                                <button type="button" class="pr-delete-medical-record" onclick="hideNewMedRecord();"></button>
                                                 <textarea class="pr-table-cell pr-new-treatment" maxlength="300" placeholder="Treatment"></textarea>
                                             </td>
                                         </tr>
@@ -231,7 +238,7 @@
                                 <input type="file" name="photo" id="pr-add-memory-input">
                                 <!-- <span id="pr-new-memory-file-name">someName.jpeg</span> -->
                             </div>
-                            <textarea name="description" id="pr-add-memory-description" maxlengtd="340" placeholder="What's on your mind?"></textarea>
+                            <textarea name="description" id="pr-add-memory-description" maxlength="340" placeholder="What's on your mind?"></textarea>
                             <button type="button"></button>
                         </div>
                         <div id="pr-save-button-container">
@@ -615,6 +622,63 @@
             <img src="../CHiM/views/public_view/page-images/close_icon.png"/>
         </div>
     </div>
+    <?php }
+    else { ?>
+        <form method="post" id="pr-child-data-form">
+        <ul id="pr-2col-table">
+            <li>
+                <label for="Name">Name:</label>
+                <input type="text"
+                        id="pr-name-input" 
+                        class="pr-child-info-input" 
+                        name="name" 
+                        placeholder="Name"/>
+            </li>
+            <li>
+                <label for="date-of-birtd">Date of birth:</label>
+                <input type="date" 
+                        id="pr-dob-input" 
+                        class="pr-child-info-input" 
+                        name="date-of-birth" 
+                        placeholder="Date of birth"/>
+            </li>
+            <li>
+                <label for="gender">Gender:</label>
+                <input type="radio" id="male" name="gender-type" value="Male" checked/>
+                <label for="male">Boy</label>
+                <input type="radio" id="female" name="gender-type" value="Female"/> 
+                <label for="female">Girl</label>
+            </li>
+            <li>
+                <label for="height">Height:</label>
+                <input type="text" 
+                        id="pr-height-input"
+                        class="pr-child-info-input" 
+                        name="height" 
+                        placeholder="Height"/>
+            </li>
+            <li>
+                <label for="hobby">Favorite hobby:</label>
+                <input type="text" 
+                        id="pr-hobby-input"
+                        class="pr-child-info-input" 
+                        name="hobby" 
+                        placeholder="Hobby"/>
+            </li>
+            <li>
+                <label for="food">Favorite food:</label>
+                <input type="text" 
+                        id="pr-food-input"
+                        class="pr-child-info-input" 
+                        name="food" 
+                        placeholder="Food" />
+            </li>
+            <button type="submit" class="pr-profile-info-button">Save</button>
+    </form> 
+    <script>window.onload = function() {newChildAdded = true; document.getElementById("pr-p-container").dispatchEvent(new Event('click'));}</script>
+    <?php
+        }
+    ?>
     <!-- Child list was here, return it if something doesn't work -->
 </div>
 

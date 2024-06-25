@@ -63,10 +63,97 @@ document.addEventListener("DOMContentLoaded", function() {
     const feedingScheduleNewMondayRecordInput = document.querySelector('#pr-feeding-schedule #pr-monday .pr-new-record');
     const feedingScheduleNewSundayRecordInput = document.querySelector('#pr-feeding-schedule #pr-sunday .pr-new-record');
 
+    let newChildAdded = false;
 
-    hideNewMedicalRecord.addEventListener('click', () => {
-        document.querySelector('.pr-new-medical-record').style.display = 'none';
+    // addChild button
+    addChild.addEventListener("click", async function() {
+        if(calendar){
+            calendar.style.display = "none";
+            closeButton.style.display = "flex";
+            arrow.style.display = "none";
+            addMoreInfo.style.display = "none";
+            addMemoryButton.style.display = "none";
+            seeCalendarButton.style.display = "none";
+            childDataForm.style.display = "flex";
+            medicalHistory.style.display = "none";
+            medicalHistoryButton.style.display = "none";
+        }
+        else childDataForm.style.display = "flex";
+
+        //alert("clicked");
+
+        //alert(updateChildList());
+        //document.getElementById('pr-child-panel').innerHTML = updateChildList();
+        //alert(document.getElementById('pr-child-panel').innerHTML);
+
+        const nameInput = document.getElementById("pr-name-input");
+        const dobInput = document.getElementById("pr-dob-input");
+        const heightInput = document.getElementById("pr-height-input");
+        const hobbyInput = document.getElementById("pr-hobby-input");
+        const favFoodInput = document.getElementById("pr-food-input");
+        nameInput.value = "";
+        dobInput.value = "";
+        heightInput.value = "";
+        hobbyInput.value = "";
+        favFoodInput.value = "";
+        newChildAdded = true;
+        //const genderMaleInput = document.getElementById("male");
+        //const genderFemaleInput = document.getElementById("female");
     });
+
+    childDataForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        const nameInput = document.getElementById("pr-name-input");
+        const dobInput = document.getElementById("pr-dob-input");
+        //const genderMaleInput = document.getElementById("male");
+        //const genderFemaleInput = document.getElementById("female");
+        const heightInput = document.getElementById("pr-height-input");
+        //const hobbyInput = document.getElementById("pr-hobby-input");
+        //const favFoodInput = document.getElementById("pr-food-input");
+
+        if(!/^[A-Za-zăîâțș ]+$/.test(nameInput.value) || nameInput.value.length > 18 || nameInput.value.length < 2) {
+            nameInput.classList.toggle("pr-wrong-input");
+            nameInput.style.backgroundColor = "rgb(229, 65, 65)";
+            console.log(nameInput.placeholder);
+            //nameInput.placeholder.style.backgroundColor = "white";
+            setTimeout(function(){nameInput.style.backgroundColor = "rgb(229, 65, 65)"; nameInput.classList.toggle("pr-wrong-input");}, 1000);
+            return;
+        }
+        else nameInput.style.backgroundColor = "white";
+        //alert(dobInput.value);
+        if(!/^\d{4}-\d{2}-\d{2}$/.test(dobInput.value) || new Date(dobInput.value) > new Date() || new Date(dobInput.value) < new Date('1920-01-01')){
+            dobInput.classList.toggle("pr-wrong-input");
+            dobInput.style.backgroundColor = "rgb(229, 65, 65)";
+
+            setTimeout(function(){dobInput.style.backgroundColor = "rgb(229, 65, 65)"; dobInput.classList.toggle("pr-wrong-input");}, 1000);
+            return;
+        }
+        else dobInput.style.backgroundColor = "white";   
+
+        if(!/^[0-9]+$/.test(heightInput.value) || Number(heightInput.value) > 270 || Number(heightInput.value) < 22){
+            heightInput.classList.toggle("pr-wrong-input");
+            heightInput.style.backgroundColor = "rgb(229, 65, 65)";
+            setTimeout(function(){heightInput.style.backgroundColor = "rgb(229, 65, 65)"; heightInput.classList.toggle("pr-wrong-input");}, 1000);
+            return;
+        }
+        else heightInput.style.backgroundColor = "white";
+
+        const form = new FormData(childDataForm);
+        const isMale = document.getElementById("male").checked ? "Male" : "Female";
+        if(newChildAdded) newChildId = addNewChild(form.get('name'), form.get('date-of-birth'), isMale, form.get('height'), form.get('hobby'), form.get('food'));
+        //await new Promise(r => setTimeout(r, 200));
+        else updateChildInfo(form.get('name'), form.get('date-of-birth'), isMale, form.get('height'), form.get('hobby'), form.get('food'));
+
+        if(newChildAdded) {
+            newChildAdded = false;
+            childDataForm.reset();
+            location.reload();
+        }
+    });
+    
+    // hideNewMedicalRecord.addEventListener('click', () => {
+    //     document.querySelector('.pr-new-medical-record').style.display = 'none';
+    // });
 
     addNewMedicalRecordButton.addEventListener('click', function() {
         const newMedicalRecord = document.querySelector('.pr-new-medical-record');
@@ -99,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
         addNewMedicalRecord(docName.value, diagnosis.value, inputDate.value, treatment.value);
-        setTimeout(function(){updateMedicalRecords(document.querySelector('#pr-medical-table table tbody'));}, 100);
+        setTimeout(function(){updateMedicalRecords(document.querySelector('#pr-medical-table table tbody'), window.getComputedStyle(document.querySelector('.pr-new-medical-record')).display);}, 100);
         //alert("OK");
         docName.value = "";
         diagnosis.value = "";
@@ -517,7 +604,6 @@ document.addEventListener("DOMContentLoaded", function() {
         feedingSchedule.style.display = "none";
     });
 
-    let newChildAdded = false;
     childDataForm.addEventListener("submit", async function (event) {
         event.preventDefault();
         const nameInput = document.getElementById("pr-name-input");
@@ -638,7 +724,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         memory.addEventListener('click', async () => {
             let memoryDescription = memory.querySelectorAll('span');
-            if(memory.querySelectorAll('span')[0].textContent.length > 61) {
+            //alert(memory.querySelectorAll('span')[0].textContent.length);
+            if(memory.querySelectorAll('span')[0].textContent.length > 69) { // prev. 61 ? why???
                 //alert(memory.querySelectorAll('span')[0].textContent.length);
                 if(oddClick){
                     oddClick = false;
@@ -716,38 +803,6 @@ document.addEventListener("DOMContentLoaded", function() {
         //location.reload(true);
     });
 
-    // addChild button
-    addChild.addEventListener("click", async function() {
-        calendar.style.display = "none";
-        closeButton.style.display = "flex";
-        arrow.style.display = "none";
-        addMoreInfo.style.display = "none";
-        addMemoryButton.style.display = "none";
-        seeCalendarButton.style.display = "none";
-        childDataForm.style.display = "flex";
-        medicalHistory.style.display = "none";
-        medicalHistoryButton.style.display = "none";
-    
-        //alert(updateChildList());
-        //document.getElementById('pr-child-panel').innerHTML = updateChildList();
-        //alert(document.getElementById('pr-child-panel').innerHTML);
-
-        const nameInput = document.getElementById("pr-name-input");
-        const dobInput = document.getElementById("pr-dob-input");
-        const heightInput = document.getElementById("pr-height-input");
-        const hobbyInput = document.getElementById("pr-hobby-input");
-        const favFoodInput = document.getElementById("pr-food-input");
-        nameInput.value = "";
-        dobInput.value = "";
-        heightInput.value = "";
-        hobbyInput.value = "";
-        favFoodInput.value = "";
-        newChildAdded = true;
-        //const genderMaleInput = document.getElementById("male");
-        //const genderFemaleInput = document.getElementById("female");
-        
-    });
-
     // addMoreInfo button
     addMoreInfo.addEventListener("click", function() {
         calendar.style.display = "none";
@@ -800,10 +855,15 @@ document.addEventListener("DOMContentLoaded", function() {
     //         });
     //     });
     // }
+
 });
 
 function wrongInputAnimation(wrongInput) {
     wrongInput.classList.toggle('pr-wrong-input');
     wrongInput.style.borderRadius = "0.2rem";
     setTimeout(function(){wrongInput.classList.toggle("pr-wrong-input");}, 1000);
+}
+
+function hideNewMedRecord(){
+    document.querySelector('.pr-new-medical-record').style.display = 'none';
 }

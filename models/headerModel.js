@@ -6,6 +6,7 @@ function logOut(){
         if (xhr.readyState == XMLHttpRequest.DONE) {
             if (xhr.status != 200) {
                 alert(xhr.responseText);
+                location.reload(true);
             }
             else location.reload(true);
             //else alert(xhr.responseText);

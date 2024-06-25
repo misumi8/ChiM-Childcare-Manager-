@@ -97,6 +97,8 @@ document.addEventListener("DOMContentLoaded", function() {
         hobbyInput.value = "";
         favFoodInput.value = "";
         newChildAdded = true;
+        
+        //alert("yes" + newChildAdded);
         //const genderMaleInput = document.getElementById("male");
         //const genderFemaleInput = document.getElementById("female");
     });
@@ -144,10 +146,12 @@ document.addEventListener("DOMContentLoaded", function() {
         //await new Promise(r => setTimeout(r, 200));
         else updateChildInfo(form.get('name'), form.get('date-of-birth'), isMale, form.get('height'), form.get('hobby'), form.get('food'));
 
+        
+        //alert("yes2" + newChildAdded);
         if(newChildAdded) {
             newChildAdded = false;
             childDataForm.reset();
-            location.reload();
+            location.reload(true);
         }
     });
     
@@ -604,54 +608,54 @@ document.addEventListener("DOMContentLoaded", function() {
         feedingSchedule.style.display = "none";
     });
 
-    childDataForm.addEventListener("submit", async function (event) {
-        event.preventDefault();
-        const nameInput = document.getElementById("pr-name-input");
-        const dobInput = document.getElementById("pr-dob-input");
-        //const genderMaleInput = document.getElementById("male");
-        //const genderFemaleInput = document.getElementById("female");
-        const heightInput = document.getElementById("pr-height-input");
-        //const hobbyInput = document.getElementById("pr-hobby-input");
-        //const favFoodInput = document.getElementById("pr-food-input");
+    // childDataForm.addEventListener("submit", async function (event) {
+    //     event.preventDefault();
+    //     const nameInput = document.getElementById("pr-name-input");
+    //     const dobInput = document.getElementById("pr-dob-input");
+    //     //const genderMaleInput = document.getElementById("male");
+    //     //const genderFemaleInput = document.getElementById("female");
+    //     const heightInput = document.getElementById("pr-height-input");
+    //     //const hobbyInput = document.getElementById("pr-hobby-input");
+    //     //const favFoodInput = document.getElementById("pr-food-input");
 
-        if(!/^[A-Za-zăîâțș ]+$/.test(nameInput.value) || nameInput.value.length > 18 || nameInput.value.length < 2) {
-            nameInput.classList.toggle("pr-wrong-input");
-            nameInput.style.backgroundColor = "rgb(229, 65, 65)";
-            console.log(nameInput.placeholder);
-            //nameInput.placeholder.style.backgroundColor = "white";
-            setTimeout(function(){nameInput.style.backgroundColor = "rgb(229, 65, 65)"; nameInput.classList.toggle("pr-wrong-input");}, 1000);
-            return;
-        }
-        else nameInput.style.backgroundColor = "white";
-        //alert(dobInput.value);
-        if(!/^\d{4}-\d{2}-\d{2}$/.test(dobInput.value) || new Date(dobInput.value) > new Date() || new Date(dobInput.value) < new Date('1920-01-01')){
-            dobInput.classList.toggle("pr-wrong-input");
-            dobInput.style.backgroundColor = "rgb(229, 65, 65)";
+    //     if(!/^[A-Za-zăîâțș ]+$/.test(nameInput.value) || nameInput.value.length > 18 || nameInput.value.length < 2) {
+    //         nameInput.classList.toggle("pr-wrong-input");
+    //         nameInput.style.backgroundColor = "rgb(229, 65, 65)";
+    //         console.log(nameInput.placeholder);
+    //         //nameInput.placeholder.style.backgroundColor = "white";
+    //         setTimeout(function(){nameInput.style.backgroundColor = "rgb(229, 65, 65)"; nameInput.classList.toggle("pr-wrong-input");}, 1000);
+    //         return;
+    //     }
+    //     else nameInput.style.backgroundColor = "white";
+    //     //alert(dobInput.value);
+    //     if(!/^\d{4}-\d{2}-\d{2}$/.test(dobInput.value) || new Date(dobInput.value) > new Date() || new Date(dobInput.value) < new Date('1920-01-01')){
+    //         dobInput.classList.toggle("pr-wrong-input");
+    //         dobInput.style.backgroundColor = "rgb(229, 65, 65)";
 
-            setTimeout(function(){dobInput.style.backgroundColor = "rgb(229, 65, 65)"; dobInput.classList.toggle("pr-wrong-input");}, 1000);
-            return;
-        }
-        else dobInput.style.backgroundColor = "white";   
+    //         setTimeout(function(){dobInput.style.backgroundColor = "rgb(229, 65, 65)"; dobInput.classList.toggle("pr-wrong-input");}, 1000);
+    //         return;
+    //     }
+    //     else dobInput.style.backgroundColor = "white";   
 
-        if(!/^[0-9]+$/.test(heightInput.value) || Number(heightInput.value) > 270 || Number(heightInput.value) < 22){
-            heightInput.classList.toggle("pr-wrong-input");
-            heightInput.style.backgroundColor = "rgb(229, 65, 65)";
-            setTimeout(function(){heightInput.style.backgroundColor = "rgb(229, 65, 65)"; heightInput.classList.toggle("pr-wrong-input");}, 1000);
-            return;
-        }
-        else heightInput.style.backgroundColor = "white";
+    //     if(!/^[0-9]+$/.test(heightInput.value) || Number(heightInput.value) > 270 || Number(heightInput.value) < 22){
+    //         heightInput.classList.toggle("pr-wrong-input");
+    //         heightInput.style.backgroundColor = "rgb(229, 65, 65)";
+    //         setTimeout(function(){heightInput.style.backgroundColor = "rgb(229, 65, 65)"; heightInput.classList.toggle("pr-wrong-input");}, 1000);
+    //         return;
+    //     }
+    //     else heightInput.style.backgroundColor = "white";
         
-        if(newChildAdded) newChildId = addNewChild();
-        await new Promise(r => setTimeout(r, 100));
-        const form = new FormData(childDataForm);
-        const isMale = document.getElementById("male").checked ? "Male" : "Female";
-        updateChildInfo(form.get('name'), form.get('date-of-birth'), isMale, form.get('height'), form.get('hobby'), form.get('food'));
+    //     if(newChildAdded) newChildId = addNewChild();
+    //     await new Promise(r => setTimeout(r, 100));
+    //     const form = new FormData(childDataForm);
+    //     const isMale = document.getElementById("male").checked ? "Male" : "Female";
+    //     updateChildInfo(form.get('name'), form.get('date-of-birth'), isMale, form.get('height'), form.get('hobby'), form.get('food'));
 
-        if(newChildAdded) {
-            newChildAdded = false;
-            location.reload();
-        }
-    });
+    //     if(newChildAdded) {
+    //         newChildAdded = false;
+    //         location.reload();
+    //     }
+    // });
 
     let important = false;
     saveButtonExtension.addEventListener("click", function(){

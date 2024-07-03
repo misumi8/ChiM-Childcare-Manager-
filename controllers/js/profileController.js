@@ -1,35 +1,3 @@
-document.getElementById('user-search').addEventListener('input', function () {
-    var searchQuery = this.value;
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'controllers/search_users.php?query=' + encodeURIComponent(searchQuery), true);
-    xhr.onreadystatechange = function () {
-        console.log("Ready State:", xhr.readyState);
-        console.log("Status:", xhr.status);
-        console.log("Response Text:", xhr.responseText);
-
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                try {
-                    var response = JSON.parse(xhr.responseText);
-                    var userUl = document.getElementById('user-list-ul');
-                    userUl.innerHTML = '';
-                    response.users.forEach(function (user) {
-                        var li = document.createElement('li');
-                        li.textContent = user.email;
-                        li.setAttribute('onclick', 'selectUser(' + user.id + ')');
-                        userUl.appendChild(li);
-                    });
-                } catch (e) {
-                    console.error("Error parsing JSON:", e);
-                }
-            } else {
-                console.error("Error with request:", xhr.statusText);
-            }
-        }
-    };
-    xhr.send();
-});
-
 document.addEventListener('DOMContentLoaded', function () {
     fetchUsers('', 0);
 });
@@ -90,7 +58,7 @@ function selectUser(userId) {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var response = JSON.parse(xhr.responseText);
             if (response.status === 'success') {
-                location.reload(); // Reload the page to reflect changes
+                location.reload(); 
             } else {
                 alert(response.message);
             }
@@ -109,7 +77,7 @@ function deleteUser(userId) {
                 var response = JSON.parse(xhr.responseText);
                 if (response.status === 'success') {
                     alert("User deleted successfully.");
-                    location.reload(); // Reload the page to reflect changes
+                    location.reload(); 
                 } else {
                     alert(response.message);
                 }
@@ -133,7 +101,7 @@ function deleteChild(childId) {
                         console.log("Response JSON:", response);
                         if (response.status === 'success') {
                             alert("Child deleted successfully.");
-                            location.reload(); // Reload the page to reflect changes
+                            location.reload(); 
                         } else {
                             alert(response.message);
                         }
@@ -163,7 +131,7 @@ function deleteMemory(memoryId) {
                         console.log("Response JSON:", response);
                         if (response.status === 'success') {
                             alert("Memory deleted successfully.");
-                            location.reload(); // Reload the page to reflect changes
+                            location.reload(); 
                         } else {
                             alert(response.message);
                         }

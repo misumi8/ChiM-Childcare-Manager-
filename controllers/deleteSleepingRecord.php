@@ -1,7 +1,8 @@
 <?php
-    require_once "..\..\CHiM\models\database.php";
+    require_once dirname(__DIR__) . '/config.php';
+require_once ROOT_PATH . "models/database.php";
     if(isset($_POST['id'])){
-        deleteSleepingRecord($_POST['id']);
+        deleteSleepingRecordById($_POST['id']);
     }
     else {
         http_response_code(400);

@@ -1,5 +1,6 @@
 <?php
-require_once '../CHiM/views/includes/header.php';
+require_once dirname(__DIR__, 2) . '/config.php';
+require_once ROOT_PATH . 'views/includes/header.php';
 ?>
 
 <div id="reg-frame">
@@ -24,7 +25,7 @@ require_once '../CHiM/views/includes/header.php';
                         </li>
                     </div>
                     <li class="reg-user-input">
-                        <label for="register_user_email">Email adress:</label><br />
+                        <label for="register_user_email">Email address:</label><br />
                         <input type="text" class="reg-user-name-input" id="reg-email" name="register_user_email" placeholder="Email address" />
                         <br>
                         <span id="login-email-error"></span>
@@ -63,5 +64,5 @@ require_once '../CHiM/views/includes/header.php';
 <script src="../CHiM/controllers/js/register.js"></script>
 
 <?php
-require_once dirname(__DIR__,2) . '/views/includes/footer.php';
+require_once ROOT_PATH . '/views/includes/footer.php';
 ?>

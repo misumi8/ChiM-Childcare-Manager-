@@ -1,5 +1,7 @@
 <?php
-    require_once "..\..\CHiM\models\database.php";
+require_once dirname(__DIR__) . '/config.php';
+require_once ROOT_PATH . "models/database.php";
+
     if (isset($_POST['shared']) && isset($_POST['important']) && isset($_POST['content']) && isset($_POST['description'])) {
         $content = base64_encode($_POST['content']);
         $finfo = new finfo(FILEINFO_MIME_TYPE);

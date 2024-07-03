@@ -1,12 +1,15 @@
 <?php
-require_once '../CHiM/views/includes/header.php';
+require_once dirname(__DIR__, 2) . '/config.php';
+require_once ROOT_PATH . 'views/includes/header.php';
 ?>
 
 <div class="hp-background">
     <div id="hp-img-container">
         <img src="../CHIM/views/public_view/page-images/hp-header.png" alt="Home Page Header" />
         <div id="hp-img-text">CHiM</div>
-        <a href="/CHiM/login" id="hp-join-button">Join Us!</a>
+        <?php if(!isset($_SESSION['user_id'])) { 
+            echo '<a href="/CHiM/login" id="hp-join-button">Join Us!</a>';
+        }?>
     </div>
     <div id="hp-text">
         <h1>Childcare Manager</h1>

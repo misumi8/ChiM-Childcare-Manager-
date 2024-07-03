@@ -81,20 +81,6 @@ document.querySelector('#reg-register-button').addEventListener('click', functio
     if (valid) {
         document.querySelector('#reg-login-form').submit();
     }
-    else {
-        repeatPassError.style.fontSize = "0.75rem";
-        passError.style.fontSize = "0.75rem";
-        emailError.style.fontSize = "0.75rem";
-        dobError.style.fontSize = "0.75rem";
-        lnameError.style.fontSize = "0.75rem";
-        fnameError.style.fontSize = "0.75rem";
-        // password = document.querySelector('#reg-pass');
-        // repeatPassword = document.querySelector('#reg-pass-repeat');
-        // fname = document.querySelector('#reg-fname');
-        // lname = document.querySelector('#reg-lname');
-        // dob        
-        document.getElementById("reg-loginbox").style.height = "32.6rem";
-    }
 });
 
 function wrongInputAnimation(input){
@@ -113,25 +99,16 @@ function isPasswordValid(password) {
 
     var hasLowerCase = false;
     var hasUpperCase = false;
-    //var hasNumber = false;
     var hasSpecialChar = false;
 
     for (var i = 0; i < password.length; i++) {
         var character = password.charAt(i);
         if (!hasLowerCase && /[a-z]/.test(character)) {
             hasLowerCase = true;
-            //errorMsg = errorMsg.replace("Password must contain at least one lowercase character.\n", "");
         } else if (!hasUpperCase && /[A-Z]/.test(character)) {
             hasUpperCase = true;
-            //errorMsg = errorMsg.replace("Password must contain at least one uppercase character.\n", "");
-        } 
-        // else if (!hasNumber && /[0-9]/.test(character)) {
-        //     hasNumber = true;
-        //     errorMsg = errorMsg.replace("Password must contain at least one number.\n", "");
-        // } 
-        else if (!hasSpecialChar && specialChars.includes(character)) {
+        } else if (!hasSpecialChar && specialChars.includes(character)) {
             hasSpecialChar = true;
-            //errorMsg = errorMsg.replace("Password must contain at least one special character.", "");
         }
     }
     if(!hasLowerCase)
@@ -142,5 +119,4 @@ function isPasswordValid(password) {
         return "Password must contain at least one special character.";
     else 
         return null;
-
 }

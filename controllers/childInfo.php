@@ -1,5 +1,6 @@
 <?php
-    //require_once "../CHiM/models/database2.php";
+    require_once dirname(__DIR__) . '/config.php';
+    require_once ROOT_PATH . "models/database.php";
     if(isset($_SESSION['user_id'])){
         $childInfo = getChildInfo($_SESSION['child_id']);
         $childPic = getChildPic($_SESSION['child_id']);
@@ -11,7 +12,7 @@
         $childDOB = $childDOB->format('d.m.Y');
         $childMemories = getChildMemories($_SESSION['child_id']);
         $userChildrenList = getUserChildrenInfo($_SESSION['user_id']);
-        $medicalRecords = getMedicalRecords($_SESSION['child_id'], $_SESSION['user_id']);
+        $medicalRecords = getMedicalRecordsByChildId($_SESSION['child_id']);
         
         $feedingRecordsSunday = getFeedingRecords($_SESSION['child_id'], "sunday");
         $feedingRecordsMonday = getFeedingRecords($_SESSION['child_id'], "monday");

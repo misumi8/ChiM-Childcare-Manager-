@@ -677,7 +677,6 @@ document.addEventListener("DOMContentLoaded", function() {
             const form = new FormData(memoryForm);
             const photo = form.get('photo');
             //alert(photo);
-            
             const description = form.get('description');
             addMemory(photo, description, important, sharedMemory);
         }
@@ -710,7 +709,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     prevMemory = prevMemory.previousElementSibling;
 
                 }
-                console.log("in");
+                //sconsole.log("in");
             }
         })
         memory.addEventListener('mouseout', () => {
@@ -722,7 +721,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     prevMemory = prevMemory.previousElementSibling;
 
                 }
-                console.log("out");
+                //console.log("out");
             }
         })
 
@@ -775,7 +774,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if(totalScrollMemories + event.deltaY >= 0) totalScrollMemories += event.deltaY; 
             }
             
-            console.log(totalScrollMemories + " | ((totalScrollMemories + event.deltaY) / fontSize): " + ((totalScrollMemories + event.deltaY) / fontSize) +" | memories.scrollWidth + memories.clientWidth: " + (memories.scrollWidth + memories.clientWidth) / fontSize);
+            //console.log(totalScrollMemories + " | ((totalScrollMemories + event.deltaY) / fontSize): " + ((totalScrollMemories + event.deltaY) / fontSize) +" | memories.scrollWidth + memories.clientWidth: " + (memories.scrollWidth + memories.clientWidth) / fontSize);
             event.preventDefault(); // Contra vertical scroll of the page
         }
     }); 
@@ -871,3 +870,30 @@ function wrongInputAnimation(wrongInput) {
 function hideNewMedRecord(){
     document.querySelector('.pr-new-medical-record').style.display = 'none';
 }
+
+function viewUserProfile(userId) {
+    fetch(`/CHiM/controllers/handlers/viewUserProfile.php?user_id=` + userId)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('user-profile').innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+document.querySelector('#pr-child-data-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+    fetch('/CHiM/controllers/handlers/updateUserProfile.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Profile updated successfully');
+        } else {
+            alert('Error updating profile');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+});

@@ -1,26 +1,19 @@
 <?php
-require_once "..\..\models\database.php";
+require_once dirname(__DIR__, 2) . '/config.php';
+
+require_once ROOT_PATH . "models/database.php";
+require_once ROOT_PATH . "controllers/LoginController.php";
 
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = cleanInput($_POST["email"]);
-    $user_password = cleanInput($_POST["user_password"]);
-
-    error_log("Login attempt: Email - " . $email);
-
-    $userInfo = getUserInfo($email, $user_password);
-    if ($userInfo) {
-        $_SESSION['userInfo'] = $userInfo;
-        $_SESSION['user_id'] = $userInfo['id'];
-        $_SESSION['child_id'] = getFirstMetChildId($_SESSION['user_id']);
-        header("Location: /CHiM/profile?id=" . $_SESSION['userInfo']['id']);
-    } else {
-        $_SESSION['login_errors'] = "Invalid email or password.";
-        header("Location: /CHiM/login");
-    }
-    exit();
+    $email = $_POST["email"];
+    $password = $_POST["user_password"];
+    
+    $loginController = new LoginController();
+    $loginController->login($email, $password);
 }
 
 header("Location: /CHiM/login");
 exit();
+?>

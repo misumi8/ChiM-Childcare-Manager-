@@ -2,7 +2,8 @@
 <html lang="en">
 
 <?php
-    require_once dirname(__DIR__,2) . '/models/database.php';
+require_once dirname(__DIR__, 2) . '/config.php';
+require_once ROOT_PATH . "models/database.php";
 ?>
 
 <head>
@@ -31,13 +32,13 @@
         <div class="line"></div>
         <div class="item-list">
             <div class="menu-item">
-                <img src="../CHiM/views/includes/header-images/home_icon.png" alt="Home Page" /><a href="/CHiM/home">Home</a>
+                <img src="../CHiM/views/includes/header-images/home_icon.png" alt="Home Page" /><a href="/CHiM/home" class="menu-link">Home</a>
             </div>
             <div class="menu-item">
-                <img src="../CHiM/views/includes/header-images/personal_page_icon.png" alt="Personal Page" /><a href="/CHiM/profile" id="head-my-page">My page</a>
+                <img src="../CHiM/views/includes/header-images/personal_page_icon.png" alt="Personal Page" /><a href="/CHiM/profile" class="menu-link" id="head-my-page">My page</a>
             </div>
             <div class="menu-item">
-                <img src="../CHiM/views/includes/header-images/web_icon.png" /><a href="/CHiM/feed">Feed</a>
+                <img src="../CHiM/views/includes/header-images/web_icon.png" /><a href="/CHiM/feed" class="menu-link">Feed</a>
             </div>
         </div>
         <?php if(isset($_SESSION['user_id'])) { 
@@ -46,3 +47,4 @@
     </div>
     <script src="../CHiM/controllers/js/header.js"></script>
     <script src="../CHiM/models/headerModel.js"></script>
+    <script src="../CHiM/controllers/js/resetSessionOnNavbarClick.js"></script>

@@ -124,32 +124,42 @@ function setSessionChildId(userId, childId) {
 
 async function addMemory(content, description, important, shared){
     const reader = new FileReader();
-    
     reader.addEventListener("load", () => {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '../CHiM/controllers/addNewMemory.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        
         var params = 'description=' + encodeURIComponent(description) + '&shared=' + encodeURIComponent(shared ? 1 : 0) + '&important=' + encodeURIComponent(important ? 1 : 0) + '&content=' + encodeURIComponent(reader.result);
+        console.log("Params to be sent: ", params); // Log params
+
         xhr.onreadystatechange = function() {
             if (xhr.readyState == XMLHttpRequest.DONE) {
+                console.log("XHR readyState: " + xhr.readyState); // Log readyState
+                console.log("XHR status: " + xhr.status); // Log status
+                console.log("XHR responseText: " + xhr.responseText); // Log responseText
+                
                 if (xhr.status != 200) {
                     alert("addMemory error");
-                }
-                else {
+                } else {
                     //alert(xhr.responseText);
                     location.reload(true); // true -> cache ignore
                 }
             }
             //alert("Reload successfully");
         };
+
         xhr.send(params);
     });
 
     if (content != null) {
+        console.log("Content provided: ", content); // Log content
         await new Promise(r => setTimeout(r, 1500));
         reader.readAsDataURL(content); 
+    } else {
+        console.log("No content provided"); // Log if no content
     }
 }
+
 
 function updateChildInfo(name, dob, gender, height, hobby, food){
     var xhr = new XMLHttpRequest();

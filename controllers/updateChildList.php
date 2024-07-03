@@ -1,5 +1,6 @@
 <?php
-    require_once "..\..\CHiM\models\database.php";
+    require_once dirname(__DIR__) . '/config.php';
+require_once ROOT_PATH . "models/database.php";
     //ob_start(); ?
 foreach ($userChildrenList as $child) { ?>
         <a onclick="setSessionChildId(<?php echo $_SESSION['user_id']; ?>, <?php echo $child['id'];?>)">

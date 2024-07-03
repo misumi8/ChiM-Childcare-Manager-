@@ -1,5 +1,7 @@
 <?php
-require_once dirname(__DIR__, 2) . '/views/includes/header.php';
+require_once dirname(__DIR__, 2) . '/config.php';
+
+require_once ROOT_PATH . '/views/includes/header.php';
 ?>
 <div id="nf-main-frame">
     <div id="nf-error-message">
@@ -9,5 +11,5 @@ require_once dirname(__DIR__, 2) . '/views/includes/header.php';
     <img src='../CHiM/views/public_view/page-images/notFound.png'></img>
 </div>
 <?php
-require_once dirname(__DIR__, 2) . '/views/includes/footer.php';
+require_once ROOT_PATH . '/views/includes/footer.php';
 ?>

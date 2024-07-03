@@ -1,5 +1,7 @@
 <?php
-require_once dirname(__DIR__, 2) . '/views/includes/header.php';
+require_once dirname(__DIR__, 2) . '/config.php';
+require_once ROOT_PATH . '/views/includes/header.php';
+
 $failedLoginAttempt = '';
 
 if (isset($_SESSION['login_errors'])) {
@@ -42,7 +44,7 @@ if (isset($_SESSION['login_errors'])) {
     var failedLoginAttempt = "<?= $failedLoginAttempt; ?>";
 </script>
 
-<script src="..\CHiM\controllers\js\login.js"></script>
+<script src="../CHiM/controllers/js/login.js"></script>
 
 <?php
 require_once dirname(__DIR__, 2) . '/views/includes/footer.php';
